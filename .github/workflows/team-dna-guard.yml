@@ -1,0 +1,69 @@
+name: Team DNA Protocol Guard
+
+on:
+  pull_request:
+    paths:
+      - "nhl/team-dna/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-team-dna:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Find changed Team DNA files
+        id: changed
+        run: |
+          CHANGED_FILES="$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'nhl/team-dna/**' || true)"
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "${CHANGED_FILES}" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Fail if no team DNA files found (safety)
+        if: steps.changed.outputs.changed_files == ''
+        run: |
+          echo "No nhl/team-dna files detected, but workflow was triggered. Exiting."
+          exit 0
+
+      - name: Validate Team DNA schema and metadata
+        run: |
+          FAIL=0
+          echo "Changed Team DNA files:"
+          echo "${{ steps.changed.outputs.changed_files }}"
+          
+          # Read files into array safely
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            echo "Checking $file"
+
+            # Check required headings
+            grep -qE '^# 🟠 .+ \(Team DNA\)' "$file" || { echo "::error file=$file::Missing Team DNA title heading"; FAIL=1; }
+            grep -q '## 🛡️ THE NO-FLY ZONE (Do Not Bet Against)' "$file" || { echo "::error file=$file::Missing NO-FLY ZONE section"; FAIL=1; }
+            grep -q '## 🎯 TARGETING PROFILE' "$file" || { echo "::error file=$file::Missing TARGETING PROFILE section"; FAIL=1; }
+            grep -q '## EVIDENCE & LINKS' "$file" || { echo "::error file=$file::Missing EVIDENCE & LINKS section"; FAIL=1; }
+            grep -q '## CHANGE LOG' "$file" || { echo "::error file=$file::Missing CHANGE LOG section"; FAIL=1; }
+
+            # Check metadata keys
+            grep -q 'Analysis File:' "$file" || { echo "::error file=$file::Missing Analysis File in EVIDENCE & LINKS"; FAIL=1; }
+            grep -q 'Sources:' "$file" || { echo "::error file=$file::Missing Sources in EVIDENCE & LINKS"; FAIL=1; }
+            grep -q 'Retrieved_At:' "$file" || { echo "::error file=$file::Missing Retrieved_At in EVIDENCE & LINKS"; FAIL=1; }
+            grep -q 'Author:' "$file" || { echo "::error file=$file::Missing Author in EVIDENCE & LINKS"; FAIL=1; }
+            grep -q 'Verifier:' "$file" || { echo "::error file=$file::Missing Verifier in EVIDENCE & LINKS"; FAIL=1; }
+
+            # Check for BLOCKER or LOCKDOWN markers (warning only)
+            if ! grep -q '\[BLOCKER\]\|\[LOCKDOWN\]' "$file"; then
+              echo "::warning file=$file::No [BLOCKER] or [LOCKDOWN] tag found; verify this is intentional."
+            fi
+          done <<< "${{ steps.changed.outputs.changed_files }}"
+
+          if [ "$FAIL" -ne 0 ]; then
+            echo "Team DNA validation failed."
+            exit 1
+          fi
+
+      # Optional: in future, add parsing of research files and Data Integrity Checklist
+      # to enforce VERIFIED status at CI level.
