@@ -311,5 +311,3 @@
 **END OF EMERGENCY PLAYBOOK**
 
 **APEXVIPER NEVER STOPS** 🐍🔥
-
-**Download this. Save locally. Use when Claude is down.
