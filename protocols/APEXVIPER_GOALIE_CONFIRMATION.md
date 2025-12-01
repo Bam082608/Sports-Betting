@@ -80,6 +80,8 @@ Notes: ____________________________________________
 
 #### Beat Writer Search by Team
 
+> **Note:** Twitter handles may change over time as reporters change jobs or accounts. Verify current beat writers periodically by searching "[Team Name] beat writer" or checking team coverage on The Athletic, ESPN, or local news outlets. Last verified: December 2024.
+
 | Team | Recommended Search | Key Beat Writers |
 |------|-------------------|------------------|
 | ANA | `Ducks morning skate` | @icelounge, @EricStephens_OC |

@@ -185,13 +185,13 @@ Bet 3: Bedard (CHI) 2+ SOG @ -165 ................. $3.00
 TOTAL EXPOSURE: $18.00 (2.8% of bankroll) ⚠️
 ```
 
-**Issues:**
-- ⚠️ DAL in 3 tickets (slightly over 2 max)
+**Issues (Rule Violations):**
+- ❌ DAL in 3 tickets (VIOLATES 2 max rule - must fix before betting)
 - ⚠️ Heavy team concentration (DAL)
-- ⚠️ Only 2 teams represented (below 3 minimum)
+- ❌ Only 2 teams represented (VIOLATES 3 minimum rule)
 - ✅ Total risk within acceptable range
 
-**Recommendation:** Swap one DAL bet for a different team to improve diversification.
+**Recommendation:** This portfolio is NON-COMPLIANT. You MUST swap one DAL bet for a different team to meet portfolio rules before placing bets.
 
 ---
 

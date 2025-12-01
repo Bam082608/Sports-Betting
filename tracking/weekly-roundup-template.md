@@ -296,7 +296,7 @@ Teams playing 4+ games:
 | **Ending Bankroll (Week)** | $_______ |
 | **Weekly Change** | $_______ |
 | **Weekly ROI** | _______% |
-| **All-Time Starting** | $40.00 |
+| **Initial Investment** | $_______ |
 | **All-Time Profit** | $_______ |
 | **All-Time ROI** | _______% |
 
