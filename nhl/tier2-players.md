@@ -71,4 +71,4 @@ A Tier 2 player should be removed when:
 
 ---
 
-*Last Updated: December 2024*
+*Last Updated: December 2025*

@@ -61,4 +61,4 @@ To move a player to Tier 1:
 
 ---
 
-*Last Updated: December 2024*
+*Last Updated: December 2025*
