@@ -39,3 +39,23 @@
 *   **WPG Void:** Hellebuyck is OUT. Comrie is IN. WPG defense relies on Hellebuyck to clean up mistakes. Without him, they allow 3-4 goals.
 *   **Tracy Surge:** Since taking the starting role, Tracy is averaging **134.5 total yards** in his last two games. The books have not adjusted to his usage.
 *   **Gauthier Volume:** 37 shots in last 10 games. Anaheim's entire offense is "Get the kid the puck."
+
+---
+
+## 4. DEEP DIVE: WPG @ BUF
+
+**Full Analysis Available:** [2025-12-01_WPG_at_BUF.md](./2025-12-01_WPG_at_BUF.md)
+
+### Quick Reference
+
+| Metric | Value |
+|--------|-------|
+| **Primary Edge** | 🚨 Backup Goalie Goldmine |
+| **Total Exposure** | $31.25 |
+| **Best Case** | +$42.15 |
+| **Worst Case** | -$31.25 |
+| **Key Plays** | BUF ML, Over 6.0, Thompson/Connor anchors |
+
+---
+
+*Cross-reference with full game analysis for complete VIPER protocol documentation.*
