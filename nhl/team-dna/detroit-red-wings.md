@@ -1,50 +1,17 @@
-# Detroit Red Wings
+# 🔴 DETROIT RED WINGS (Team DNA)
+**Defense Grade:** WEAK (High Event / No Structure)  
+**Key Vulnerability:** "Trading Chances" — they bleed shots and rush chances.  
+**Status:** 🟢 OVER MACHINE.
 
-## Team Overview
-*Last Updated: [DATE]*
+## 🛡️ THE NO-FLY ZONE
+- **None:** No true shutdown pair. Goaltending is by committee (Talbot/Husso/Lyon) and highly volatile.
 
----
+## 🎯 TARGETING PROFILE
+- **Game Totals:** 🟢 BACK OVER 6.0/6.5 — "They score 4, give up 4" archetype.
+- **Home Dog:** 🟢 VALUE — Desperation at home keeps games close and high event.
+- **Opponent Shot Props:** 🟢 GREEN — Wide open lanes, especially for attacking D and top lines.
 
-## Strengths
-- 
-
-## Weaknesses
-- 
-
-## Key Players
-| Player | Position | Notes |
-|--------|----------|-------|
-| | | |
-
----
-
-## Betting Tendencies
-
-### Home Record
-- 
-
-### Away Record
-- 
-
-### Against the Spread (ATS)
-- 
-
-### Over/Under Trends
-- 
-
----
-
-## Situational Angles
-- Back-to-backs: 
-- After wins: 
-- After losses: 
-- As favorites: 
-- As underdogs: 
-
----
-
-## Notes & Observations
-
----
-
-*Use this space for ongoing research and pattern recognition*
+## EVIDENCE & LINKS
+- Analysis Source: Encyclopedia Batch 4 (Nov 2025)
+- Retrieved_At: 2025-11-29
+- Author: APEXVIPER System

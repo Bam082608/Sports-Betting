@@ -1,50 +1,17 @@
-# Ottawa Senators
+# ⚔️ OTTAWA SENATORS (Team DNA)
+**Defense Grade:** VOLATILE (Top-Heavy)  
+**Key Vulnerability:** Discipline & Backup Goalie Drop-Off.  
+**Status:** 🟡 DEPENDENT (Check goaltender before every play).
 
-## Team Overview
-*Last Updated: [DATE]*
+## 🛡️ THE NO-FLY ZONE
+- **Linus Ullmark [SAVIOR]:** Erases a lot of mistakes. If IN, upgrade defensive expectations; if OUT, treat them as a Max Fade candidate.
 
----
+## 🎯 TARGETING PROFILE
+- **Brady Tkachuk Props:** 🟢 GREEN — Bet SOG/Hits especially after a loss; plays angry and drives play.
+- **Road Games:** 🔴 FADE — Discipline issues compound on the road; penalties and breakdown risk spike.
+- **Backups (Forsberg/Sogaard):** 🟢 BACK OVER — Massive drop-off from Ullmark; target Overs and Opponent Team Totals.
 
-## Strengths
-- 
-
-## Weaknesses
-- 
-
-## Key Players
-| Player | Position | Notes |
-|--------|----------|-------|
-| | | |
-
----
-
-## Betting Tendencies
-
-### Home Record
-- 
-
-### Away Record
-- 
-
-### Against the Spread (ATS)
-- 
-
-### Over/Under Trends
-- 
-
----
-
-## Situational Angles
-- Back-to-backs: 
-- After wins: 
-- After losses: 
-- As favorites: 
-- As underdogs: 
-
----
-
-## Notes & Observations
-
----
-
-*Use this space for ongoing research and pattern recognition*
+## EVIDENCE & LINKS
+- Analysis Source: Encyclopedia Batch 4 (Nov 2025)
+- Retrieved_At: 2025-11-29
+- Author: APEXVIPER System
