@@ -1,48 +1,41 @@
-# 📅 DAILY INTEL REPORT: MONDAY, DEC 1, 2025
+# 📅 DAILY INTEL REPORT: MONDAY, DEC 1, 2025 (FINAL)
 
-## 1. THE BATTLEFIELD (CONFIRMED LINES)
-*Data extracted from FanDuel/Yahoo at 22:45 EST, Nov 30.*
+## 1. THE "KILL LIST" (EXECUTABLE BETS)
 
-### 🏒 NHL SLATE (5 Games)
-| Matchup | Spread (Puck Line) | Moneyline | Total | Viper Analysis |
-| :--- | :--- | :--- | :--- | :--- |
-| **PIT @ PHI** | PIT +1.5 (-200) | PIT +128 | 5.5 | **SKIP.** Rivalry game, low total. Too tight. |
-| **CBJ @ NJ** | CBJ +1.5 (-200) | CBJ +128 | 5.5 | **SKIP.** NJ defense is elite. Blocks too many shots. |
-| **WPG @ BUF** | **WPG +1.5 (-280)** | **-110 (PICK)** | **6.5 (+102)** | **TARGET.** No Hellebuyck (WPG) vs Glass Cannon (BUF). |
-| **ANA @ STL** | ANA +1.5 (-196) | ANA +128 | 6.5 (+116) | **TARGET.** High total. Gauthier Volume Spot. |
-| **UTA @ SJ** | UTA -1.5 (+164) | UTA -150 | 5.5 | **LEAN.** Utah is the better team, SJ is tanking. |
+### 🏒 NHL TARGETS
+| Player/Game | Bet | Odds | Viper Analysis |
+| :--- | :--- | :--- | :--- |
+| **WPG @ BUF** | **OVER 6.5 Goals** | **+102** | **THE ANCHOR.** No Hellebuyck (WPG) vs. Glass Cannon (BUF). Two backup goalies = Goal Fest. |
+| **Cutter Gauthier** | **Over 3.5 SOG** | **+108** | **THE SNIPER.** Averaging 4.2 SOG/g. "Buy Low" spot after playing two elite defenses. STL bleeds shots. |
 
-### 🏈 NFL MNF
-| Matchup | Spread | Moneyline | Total | Viper Analysis |
-| :--- | :--- | :--- | :--- | :--- |
-| **NYG @ NE** | NE -7.5 (-102) | NE -370 | **46.5** | **TRAP.** 46.5 is too high for 27°F weather. |
+### 🏈 NFL TARGETS (MNF)
+| Player | Bet | Odds | Viper Analysis |
+| :--- | :--- | :--- | :--- |
+| **Tyrone Tracy Jr.** | **Over 69.5 Rush + Rec Yds** | **-112** | **THE BELL COW.** He has hit **130+ yards** in 2 straight games. 69.5 is disrespectful. Weather forces short game. |
+| **Tyrone Tracy Jr.** | **Over 2.5 Receptions** | **-125** | **THE CHECK DOWN.** 27°F weather = QB can't throw deep. Tracy is the safety valve. |
 
 ---
 
-## 2. TACTICAL BREAKDOWN
+## 2. THE STRATEGY (HOW TO BET IT)
 
-### 🎯 TARGET A: THE "HELLEBUYCK VOID" (WPG @ BUF)
-*   **The Line:** Moneyline is a dead even split (-110 / -110). The books know Hellebuyck is OUT.
-*   **The Trap:** WPG +1.5 is unbettable at -280.
-*   **The Play:** **OVER 6.5 (+102)**.
-*   **Logic:** WPG backup goalie (Comrie) + BUF "Glass Cannon" offense = Goals. We get "Plus Money" on the Over. This is the smartest play on the board.
+### 🧱 THE FOUNDATION (Straight Bets)
+*   **1 Unit:** WPG/BUF **Over 6.5** (+102).
+*   **1 Unit:** Tyrone Tracy Jr. **Over 69.5 Rush + Rec** (-112).
 
-### 🎯 TARGET B: THE "VOLUME KING" (ANA @ STL)
-*   **The Line:** Total is 6.5. St. Louis defense is bottom-tier.
-*   **The Play:** **Cutter Gauthier SOG Prop (Over 2.5 or 3.5)**.
-*   **Logic:** Anaheim is feeding him. St. Louis allows shots. We ignore the game outcome and bet the player.
+### 🪜 THE LADDER (Side Bets & Sprinkles)
+*   **0.5 Units:** Cutter Gauthier **Over 3.5 SOG** (+108).
+*   **0.5 Units:** Tyrone Tracy Jr. **Over 2.5 Receptions** (-125).
 
-### 🎯 TARGET C: THE "FROZEN TUNDRA" (NYG @ NE)
-*   **The Line:** Total 46.5.
-*   **The Intel:** 27°F in Foxborough. Malik Nabers likely OUT/Hurt.
-*   **The Play:** **Tyrone Tracy Jr. Rushing Yards**.
-*   **Logic:** Cold weather = Run the ball. Giants have no passing game without Nabers.
+### 🚀 THE "MONDAY NIGHT SPECIAL" (Parlay)
+*   **Leg 1:** WPG/BUF Over 6.5
+*   **Leg 2:** Cutter Gauthier 4+ SOG (Alt Line if safer, or 3.5)
+*   **Leg 3:** Tyrone Tracy Jr. 50+ Rush + Rec Yds (Alt Line)
+*   **Leg 4:** Tyrone Tracy Jr. 2+ Receptions (Alt Line)
+*   **Objective:** Safe "Green" Parlay to fund the week.
 
 ---
 
-## 3. THE "KILL LIST" (DRAFT)
-*Pending final Prop Odds tomorrow morning.*
-
-1.  **PRIMARY:** WPG/BUF **Over 6.5** (+102).
-2.  **SECONDARY:** Cutter Gauthier **Over SOG** (Check Line).
-3.  **CROSS-SPORT:** Tyrone Tracy Jr. **Over Rush Yds** + WPG/BUF **Over 6.5**.
+## 3. INTEL ARCHIVE (WHY WE BET)
+*   **WPG Void:** Hellebuyck is OUT. Comrie is IN. WPG defense relies on Hellebuyck to clean up mistakes. Without him, they allow 3-4 goals.
+*   **Tracy Surge:** Since taking the starting role, Tracy is averaging **134.5 total yards** in his last two games. The books have not adjusted to his usage.
+*   **Gauthier Volume:** 37 shots in last 10 games. Anaheim's entire offense is "Get the kid the puck."
