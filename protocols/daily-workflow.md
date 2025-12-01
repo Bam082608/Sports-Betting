@@ -114,3 +114,59 @@
 ---
 
 *"Process over profits. The money follows the system."*
+
+---
+
+## Multi-AI Workflow
+
+*Collaboration between Claude, Gemini, and Grok*
+
+### AI Roles
+
+| AI | Role | Primary Responsibility |
+|----|------|------------------------|
+| **Claude (VIPER-ZERO)** | System Architect | Synthesis, final decisions, core file updates |
+| **Gemini** | Statistical Analyst | Number crunching, SOG analysis, pattern recognition |
+| **Grok** | Public Sentiment Scout | Social media scanning, line movement, injury intel |
+
+### Daily AI Workflow
+
+**Morning (Gemini):**
+1. Pull tonight's slate from schedule
+2. Analyze stats for all players
+3. Calculate SOG averages and concentrations
+4. Identify trends and patterns
+5. Save to: `research/YYYY-MM-DD-gemini-slate.md`
+
+**Afternoon (Grok):**
+1. Scan Twitter for lineup news
+2. Check Reddit for injury rumors
+3. Monitor betting forums for line movement
+4. Identify public favorites vs fades
+5. Save to: `research/YYYY-MM-DD-grok-sentiment.md`
+
+**Evening (Claude):**
+1. Read Gemini's statistical analysis
+2. Read Grok's sentiment report
+3. Cross-reference with core protocols
+4. Make final betting decisions
+5. Update core files with vetted insights
+
+### File Locations
+
+| Type | Location |
+|------|----------|
+| **Core Files** | `protocols/`, `nhl/`, `tracking/` - Single source of truth |
+| **Research** | `research/` - AI contributions (dated, labeled) |
+| **Archive** | `archive/` - Historical data |
+
+### Integration Rules
+
+1. **Research → Core:** Only Claude integrates research into core files
+2. **All AIs:** Can read core files for consistent reference
+3. **Research Status:** Mark as Raw → Reviewed → Integrated
+4. **Accountability:** Every file includes AI name, date, and topic
+
+---
+
+*"Three AIs, one system. Research informs, synthesis decides."*
