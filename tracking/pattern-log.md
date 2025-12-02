@@ -90,16 +90,50 @@
 2. **Cold Weather TEs** - 25-35°F games = TE safety valve routes
 3. **Foundation Shooters** - Elite SOG producers hit regardless of score/situation
 4. **Verified Tier 1 Stars** - Proven volume players deserve bigger stakes
+5. **Multi-Anchor Distribution** - Spread exposure across 4-5 anchors, not one core bet
 
 ### Retired Strategies (Stop Betting)
 1. **Period-Specific SOG** - Too timing-dependent, use full game
 2. **Middles Without Confidence** - Only middle when winner is clear
 3. **Sub-$1 Lottery** - Either $1+ or skip entirely
+4. **Oversized Core Bets** - Single-point-of-failure risk, use distribution instead
 
 ### Under Observation (Need More Data)
 1. Game totals with backup goalies
 2. Travel/fatigue angles
 3. Division rivalry unders
+4. Double-edged parlay structures (per-game hedging)
+
+---
+
+## 🎯 ANCHOR PERFORMANCE TRACKER
+
+> **Strategy:** Use 4-5 high-confidence anchors across multiple tickets instead of one concentrated core bet.
+
+### Current Anchor Pool (NHL)
+
+| Player | Team | Market | Tier | Hit Rate | Notes |
+|--------|------|--------|------|----------|-------|
+| Jason Robertson | DAL | 2+ SOG | Tier 1 | HIGH | Double Tier 1 with Hintz |
+| Roope Hintz | DAL | 2+ SOG | Tier 1 | GOOD | Complements Robertson |
+| Brady Tkachuk | OTT | 3+ SOG | Tier 1 | ELITE | 4.05 avg - elite volume |
+| Nikita Kucherov | TB | 3+ SOG | Tier 1 | HIGH | Elite shooter |
+| Dylan Larkin | DET | 2+ SOG | Tier 2 | GOOD | Home captain usage |
+
+### Anchor Performance Log
+
+| Date | Anchor | Line | Result | P/L Impact | Notes |
+|------|--------|------|--------|------------|-------|
+| *No data yet* | | | | | |
+
+### Anchor vs Non-Anchor Analysis
+
+| Period | Anchor Bets | Anchor Win % | Non-Anchor Bets | Non-Anchor Win % | Edge |
+|--------|-------------|--------------|-----------------|------------------|------|
+| Week 1 | 0 | 0% | 0 | 0% | N/A |
+| Week 2 | 0 | 0% | 0 | 0% | N/A |
+
+**Key Insight:** Track whether anchor-based tickets outperform satellite-only tickets.
 
 ---
 
