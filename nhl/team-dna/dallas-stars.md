@@ -1,7 +1,9 @@
-# Dallas Stars
+# ⭐ DALLAS STARS (Team DNA)
+**Defense Grade:** ELITE (Structure-First System)  
+**Key Strength:** DOUBLE TIER 1 STARS (Robertson + Hintz)  
+**Status:** 🟢 **MAX VALUE TEAM** (as of Dec 2, 2025)
 
-## Team Overview
-*Last Updated: December 2024*
+*Last Updated: December 2, 2025*
 
 ---
 
@@ -11,22 +13,43 @@
 
 | Stat | Value |
 |------|-------|
-| **Average SOG** | 5-6 |
+| **Average SOG** | 2.7-3.1 |
 | **Concentration** | High |
 | **Stake Level** | Tier A ($2.50) |
+| **Status** | ✅ VERIFIED |
 
 ### ⭐ Tier 1 Star #2: Roope Hintz
 
 | Stat | Value |
 |------|-------|
-| **Average SOG** | 5-6 |
+| **Average SOG** | ~2.5 |
 | **Concentration** | High |
 | **Stake Level** | Tier A ($2.50) |
+| **Status** | ✅ VERIFIED |
 
 ### Evidence
 - **Nov 30 vs OTT:** Both Robertson AND Hintz verified with 5-6 SOG each
 - DOUBLE Tier 1 advantage - can bet both same game
 - Elite duo that generates independent of each other
+
+---
+
+## 🥅 GOALIE SITUATION
+| Goalie | Record | GAA | SV% | Notes |
+|--------|--------|-----|-----|-------|
+| **Jake Oettinger** | **11-4-2** | 2.76 | .900 | ✅ Elite starter, road warrior |
+
+---
+
+## ⚠️ INJURY UPDATES (Dec 2, 2025)
+| Player | Status | Impact |
+|--------|--------|--------|
+| Matt Duchene | DAY-TO-DAY | Forward depth |
+| Nils Lundkvist | LTIR | D depth |
+| Thomas Harley | OUT | D depth |
+| Ilya Lyubushkin | OUT | D depth |
+
+**Assessment:** Defense depth concerns but STRUCTURE INTACT - system covers gaps
 
 ---
 
@@ -38,17 +61,24 @@ This is rare. Most teams have one concentration player. Dallas has two, which do
 
 ---
 
+## 🎯 TARGETING PROFILE
+- **DAL ML (Road):** 🟢 GREEN — Structure-first system travels well
+- **DAL vs Chaotic Teams:** 🟢 GREEN — Exploits disorganized opponents
+- **Robertson/Hintz SOG:** 🟢 GRINDER — Double Tier 1 exposure
+
+---
+
 ## Betting Strategy
 
 ### Robertson (BET EVERY GAME)
 - ✅ Use 2P+3P splits
 - ✅ Tier A stakes ($2.50)
-- ✅ Verified Nov 30
+- ✅ Verified Dec 2, 2025
 
 ### Hintz (BET EVERY GAME)
 - ✅ Use 2P+3P splits
 - ✅ Tier A stakes ($2.50)
-- ✅ Verified Nov 30
+- ✅ Verified Dec 2, 2025
 
 ### D-Man: Miro Heiskanen
 | Stat | Value |
@@ -69,6 +99,7 @@ This is rare. Most teams have one concentration player. Dallas has two, which do
 2. **Robertson + Hintz independent** - Both shoot regardless of other's performance
 3. **Heiskanen PP1** - D-man cross-game value
 4. **Stars are contenders** - More high-event games
+5. **Structure-First:** System covers for defensive injuries
 
 ---
 
@@ -89,6 +120,7 @@ When Dallas plays, build:
 - Two Tier 1 stars = double edge
 - Heiskanen adds D-man cross-game value
 - Prioritize Dallas games on the slate
+- **Tonight (Dec 2):** DAL @ NYR - Rangers missing Adam Fox = DAL structure advantage
 
 ---
 
