@@ -43,7 +43,7 @@ For each relevant player:
 
 **Tier Classification:**
 
-- Tier: [Tier 1 / Tier 2 / Lottery / Fade]
+- Tier: [Tier 1 / Tier 2 / Tier 3 / Tier X]
 - Rationale: [Concise reasoning]
 
 ---
