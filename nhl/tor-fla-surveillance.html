@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHL Surveillance: TOR vs FLA (Dec 2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .animate-row { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .stat-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        .stat-sog { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #059669; }
+        .stat-blk { background: rgba(244, 63, 94, 0.2); color: #fb7185; border: 1px solid #be123c; }
+        .stat-inj { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #b91c1c; } /* Injury Red */
+        .stat-new { background: rgba(234, 179, 8, 0.2); color: #fde047; border: 1px solid #ca8a04; } /* New Team Yellow */
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-6 pb-20">
+
+    <!-- Header -->
+    <div class="max-w-7xl mx-auto mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-red-500">
+                <i class="fa-solid fa-hospital-user mr-2"></i>Casualty Report
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">Live Intel (2025) • Toronto Maple Leafs @ Florida Panthers</p>
+        </div>
+        
+        <div class="flex flex-wrap gap-2">
+            <button onclick="filterTable('all')" id="btn-all" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors bg-slate-700 text-white">All Intel</button>
+            <button onclick="filterTable('player')" id="btn-player" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors">Active Shooters</button>
+            <button onclick="filterTable('injury')" id="btn-injury" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors text-red-300 border-red-900/30">The I.R. List</button>
+        </div>
+    </div>
+
+    <!-- INJURY ALERT PANEL (The Hospital Ward) -->
+    <div id="injury-panel" class="max-w-7xl mx-auto mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 animate-row">
+        <!-- FLA Injuries -->
+        <div class="glass-panel p-4 rounded-xl border-l-4 border-red-600 bg-red-900/10">
+            <h3 class="text-lg font-bold text-red-400 mb-1 flex items-center">
+                <i class="fa-solid fa-triangle-exclamation mr-2"></i> FLA: CRITICAL LOSSES
+            </h3>
+            <p class="text-xs text-slate-400 mb-3">Offense is severely compromised. Top stars missing.</p>
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/80 rounded border border-red-900/30">
+                    <span class="text-slate-200">A. Barkov (C)</span>
+                    <span class="stat-badge stat-inj">OUT</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/80 rounded border border-red-900/30">
+                    <span class="text-slate-200">M. Tkachuk (LW)</span>
+                    <span class="stat-badge stat-inj">OUT</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/80 rounded">
+                    <span class="text-slate-400">E. Luostarinen</span>
+                    <span class="stat-badge stat-inj">OUT</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOR Injuries -->
+        <div class="glass-panel p-4 rounded-xl border-l-4 border-blue-600 bg-blue-900/10">
+            <h3 class="text-lg font-bold text-blue-400 mb-1 flex items-center">
+                <i class="fa-solid fa-user-nurse mr-2"></i> TOR: KEY ABSENCES
+            </h3>
+            <p class="text-xs text-slate-400 mb-3">Defense/Goalie issues.</p>
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/80 rounded border border-blue-900/30">
+                    <span class="text-slate-200">B. Carlo (D)</span>
+                    <span class="stat-badge stat-inj">OUT (Specialist)</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/80 rounded border border-blue-900/30">
+                    <span class="text-slate-200">A. Stolarz (G)</span>
+                    <span class="stat-badge stat-inj">INJURED</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/80 rounded border border-blue-900/30">
+                    <span class="text-slate-200">C. Tanev (D)</span>
+                    <span class="stat-badge stat-inj">INJURED</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Table Container -->
+    <div class="max-w-7xl mx-auto glass-panel rounded-xl overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-800/80 text-slate-300 text-xs uppercase tracking-wider border-b border-slate-700">
+                        <th class="p-4">Entity</th>
+                        <th class="p-4">Bet Type</th>
+                        <th class="p-4">Live Intel (2025 Season)</th>
+                        <th class="p-4 text-right">Odds</th>
+                        <th class="p-4 text-center">Select</th>
+                    </tr>
+                </thead>
+                <tbody id="odds-body" class="divide-y divide-slate-700/50">
+                    <!-- Data populated via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const combinedData = [
+            // --- TORONTO ---
+            { 
+                name: "Auston Matthews (TOR)", 
+                team: "TOR",
+                market: "3+ Shots / Any Goal", 
+                odds: -190, 
+                displayOdds: "-190 / +160", 
+                type: "player",
+                stats: { sog: 75, blk: 36, g: 10, a: 7 },
+                note: "DEFENSIVE BEAST (36 Blks)"
+            },
+            { 
+                name: "John Tavares (TOR)", 
+                team: "TOR",
+                market: "3+ Shots / Any Goal", 
+                odds: -176, 
+                displayOdds: "-176 / +210", 
+                type: "player",
+                stats: { sog: 77, blk: 5, g: 12, a: 16 },
+                note: "Highest Volume (77 SOG)"
+            },
+            { 
+                name: "William Nylander (TOR)", 
+                team: "TOR",
+                market: "3+ Shots / Any Goal", 
+                odds: 102, 
+                displayOdds: "+102 / +190", 
+                type: "player",
+                stats: { sog: 48, blk: 10, g: 11, a: 21 },
+                note: "Leading Points (32 Pts)"
+            },
+            { 
+                name: "Morgan Rielly (TOR)", 
+                team: "TOR",
+                market: "2+ Shots", 
+                odds: -125, 
+                displayOdds: "-125", 
+                type: "player",
+                stats: { sog: 46, blk: 30, g: 4, a: 16 },
+                note: "Active D-Man (30 Blks)"
+            },
+            { 
+                name: "Matthew Knies (TOR)", 
+                team: "TOR",
+                market: "2+ Shots", 
+                odds: -132, 
+                displayOdds: "-132", 
+                type: "player",
+                stats: { sog: 49, blk: 11, g: 6, a: 20 },
+                note: "Solid mid-tier volume"
+            },
+
+            // --- FLORIDA (STEPPING UP) ---
+            { 
+                name: "Brad Marchand (FLA)", 
+                team: "FLA",
+                market: "2+ Shots / Any Goal", 
+                odds: -370, 
+                displayOdds: "-370 / +150", 
+                type: "player",
+                stats: { sog: 64, blk: 9, g: 15, a: 12 },
+                note: "New Team. High Volume."
+            },
+            { 
+                name: "Sam Reinhart (FLA)", 
+                team: "FLA",
+                market: "3+ Shots / Any Goal", 
+                odds: -120, 
+                displayOdds: "-120 / +130", 
+                type: "player",
+                stats: { sog: 66, blk: 19, g: 13, a: 10 },
+                note: "Must score w/ Barkov out"
+            },
+            { 
+                name: "Sam Bennett (FLA)", 
+                team: "FLA",
+                market: "3+ Shots", 
+                odds: -146, 
+                displayOdds: "-146", 
+                type: "player",
+                stats: { sog: 53, blk: 7, g: 6, a: 6 },
+                note: "Heavily favored for shots"
+            },
+            { 
+                name: "Carter Verhaeghe (FLA)", 
+                team: "FLA",
+                market: "3+ Shots", 
+                odds: -128, 
+                displayOdds: "-128", 
+                type: "player",
+                stats: { sog: 57, blk: 8, g: 4, a: 12 },
+                note: "Shooter mentality"
+            },
+            { 
+                name: "Evan Rodrigues (FLA)", 
+                team: "FLA",
+                market: "3+ Shots", 
+                odds: 130, 
+                displayOdds: "+130", 
+                type: "player",
+                stats: { sog: 54, blk: 11, g: 7, a: 6 },
+                note: "High value for 54 SOG"
+            },
+            { 
+                name: "Anton Lundell (FLA)", 
+                team: "FLA",
+                market: "3+ Shots", 
+                odds: 142, 
+                displayOdds: "+142", 
+                type: "player",
+                stats: { sog: 50, blk: 19, g: 6, a: 13 },
+                note: "Young center getting minutes"
+            },
+
+            // --- GAME LINES ---
+            { 
+                name: "Toronto Maple Leafs", 
+                team: "TOR",
+                market: "Moneyline", 
+                odds: 128, 
+                displayOdds: "+128", 
+                type: "game",
+                stats: { sog: "-", blk: "-" },
+                note: "Slight Underdog"
+            },
+            { 
+                name: "Florida Panthers", 
+                team: "FLA",
+                market: "Moneyline", 
+                odds: -154, 
+                displayOdds: "-154", 
+                type: "game",
+                stats: { sog: "-", blk: "-" },
+                note: "Favorite despite injuries"
+            },
+            { 
+                name: "Over 6.5 Goals", 
+                team: "GAME",
+                market: "Total", 
+                odds: -104, 
+                displayOdds: "-104", 
+                type: "game",
+                stats: { sog: "-", blk: "-" },
+                note: "High scoring expected"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderTable(data) {
+            const tbody = document.getElementById('odds-body');
+            tbody.innerHTML = '';
+            
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-700/30 transition-colors animate-row';
+                row.style.animationDelay = `${index * 0.05}s`;
+                
+                const oddsColor = item.odds < 0 ? 'text-emerald-400' : 'text-slate-200';
+                
+                let statsHtml = '';
+                if (item.type === 'player') {
+                    // Check for special tags (Marchand on FLA)
+                    let extraBadge = '';
+                    if (item.name.includes("Marchand")) {
+                        extraBadge = '<span class="stat-badge stat-new">NEW TEAM</span>';
+                    }
+
+                    statsHtml = `
+                        <div class="flex items-center space-x-2">
+                            <span class="stat-badge stat-sog">SOG: ${item.stats.sog}</span>
+                            <span class="stat-badge stat-blk">BKS: ${item.stats.blk}</span>
+                            ${extraBadge}
+                            <span class="text-xs text-slate-400 ml-1">${item.stats.g}G / ${item.stats.a}A</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 mt-1 uppercase tracking-wide font-mono">${item.note}</div>
+                    `;
+                } else {
+                    statsHtml = `<span class="text-xs text-slate-400">${item.note}</span>`;
+                }
+
+                row.innerHTML = `
+                    <td class="p-4 font-bold text-slate-200">${item.name}</td>
+                    <td class="p-4 text-sm text-slate-400">${item.market}</td>
+                    <td class="p-4">${statsHtml}</td>
+                    <td class="p-4 text-right font-mono font-bold ${oddsColor}">${item.displayOdds}</td>
+                    <td class="p-4 text-center">
+                        <input type="checkbox" class="w-4 h-4 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500">
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function filterTable(type) {
+            currentFilter = type;
+            ['all', 'player', 'injury'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === type) {
+                    btn.classList.add('bg-slate-700', 'text-white');
+                    if(t === 'injury') btn.classList.add('bg-red-900/40', 'text-red-200');
+                } else {
+                    btn.classList.remove('bg-slate-700', 'text-white', 'bg-red-900/40', 'text-red-200');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            if (type === 'all') renderTable(combinedData);
+            else if (type === 'injury') {
+                document.getElementById('injury-panel').scrollIntoView({ behavior: 'smooth' });
+            }
+            else renderTable(combinedData.filter(item => item.type === type));
+        }
+
+        // Initial Sort by SOG
+        combinedData.sort((a, b) => (b.stats?.sog || 0) - (a.stats?.sog || 0));
+        renderTable(combinedData);
+
+    </script>
+</body>
+</html>
