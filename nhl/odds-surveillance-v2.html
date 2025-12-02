@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odds Surveillance v2.0 | TB vs NYI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .team-tb {
+            border-left: 4px solid #0077c0;
+        }
+        .team-nyi {
+            border-left: 4px solid #f47d30;
+        }
+        /* Fallback for hidden class if Tailwind doesn't load */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen text-white">
+    <!-- Header -->
+    <header class="glass-panel sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-white">Odds Surveillance v2.0</h1>
+                    <p class="text-slate-400 text-sm">TB Lightning vs NYI Islanders | December 2, 2025</p>
+                </div>
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterData('all')" id="btn-all" class="filter-btn px-4 py-2 rounded-lg bg-blue-600 text-white font-medium transition-all hover:bg-blue-700">
+                        All Ops
+                    </button>
+                    <button onclick="filterData('player')" id="btn-player" class="filter-btn px-4 py-2 rounded-lg bg-slate-700 text-slate-300 font-medium transition-all hover:bg-slate-600">
+                        Skaters
+                    </button>
+                    <button onclick="filterData('goalie')" id="btn-goalie" class="filter-btn px-4 py-2 rounded-lg bg-slate-700 text-slate-300 font-medium transition-all hover:bg-slate-600">
+                        Goalies
+                    </button>
+                    <button onclick="toggleBlockade()" id="btn-blockade" class="filter-btn px-4 py-2 rounded-lg bg-slate-700 text-slate-300 font-medium transition-all hover:bg-slate-600">
+                        The Blockade
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- The Blockade Panel (Hidden by Default) -->
+        <div id="blockade-panel" class="hidden mb-8">
+            <div class="glass-panel rounded-xl p-6">
+                <h2 class="text-xl font-bold text-amber-400 mb-4 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                    </svg>
+                    Defensive Intel: The Blockade
+                </h2>
+                <p class="text-slate-400 mb-6">Top Shot Blockers for the TB vs NYI matchup</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- TB Blockers -->
+                    <div class="glass-panel rounded-lg p-4 team-tb">
+                        <h3 class="text-lg font-semibold text-blue-400 mb-3">Tampa Bay Lightning</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700">
+                                <span class="text-white">E. Cernak</span>
+                                <span class="font-bold text-emerald-400">43 BLK</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700">
+                                <span class="text-white">V. Hedman</span>
+                                <span class="font-bold text-emerald-400">28 BLK</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-white">J. Moser</span>
+                                <span class="font-bold text-emerald-400">27 BLK</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- NYI Blockers -->
+                    <div class="glass-panel rounded-lg p-4 team-nyi">
+                        <h3 class="text-lg font-semibold text-orange-400 mb-3">New York Islanders</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700">
+                                <span class="text-white">R. Pulock</span>
+                                <span class="font-bold text-emerald-400">41 BLK</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700">
+                                <span class="text-white">A. Pelech</span>
+                                <span class="font-bold text-emerald-400">39 BLK</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-slate-700">
+                                <span class="text-white">S. Mayfield</span>
+                                <span class="font-bold text-emerald-400">32 BLK</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-white">M. Schaefer</span>
+                                <span class="font-bold text-emerald-400">31 BLK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
+            <p class="text-slate-400 mt-4">Loading surveillance data...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="hidden text-center py-12">
+            <div class="glass-panel rounded-xl p-8 max-w-md mx-auto">
+                <svg class="w-16 h-16 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                <h3 class="text-xl font-bold text-white mb-2">Data Load Failed</h3>
+                <p id="error-message" class="text-slate-400"></p>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div id="data-container" class="hidden">
+            <!-- Team Sections -->
+            <div id="tb-section" class="mb-8">
+                <h2 class="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2">
+                    <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                    Tampa Bay Lightning
+                </h2>
+                <div id="tb-players" class="grid gap-4"></div>
+            </div>
+            
+            <div id="nyi-section">
+                <h2 class="text-xl font-bold text-orange-400 mb-4 flex items-center gap-2">
+                    <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+                    New York Islanders
+                </h2>
+                <div id="nyi-players" class="grid gap-4"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-panel mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-4 text-center text-slate-400 text-sm">
+            Odds Surveillance v2.0 | APEXVIPER Intelligence System
+        </div>
+    </footer>
+
+    <script>
+        let combinedData = [];
+        let currentFilter = 'all';
+        let blockadeVisible = false;
+
+        // Fetch data from external JSON file
+        async function loadData() {
+            try {
+                const response = await fetch('./data/surveillance_log_2025_12_02.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                combinedData = await response.json();
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('data-container').classList.remove('hidden');
+                renderTable();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('error').classList.remove('hidden');
+                document.getElementById('error-message').textContent = `Failed to load surveillance data: ${error.message}`;
+            }
+        }
+
+        function renderTable() {
+            const tbContainer = document.getElementById('tb-players');
+            const nyiContainer = document.getElementById('nyi-players');
+            const tbSection = document.getElementById('tb-section');
+            const nyiSection = document.getElementById('nyi-section');
+            
+            tbContainer.innerHTML = '';
+            nyiContainer.innerHTML = '';
+            
+            let filteredData = combinedData;
+            
+            if (currentFilter !== 'all') {
+                filteredData = combinedData.filter(item => item.type === currentFilter);
+            }
+            
+            const tbPlayers = filteredData.filter(item => item.team === 'TB');
+            const nyiPlayers = filteredData.filter(item => item.team === 'NYI');
+            
+            // Show/hide sections based on data
+            tbSection.classList.toggle('hidden', tbPlayers.length === 0);
+            nyiSection.classList.toggle('hidden', nyiPlayers.length === 0);
+            
+            tbPlayers.forEach(player => {
+                tbContainer.innerHTML += createPlayerCard(player, 'tb');
+            });
+            
+            nyiPlayers.forEach(player => {
+                nyiContainer.innerHTML += createPlayerCard(player, 'nyi');
+            });
+        }
+
+        function createPlayerCard(player, team) {
+            const teamClass = team === 'tb' ? 'team-tb' : 'team-nyi';
+            const isGoalie = player.type === 'goalie';
+            
+            let statsHtml = '';
+            if (isGoalie) {
+                statsHtml = `
+                    <div class="flex flex-wrap gap-4 text-sm">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-emerald-400">${player.stats.gaa}</div>
+                            <div class="text-slate-500 text-xs">GAA</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-emerald-400">${player.stats.sv}</div>
+                            <div class="text-slate-500 text-xs">SV%</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-white">${player.stats.w}</div>
+                            <div class="text-slate-500 text-xs">Wins</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-slate-400">${player.stats.l}</div>
+                            <div class="text-slate-500 text-xs">Losses</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                statsHtml = `
+                    <div class="flex flex-wrap gap-4 text-sm">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-emerald-400">${player.stats.sog}</div>
+                            <div class="text-slate-500 text-xs">SOG</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-amber-400">${player.stats.blk}</div>
+                            <div class="text-slate-500 text-xs">BLK</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-white">${player.stats.g}</div>
+                            <div class="text-slate-500 text-xs">Goals</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-slate-300">${player.stats.a}</div>
+                            <div class="text-slate-500 text-xs">Assists</div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            return `
+                <div class="glass-panel rounded-lg p-4 ${teamClass}">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <h3 class="text-lg font-semibold text-white">${player.name}</h3>
+                                <span class="px-2 py-1 rounded text-xs font-medium ${isGoalie ? 'bg-purple-500/20 text-purple-300' : 'bg-blue-500/20 text-blue-300'}">
+                                    ${isGoalie ? 'Goalie' : 'Skater'}
+                                </span>
+                            </div>
+                            <div class="text-sm text-slate-400 mb-3">${player.market}</div>
+                            ${statsHtml}
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold ${player.odds < -200 ? 'text-emerald-400' : player.odds < 0 ? 'text-yellow-400' : 'text-slate-300'}">
+                                ${player.displayOdds}
+                            </div>
+                            <div class="text-xs text-slate-500 mt-1 max-w-[200px]">${player.note}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterData(type) {
+            currentFilter = type;
+            
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-slate-700', 'text-slate-300');
+            });
+            
+            const activeBtn = document.getElementById(`btn-${type}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-700', 'text-slate-300');
+                activeBtn.classList.add('bg-blue-600', 'text-white');
+            }
+            
+            // Hide blockade when filtering
+            if (blockadeVisible) {
+                toggleBlockade();
+            }
+            
+            renderTable();
+        }
+
+        function toggleBlockade() {
+            const panel = document.getElementById('blockade-panel');
+            const btn = document.getElementById('btn-blockade');
+            
+            blockadeVisible = !blockadeVisible;
+            
+            if (blockadeVisible) {
+                panel.classList.remove('hidden');
+                btn.classList.remove('bg-slate-700', 'text-slate-300');
+                btn.classList.add('bg-amber-600', 'text-white');
+            } else {
+                panel.classList.add('hidden');
+                btn.classList.remove('bg-amber-600', 'text-white');
+                btn.classList.add('bg-slate-700', 'text-slate-300');
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>
