@@ -216,7 +216,7 @@
             }
         ];
 
-        function renderTable(filter) {
+        function filterTable(filter) {
             const tbody = document.getElementById('data-body');
             tbody.innerHTML = '';
 
@@ -289,11 +289,11 @@
                 rawData.sort((a, b) => a.market.localeCompare(b.market) * sortDir);
             }
             sortDir *= -1;
-            renderTable('all'); // Reset to all view when sorting
+            filterTable('all'); // Reset to all view when sorting
         }
 
         // Initialize
-        renderTable('all');
+        filterTable('all');
 
     </script>
 </body>
