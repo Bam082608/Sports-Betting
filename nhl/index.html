@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXVIPER Command Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .status-active { background-color: #10b981; box-shadow: 0 0 8px #10b981; }
+        .status-pending { background-color: #f59e0b; }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12 flex flex-col items-center">
+
+    <div class="max-w-4xl w-full">
+        <!-- Header -->
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-white tracking-tight mb-2">APEXVIPER <span class="text-blue-500">INTELLIGENCE</span></h1>
+            <p class="text-slate-500 font-mono text-sm uppercase tracking-widest">Surveillance Command Hub • 2025-12-02</p>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- Active Operations -->
+            <div class="glass-panel rounded-xl p-6 border-t-4 border-blue-500">
+                <h2 class="text-xl font-bold text-white mb-6 flex items-center">
+                    <i class="fa-solid fa-radar mr-3 text-blue-400"></i>Active Surveillance
+                </h2>
+
+                <div class="space-y-3">
+                    <a href="van-col-surveillance.html" class="block p-4 rounded-lg bg-slate-800/50 hover:bg-slate-700 transition-all border border-slate-700 hover:border-blue-500/50 group">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-200 group-hover:text-white">VAN @ COL</span>
+                            <span class="text-xs font-mono text-emerald-400"><span class="status-dot status-active"></span>LIVE</span>
+                        </div>
+                        <div class="text-xs text-slate-500 mt-1">MacKinnon, Hughes, 2025 Rosters</div>
+                    </a>
+
+                    <a href="chi-veg-surveillance.html" class="block p-4 rounded-lg bg-slate-800/50 hover:bg-slate-700 transition-all border border-slate-700 hover:border-blue-500/50 group">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-200 group-hover:text-white">CHI @ VEG</span>
+                            <span class="text-xs font-mono text-emerald-400"><span class="status-dot status-active"></span>LIVE</span>
+                        </div>
+                        <div class="text-xs text-slate-500 mt-1">Bedard, Eichel, Marner</div>
+                    </a>
+
+                    <a href="odds-surveillance-v2.html" class="block p-4 rounded-lg bg-slate-800/50 hover:bg-slate-700 transition-all border border-slate-700 hover:border-blue-500/50 group">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-slate-200 group-hover:text-white">TB @ NYI</span>
+                            <span class="text-xs font-mono text-emerald-400"><span class="status-dot status-active"></span>LIVE (v2.0)</span>
+                        </div>
+                        <div class="text-xs text-slate-500 mt-1">Kucherov, Blockade Intel</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Other Operations -->
+            <div class="glass-panel rounded-xl p-6 border-t-4 border-slate-600">
+                <h2 class="text-xl font-bold text-slate-300 mb-6 flex items-center">
+                    <i class="fa-solid fa-database mr-3 text-slate-500"></i>Archive / Other
+                </h2>
+
+                <div class="space-y-3">
+                     <a href="bos-det-surveillance.html" class="block p-3 rounded bg-slate-800/30 hover:bg-slate-700/50 transition-colors flex justify-between items-center">
+                        <span class="text-slate-400 text-sm">BOS @ DET</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600"></i>
+                    </a>
+                    <a href="tor-fla-surveillance.html" class="block p-3 rounded bg-slate-800/30 hover:bg-slate-700/50 transition-colors flex justify-between items-center">
+                        <span class="text-slate-400 text-sm">TOR @ FLA</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600"></i>
+                    </a>
+                    <a href="cgy-nsh-surveillance.html" class="block p-3 rounded bg-slate-800/30 hover:bg-slate-700/50 transition-colors flex justify-between items-center">
+                        <span class="text-slate-400 text-sm">CGY @ NSH</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600"></i>
+                    </a>
+                    <a href="min-edm-surveillance.html" class="block p-3 rounded bg-slate-800/30 hover:bg-slate-700/50 transition-colors flex justify-between items-center">
+                        <span class="text-slate-400 text-sm">MIN @ EDM</span>
+                        <i class="fa-solid fa-chevron-right text-xs text-slate-600"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Intel Link -->
+        <div class="mt-8 text-center">
+            <a href="daily-intel/2025-12-02-slate.md" class="text-blue-400 hover:text-blue-300 text-sm font-mono underline decoration-dotted">
+                View Daily Intel Briefing (Markdown)
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
