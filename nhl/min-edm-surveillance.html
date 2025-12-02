@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIN vs EDM: Data Log</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        
+        /* Stat Colors */
+        .stat-sog { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid #059669; }
+        .stat-toi { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid #2563eb; }
+        .stat-blk { background: rgba(244, 63, 94, 0.1); color: #fb7185; border: 1px solid #be123c; }
+        .stat-vol { background: rgba(168, 85, 247, 0.1); color: #e9d5ff; border: 1px solid #9333ea; } /* High Volume Purple */
+
+        th { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-6 pb-20">
+
+    <!-- Header -->
+    <div class="max-w-7xl mx-auto mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+            <h1 class="text-2xl font-bold text-white uppercase tracking-wider">
+                <i class="fa-solid fa-table-list mr-2 text-slate-500"></i>Minnesota @ Edmonton
+            </h1>
+            <p class="text-slate-500 text-xs font-mono mt-1">DATA LOG ONLY • NO PREDICTIONS</p>
+        </div>
+        
+        <div class="flex gap-2">
+            <button onclick="filterTable('all')" id="btn-all" class="px-4 py-2 rounded text-xs font-bold uppercase tracking-wider glass-panel hover:bg-slate-700 bg-slate-700 text-white">All Data</button>
+            <button onclick="filterTable('period')" id="btn-period" class="px-4 py-2 rounded text-xs font-bold uppercase tracking-wider glass-panel hover:bg-slate-700 text-slate-400">1st Period / Game</button>
+            <button onclick="filterTable('shots')" id="btn-shots" class="px-4 py-2 rounded text-xs font-bold uppercase tracking-wider glass-panel hover:bg-slate-700 text-slate-400">Shot Props</button>
+        </div>
+    </div>
+
+    <!-- Main Table -->
+    <div class="max-w-7xl mx-auto glass-panel rounded-lg overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-800 text-slate-400 border-b border-slate-700">
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable('name')">PLAYER / TEAM <i class="fa-solid fa-sort ml-1 text-slate-600"></i></th>
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable('market')">MARKET <i class="fa-solid fa-sort ml-1 text-slate-600"></i></th>
+                        <th class="p-4 text-center">STATS (2025 Live)</th>
+                        <th class="p-4 text-right cursor-pointer hover:text-white" onclick="sortTable('odds')">ODDS <i class="fa-solid fa-sort ml-1 text-slate-600"></i></th>
+                    </tr>
+                </thead>
+                <tbody id="data-body" class="divide-y divide-slate-700/50 text-sm">
+                    <!-- JS will populate this -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Raw Data from Screenshots
+        const rawData = [
+            // --- 1st PERIOD PROPS ---
+            { 
+                name: "Edmonton Oilers", team: "EDM", market: "1st Period - Team to Record 1st Shot", odds: -138, type: "period", 
+                stats: { info: "Aggressive Start?" }
+            },
+            { 
+                name: "Minnesota Wild", team: "MIN", market: "1st Period - Team to Record 1st Shot", odds: 104, type: "period", 
+                stats: { info: "Value Pick?" }
+            },
+            { 
+                name: "GAME PROP", team: "GAME", market: "1st Period Goal - First 5 Mins (YES)", odds: 164, type: "period", 
+                stats: { info: "Early Goal" }
+            },
+            { 
+                name: "GAME PROP", team: "GAME", market: "1st Period Goal - First 5 Mins (NO)", odds: -215, type: "period", 
+                stats: { info: "Slow Start" }
+            },
+            { 
+                name: "GAME PROP", team: "GAME", market: "1st Period Goal - First 10 Mins (YES)", odds: -166, type: "period", 
+                stats: { info: "Likely Goal" }
+            },
+            { 
+                name: "GAME PROP", team: "GAME", market: "1st Period Goal - First 10 Mins (NO)", odds: 130, type: "period", 
+                stats: { info: "Defensive Grind" }
+            },
+            { 
+                name: "Edmonton Oilers", team: "EDM", market: "Moneyline", odds: -154, type: "period", 
+                stats: { info: "Game Line" }
+            },
+            { 
+                name: "Minnesota Wild", team: "MIN", market: "Moneyline", odds: 128, type: "period", 
+                stats: { info: "Game Line" }
+            },
+
+            // --- PLAYER PROPS (Shots) ---
+            // MINNESOTA PLAYERS
+            {
+                name: "Kirill Kaprizov", team: "MIN", market: "2+ Shots on Goal", odds: -670, type: "shots",
+                stats: { sog: 89, toi: "22:30", blk: 10 }
+            },
+            {
+                name: "Kirill Kaprizov", team: "MIN", market: "3+ Shots on Goal", odds: -215, type: "shots",
+                stats: { sog: 89, toi: "22:30", blk: 10 }
+            },
+            {
+                name: "Matt Boldy", team: "MIN", market: "2+ Shots on Goal", odds: -560, type: "shots",
+                stats: { sog: 88, toi: "21:15", blk: 16 }
+            },
+            {
+                name: "Matt Boldy", team: "MIN", market: "3+ Shots on Goal", odds: -170, type: "shots",
+                stats: { sog: 88, toi: "21:15", blk: 16 }
+            },
+            {
+                name: "Joel Eriksson Ek", team: "MIN", market: "2+ Shots on Goal", odds: -490, type: "shots",
+                stats: { sog: 77, toi: "20:11", blk: 12 }
+            },
+            {
+                name: "Joel Eriksson Ek", team: "MIN", market: "3+ Shots on Goal", odds: -154, type: "shots",
+                stats: { sog: 77, toi: "20:11", blk: 12 }
+            },
+            {
+                name: "Mats Zuccarello", team: "MIN", market: "2+ Shots on Goal", odds: -170, type: "shots",
+                stats: { sog: 16, toi: "18:41", blk: 3 }
+            },
+            {
+                name: "Mats Zuccarello", team: "MIN", market: "3+ Shots on Goal", odds: 188, type: "shots",
+                stats: { sog: 16, toi: "18:41", blk: 3 }
+            },
+            {
+                name: "Ryan Hartman", team: "MIN", market: "2+ Shots on Goal", odds: -168, type: "shots",
+                stats: { sog: 47, toi: "15:58", blk: 21 }
+            },
+            {
+                name: "Ryan Hartman", team: "MIN", market: "3+ Shots on Goal", odds: 188, type: "shots",
+                stats: { sog: 47, toi: "15:58", blk: 21 }
+            },
+            {
+                name: "Brock Faber", team: "MIN", market: "2+ Shots on Goal", odds: -152, type: "shots",
+                stats: { sog: 62, toi: "24:14", blk: 46 }
+            },
+             {
+                name: "Brock Faber", team: "MIN", market: "3+ Shots on Goal", odds: 205, type: "shots",
+                stats: { sog: 62, toi: "24:14", blk: 46 }
+            },
+            {
+                name: "Marcus Johansson", team: "MIN", market: "2+ Shots on Goal", odds: -106, type: "shots",
+                stats: { sog: 37, toi: "16:10", blk: 8 }
+            },
+             {
+                name: "Marcus Johansson", team: "MIN", market: "3+ Shots on Goal", odds: 305, type: "shots",
+                stats: { sog: 37, toi: "16:10", blk: 8 }
+            },
+            {
+                name: "Jonas Brodin", team: "MIN", market: "Defensive Stat", odds: 0, type: "shots",
+                stats: { sog: 25, toi: "22:07", blk: 51 } // High Blocks
+            },
+
+            // EDMONTON PLAYERS
+            {
+                name: "Leon Draisaitl", team: "EDM", market: "2+ Shots on Goal", odds: -590, type: "shots",
+                stats: { sog: 64, toi: "22:19", blk: 8 }
+            },
+            {
+                name: "Leon Draisaitl", team: "EDM", market: "3+ Shots on Goal", odds: -178, type: "shots",
+                stats: { sog: 64, toi: "22:19", blk: 8 }
+            },
+            {
+                name: "Connor McDavid", team: "EDM", market: "2+ Shots on Goal", odds: -440, type: "shots",
+                stats: { sog: 74, toi: "22:59", blk: 8 }
+            },
+            {
+                name: "Connor McDavid", team: "EDM", market: "3+ Shots on Goal", odds: -132, type: "shots",
+                stats: { sog: 74, toi: "22:59", blk: 8 }
+            },
+            {
+                name: "Zach Hyman", team: "EDM", market: "2+ Shots on Goal", odds: -370, type: "shots",
+                stats: { sog: 14, toi: "19:45", blk: 1 } // Note: Only 7 GP in screenshot
+            },
+            {
+                name: "Zach Hyman", team: "EDM", market: "3+ Shots on Goal", odds: -118, type: "shots",
+                stats: { sog: 14, toi: "19:45", blk: 1 }
+            },
+            {
+                name: "Evan Bouchard", team: "EDM", market: "2+ Shots on Goal", odds: -360, type: "shots",
+                stats: { sog: 68, toi: "23:47", blk: 33 }
+            },
+            {
+                name: "Evan Bouchard", team: "EDM", market: "3+ Shots on Goal", odds: -114, type: "shots",
+                stats: { sog: 68, toi: "23:47", blk: 33 }
+            },
+            {
+                name: "Darnell Nurse", team: "EDM", market: "2+ Shots on Goal", odds: -188, type: "shots",
+                stats: { sog: 58, toi: "20:40", blk: 64 } // HUGE BLOCKS
+            },
+            {
+                name: "Darnell Nurse", team: "EDM", market: "3+ Shots on Goal", odds: 165, type: "shots",
+                stats: { sog: 58, toi: "20:40", blk: 64 }
+            },
+            {
+                name: "Mattias Ekholm", team: "EDM", market: "2+ Shots on Goal", odds: -160, type: "shots",
+                stats: { sog: 52, toi: "20:32", blk: 48 } // High Blocks
+            },
+            {
+                name: "Mattias Ekholm", team: "EDM", market: "3+ Shots on Goal", odds: 192, type: "shots",
+                stats: { sog: 52, toi: "20:32", blk: 48 }
+            },
+            {
+                name: "Ryan Nugent-Hopkins", team: "EDM", market: "1+ Points", odds: -148, type: "shots",
+                stats: { sog: 25, toi: "18:45", blk: 5 }
+            }
+        ];
+
+        function renderTable(filter) {
+            const tbody = document.getElementById('data-body');
+            tbody.innerHTML = '';
+            
+            // Handle Buttons
+            ['all', 'period', 'shots'].forEach(id => {
+                const btn = document.getElementById(`btn-${id}`);
+                if (id === filter) {
+                    btn.classList.remove('text-slate-400');
+                    btn.classList.add('bg-slate-700', 'text-white');
+                } else {
+                    btn.classList.add('text-slate-400');
+                    btn.classList.remove('bg-slate-700', 'text-white');
+                }
+            });
+
+            const data = filter === 'all' ? rawData : rawData.filter(d => d.type === filter);
+
+            data.forEach((item) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-700/30 transition-colors border-b border-slate-700/50';
+
+                // Format Stats Block
+                let statsHtml = '';
+                if (item.stats.info) {
+                    statsHtml = `<span class="text-xs text-slate-500 font-mono uppercase">${item.stats.info}</span>`;
+                } else {
+                    // SOG Badge
+                    if (item.stats.sog >= 80) {
+                        statsHtml += `<span class="stat-badge stat-vol">SOG: ${item.stats.sog}</span>`;
+                    } else {
+                        statsHtml += `<span class="stat-badge stat-sog">SOG: ${item.stats.sog}</span>`;
+                    }
+                    // TOI Badge
+                    statsHtml += `<span class="stat-badge stat-toi">TOI: ${item.stats.toi}</span>`;
+                    // Block Badge
+                    if (item.stats.blk >= 40) {
+                        statsHtml += `<span class="stat-badge stat-blk"><i class="fa-solid fa-shield-halved mr-1"></i>BLK: ${item.stats.blk}</span>`;
+                    } else {
+                        statsHtml += `<span class="stat-badge stat-blk">BLK: ${item.stats.blk}</span>`;
+                    }
+                }
+
+                // Odds Color
+                const oddsColor = item.odds < 0 ? 'text-emerald-400' : 'text-blue-400';
+                const displayOdds = item.odds === 0 ? "N/A" : (item.odds > 0 ? `+${item.odds}` : item.odds);
+
+                row.innerHTML = `
+                    <td class="p-4">
+                        <div class="font-bold text-slate-200">${item.name}</div>
+                        <div class="text-xs text-slate-500 font-mono">${item.team}</div>
+                    </td>
+                    <td class="p-4 text-slate-300 font-medium">${item.market}</td>
+                    <td class="p-4 text-center">${statsHtml}</td>
+                    <td class="p-4 text-right font-mono font-bold ${oddsColor}">${displayOdds}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        let sortDir = 1;
+        function sortTable(key) {
+            if(key === 'odds') {
+                rawData.sort((a, b) => (a.odds - b.odds) * sortDir);
+            } else if (key === 'name') {
+                rawData.sort((a, b) => a.name.localeCompare(b.name) * sortDir);
+            } else if (key === 'market') {
+                rawData.sort((a, b) => a.market.localeCompare(b.market) * sortDir);
+            }
+            sortDir *= -1;
+            renderTable('all'); // Reset to all view when sorting
+        }
+
+        function filterTable(type) {
+            renderTable(type);
+        }
+
+        // Initialize
+        renderTable('all');
+
+    </script>
+</body>
+</html>
