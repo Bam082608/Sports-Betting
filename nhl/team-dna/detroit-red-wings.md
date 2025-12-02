@@ -13,7 +13,7 @@
 | Alex Lyon | Backup | - | - | Spot starts |
 | Ville Husso | Out/IR | - | - | Not a factor |
 
-**CRITICAL:** Talbot (9-4-0) >>> Gibson (4-7-1 elsewhere) - Goalie hierarchy ESTABLISHED
+**CRITICAL:** Talbot (9-4-0) is the clear starter - DET much more competitive with him in net
 - When Talbot starts: DET is competitive
 - When backup starts: Fade or target OVER
 

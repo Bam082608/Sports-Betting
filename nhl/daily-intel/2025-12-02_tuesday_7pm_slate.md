@@ -159,14 +159,14 @@
 |----------|-------|
 | **BOS Goalie** | Jeremy Swayman (10-6-0, 2.68 GAA, .915 SV%) |
 | **DET Goalie** | Cam Talbot (9-4-0, 2.97 GAA, .887 SV%) |
-| **BOS Injuries** | ❌ **Charlie McAvoy OUT** (face, Dec 14), David Pastrnak DAY-TO-DAY, Henri Jokiharju OUT, Jordan Harris OUT (Dec 27), Casey Mittelstadt questionable |
+| **BOS Injuries** | ❌ **Charlie McAvoy OUT** (facial injury, returns Dec 14), David Pastrnak DAY-TO-DAY, Henri Jokiharju OUT, Jordan Harris OUT (returns Dec 27), Casey Mittelstadt questionable |
 | **DET Injuries** | Mason Appleton DAY-TO-DAY, Simon Edvinsson (illness) DAY-TO-DAY |
 | **Context** | Previous meeting: BOS won in shootout |
 
 ### 🔥 BETTING IMPACT
 - ❌ BOS without McAvoy = zone exit struggles confirmed
 - ⚠️ Pastrnak DAY-TO-DAY = potential offensive blow if scratched
-- ✅ DET goalie situation: Talbot >>> Gibson (9-4 vs 4-7-1)
+- ✅ DET goalie situation: Talbot (9-4-0) is clear #1, stable in net
 - ✅ DET home dog upset DNA active
 - **SHARP ANGLE:** DET +money at home vs injury-ravaged BOS has value
 
