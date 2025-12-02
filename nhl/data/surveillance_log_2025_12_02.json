@@ -1,0 +1,77 @@
+[
+  { 
+    "name": "Nikita Kucherov (TB)", "team": "TB", "market": "2+ Shots / 1+ Pt", 
+    "odds": -560, "displayOdds": "-560 / -370", "type": "player",
+    "stats": { "sog": 70, "blk": 8, "g": 11, "a": 21 }, "note": "High Volume Shooter"
+  },
+  { 
+    "name": "Brandon Hagel (TB)", "team": "TB", "market": "2+ Shots / 1+ Pt", 
+    "odds": -420, "displayOdds": "-420 / -184", "type": "player",
+    "stats": { "sog": 75, "blk": 15, "g": 15, "a": 12 }, "note": "Team Leader in SOG"
+  },
+  { 
+    "name": "Jake Guentzel (TB)", "team": "TB", "market": "2+ Shots / 1+ Pt", 
+    "odds": -280, "displayOdds": "-280 / -205", "type": "player",
+    "stats": { "sog": 70, "blk": 15, "g": 14, "a": 13 }, "note": "Reliable Scorer"
+  },
+  { 
+    "name": "Anthony Cirelli (TB)", "team": "TB", "market": "2+ Shots", 
+    "odds": -128, "displayOdds": "-128", "type": "player",
+    "stats": { "sog": 34, "blk": 13, "g": 9, "a": 8 }, "note": "Lower volume shooter"
+  },
+  { 
+    "name": "Darren Raddysh (TB)", "team": "TB", "market": "2+ Shots", 
+    "odds": -176, "displayOdds": "-176", "type": "player",
+    "stats": { "sog": 41, "blk": 17, "g": 3, "a": 13 }, "note": "D-Man shooter"
+  },
+  { 
+    "name": "Nicholas Paul (TB)", "team": "TB", "market": "2+ Shots", 
+    "odds": -122, "displayOdds": "-122", "type": "player",
+    "stats": { "sog": 10, "blk": 4, "g": 2, "a": 2 }, "note": "LOW Shot Volume (Caution)"
+  },
+  { 
+    "name": "Oliver Bjorkstrand (TB)", "team": "TB", "market": "2+ Shots", 
+    "odds": -108, "displayOdds": "-108", "type": "player",
+    "stats": { "sog": 42, "blk": 16, "g": 2, "a": 7 }, "note": "Moderate Volume"
+  },
+  { 
+    "name": "Bo Horvat (NYI)", "team": "NYI", "market": "2+ Shots / 1+ Pt", 
+    "odds": -620, "displayOdds": "-620 / -188", "type": "player",
+    "stats": { "sog": 91, "blk": 9, "g": 15, "a": 11 }, "note": "MASSIVE Shot Volume (91 SOG)"
+  },
+  { 
+    "name": "Mathew Barzal (NYI)", "team": "NYI", "market": "2+ Shots / 1+ Pt", 
+    "odds": -320, "displayOdds": "-320 / -180", "type": "player",
+    "stats": { "sog": 62, "blk": 18, "g": 7, "a": 11 }, "note": "Solid Floor"
+  },
+  { 
+    "name": "Anders Lee (NYI)", "team": "NYI", "market": "2+ Shots", 
+    "odds": -320, "displayOdds": "-320", "type": "player",
+    "stats": { "sog": 70, "blk": 17, "g": 5, "a": 8 }, "note": "High Volume (70 SOG)"
+  },
+  { 
+    "name": "Matthew Schaefer (NYI)", "team": "NYI", "market": "2+ Shots", 
+    "odds": -295, "displayOdds": "-295", "type": "player",
+    "stats": { "sog": 73, "blk": 31, "g": 8, "a": 11 }, "note": "Unicorn: High Shots AND High Blocks"
+  },
+  { 
+    "name": "Emil Heineman (NYI)", "team": "NYI", "market": "2+ Shots", 
+    "odds": -160, "displayOdds": "-160", "type": "player",
+    "stats": { "sog": 52, "blk": 13, "g": 10, "a": 6 }, "note": "Good value for volume"
+  },
+  { 
+    "name": "Jonathan Drouin (NYI)", "team": "NYI", "market": "2+ Shots", 
+    "odds": -110, "displayOdds": "-110", "type": "player",
+    "stats": { "sog": 38, "blk": 13, "g": 3, "a": 12 }, "note": "Pass-first player"
+  },
+  { 
+    "name": "Andrei Vasilevskiy (TB)", "team": "TB", "market": "Goalie Stats", 
+    "odds": 0, "displayOdds": "N/A", "type": "goalie",
+    "stats": { "gaa": "2.32", "sv": ".915", "w": 11, "l": 5 }, "note": "Elite stats. Hard to score on."
+  },
+  { 
+    "name": "Ilya Sorokin (NYI)", "team": "NYI", "market": "Goalie Stats", 
+    "odds": 0, "displayOdds": "N/A", "type": "goalie",
+    "stats": { "gaa": "2.67", "sv": ".901", "w": 7, "l": 8 }, "note": "Slightly shakier recent form."
+  }
+]
