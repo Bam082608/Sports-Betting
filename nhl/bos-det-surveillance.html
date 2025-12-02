@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHL Surveillance: BOS vs DET</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation for rows */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-row { animation: fadeIn 0.3s ease-out forwards; }
+        
+        .stat-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        .stat-sog { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #059669; } /* Green for shots */
+        .stat-blk { background: rgba(244, 63, 94, 0.2); color: #fb7185; border: 1px solid #be123c; } /* Red for blocks */
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-6 pb-20">
+
+    <!-- Header -->
+    <div class="max-w-7xl mx-auto mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500">
+                <i class="fa-solid fa-hockey-puck mr-2"></i>Odds Surveillance
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">Live Intel • Boston Bruins @ Detroit Red Wings</p>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2">
+            <button onclick="filterTable('all')" id="btn-all" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors bg-slate-700 text-white">All Ops</button>
+            <button onclick="filterTable('player')" id="btn-player" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors">Skaters</button>
+            <button onclick="filterTable('game')" id="btn-game" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors">Game Lines</button>
+            <button onclick="filterTable('period')" id="btn-period" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors">Periods</button>
+            <button onclick="filterTable('defense')" id="btn-defense" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors text-red-300 border-red-900/30">The Blockade</button>
+        </div>
+    </div>
+
+    <!-- The Blockade Section (Defense Intel) -->
+    <div id="blockade-panel" class="max-w-7xl mx-auto mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 hidden animate-row">
+        <!-- DET Blockers -->
+        <div class="glass-panel p-4 rounded-xl border-l-4 border-red-600">
+            <h3 class="text-lg font-bold text-slate-200 mb-3 flex items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/e0/Detroit_Red_Wings_logo.svg" class="h-6 w-8 mr-2 object-contain"> 
+                Detroit Blockers (The Wall)
+            </h3>
+            <p class="text-xs text-slate-400 mb-2">Warning: Extreme block volume. Very difficult for BOS shooters.</p>
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>B. Chiarot</span>
+                    <span class="stat-badge stat-blk">57 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>M. Seider</span>
+                    <span class="stat-badge stat-blk">50 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>S. Edvinsson</span>
+                    <span class="stat-badge stat-blk">50 BLKS</span>
+                </div>
+                 <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>A. Johansson</span>
+                    <span class="stat-badge stat-blk">30 BLKS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOS Blockers -->
+        <div class="glass-panel p-4 rounded-xl border-l-4 border-yellow-500">
+            <h3 class="text-lg font-bold text-slate-200 mb-3 flex items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/1/12/Boston_Bruins.svg" class="h-6 w-6 mr-2 object-contain"> 
+                Boston Blockers
+            </h3>
+            <p class="text-xs text-slate-400 mb-2">Warning: Peeke is a magnet for pucks.</p>
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>A. Peeke</span>
+                    <span class="stat-badge stat-blk">57 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>N. Zadorov</span>
+                    <span class="stat-badge stat-blk">36 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>C. McAvoy</span>
+                    <span class="stat-badge stat-blk">32 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>H. Lindholm</span>
+                    <span class="stat-badge stat-blk">32 BLKS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Table Container -->
+    <div class="max-w-7xl mx-auto glass-panel rounded-xl overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-800/80 text-slate-300 text-xs uppercase tracking-wider border-b border-slate-700">
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable(0)">Entity</th>
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable(1)">Bet Type</th>
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable(2)">Live Stats (Season)</th>
+                        <th class="p-4 text-right cursor-pointer hover:text-white" onclick="sortTable(3)">Odds</th>
+                        <th class="p-4 text-center">Select</th>
+                    </tr>
+                </thead>
+                <tbody id="odds-body" class="divide-y divide-slate-700/50">
+                    <!-- Data populated via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Integrated Data: Odds + Yahoo Stats
+        const combinedData = [
+            // --- DET SKATERS ---
+            { 
+                name: "Alex DeBrincat (DET)", 
+                team: "DET",
+                market: "2+ Shots / 1+ Pt", 
+                odds: -950, 
+                displayOdds: "-950 / -205", 
+                type: "player",
+                stats: { sog: 99, blk: 9, g: 12, a: 14 },
+                note: "VOLUME KING (99 SOG)"
+            },
+            { 
+                name: "Dylan Larkin (DET)", 
+                team: "DET",
+                market: "2+ Shots / 1+ Pt", 
+                odds: -560, 
+                displayOdds: "-560 / -250", 
+                type: "player",
+                stats: { sog: 85, blk: 15, g: 14, a: 15 },
+                note: "Top Center, High Volume"
+            },
+            { 
+                name: "Lucas Raymond (DET)", 
+                team: "DET",
+                market: "2+ Shots / 1+ Pt", 
+                odds: -280, 
+                displayOdds: "-280 / -265", 
+                type: "player",
+                stats: { sog: 58, blk: 9, g: 8, a: 19 },
+                note: "Playmaker (High Assists)"
+            },
+            { 
+                name: "Patrick Kane (DET)", 
+                team: "DET",
+                market: "2+ Shots / 1+ Pt", 
+                odds: -330, 
+                displayOdds: "-330 / -146", 
+                type: "player",
+                stats: { sog: 50, blk: 5, g: 3, a: 11 },
+                note: "Veteran presence"
+            },
+            { 
+                name: "Moritz Seider (DET)", 
+                team: "DET",
+                market: "2+ Shots", 
+                odds: -220, 
+                displayOdds: "-220", 
+                type: "player",
+                stats: { sog: 66, blk: 50, g: 3, a: 13 },
+                note: "Defenseman Shooter"
+            },
+             { 
+                name: "Emmitt Finnie (DET)", 
+                team: "DET",
+                market: "2+ Shots", 
+                odds: -128, 
+                displayOdds: "-128", 
+                type: "player",
+                stats: { sog: 45, blk: 16, g: 5, a: 7 },
+                note: "Rookie/Young gun"
+            },
+            { 
+                name: "Marco Kasper (DET)", 
+                team: "DET",
+                market: "2+ Shots", 
+                odds: -102, 
+                displayOdds: "-102", 
+                type: "player",
+                stats: { sog: 43, blk: 16, g: 3, a: 0 },
+                note: "Moderate Volume"
+            },
+
+
+            // --- BOS SKATERS ---
+            { 
+                name: "Viktor Arvidsson (BOS)", 
+                team: "BOS",
+                market: "2+ Shots", 
+                odds: -335, 
+                displayOdds: "-335", 
+                type: "player",
+                stats: { sog: 52, blk: 11, g: 6, a: 4 },
+                note: "Shoots when he plays"
+            },
+            { 
+                name: "Morgan Geekie (BOS)", 
+                team: "BOS",
+                market: "2+ Shots / 1+ Pt", 
+                odds: -210, 
+                displayOdds: "-210 / -172", 
+                type: "player",
+                stats: { sog: 70, blk: 10, g: 20, a: 6 },
+                note: "High Goal Scorer (20G)"
+            },
+            { 
+                name: "Michael Eyssimont (BOS)", 
+                team: "BOS",
+                market: "2+ Shots", 
+                odds: -114, 
+                displayOdds: "-114", 
+                type: "player",
+                stats: { sog: 57, blk: 10, g: 5, a: 7 },
+                note: "Good Value for 57 SOG"
+            },
+            { 
+                name: "Elias Lindholm (BOS)", 
+                team: "BOS",
+                market: "2+ Shots", 
+                odds: -108, 
+                displayOdds: "-108", 
+                type: "player",
+                stats: { sog: 27, blk: 16, g: 4, a: 9 },
+                note: "Low shot volume recently"
+            },
+            { 
+                name: "Pavel Zacha (BOS)", 
+                team: "BOS",
+                market: "2+ Shots", 
+                odds: 106, 
+                displayOdds: "+106", 
+                type: "player",
+                stats: { sog: 39, blk: 12, g: 5, a: 12 },
+                note: "Plus money opportunity"
+            },
+            { 
+                name: "Hampus Lindholm (BOS)", 
+                team: "BOS",
+                market: "2+ Shots", 
+                odds: 104, 
+                displayOdds: "+104", 
+                type: "player",
+                stats: { sog: 27, blk: 32, g: 1, a: 6 },
+                note: "Defenseman, low shots"
+            },
+
+            // --- 3+ SHOTS ---
+             { 
+                name: "Alex DeBrincat (DET)", 
+                team: "DET",
+                market: "3+ Shots", 
+                odds: -260, 
+                displayOdds: "-260", 
+                type: "player",
+                stats: { sog: 99, blk: 9, g: 12, a: 14 },
+                note: "High probability"
+            },
+            { 
+                name: "Dylan Larkin (DET)", 
+                team: "DET",
+                market: "3+ Shots", 
+                odds: -176, 
+                displayOdds: "-176", 
+                type: "player",
+                stats: { sog: 85, blk: 15, g: 14, a: 15 },
+                note: "High probability"
+            },
+            { 
+                name: "Patrick Kane (DET)", 
+                team: "DET",
+                market: "3+ Shots", 
+                odds: -108, 
+                displayOdds: "-108", 
+                type: "player",
+                stats: { sog: 50, blk: 5, g: 3, a: 11 },
+                note: "Average probability"
+            },
+             { 
+                name: "Viktor Arvidsson (BOS)", 
+                team: "BOS",
+                market: "3+ Shots", 
+                odds: -106, 
+                displayOdds: "-106", 
+                type: "player",
+                stats: { sog: 52, blk: 11, g: 6, a: 4 },
+                note: "Decent value"
+            },
+             { 
+                name: "Lucas Raymond (DET)", 
+                team: "DET",
+                market: "3+ Shots", 
+                odds: 112, 
+                displayOdds: "+112", 
+                type: "player",
+                stats: { sog: 58, blk: 9, g: 8, a: 19 },
+                note: "Plus money"
+            },
+
+             // --- ANY TIME GOAL ---
+             { 
+                name: "Alex DeBrincat (DET)", 
+                team: "DET",
+                market: "Any Time Goal", 
+                odds: 135, 
+                displayOdds: "+135", 
+                type: "player",
+                stats: { sog: 99, blk: 9, g: 12, a: 14 },
+                note: "12 Goals this season"
+            },
+             { 
+                name: "Dylan Larkin (DET)", 
+                team: "DET",
+                market: "Any Time Goal", 
+                odds: 140, 
+                displayOdds: "+140", 
+                type: "player",
+                stats: { sog: 85, blk: 15, g: 14, a: 15 },
+                note: "14 Goals this season"
+            },
+            { 
+                name: "Morgan Geekie (BOS)", 
+                team: "BOS",
+                market: "Any Time Goal", 
+                odds: 150, 
+                displayOdds: "+150", 
+                type: "player",
+                stats: { sog: 70, blk: 10, g: 20, a: 6 },
+                note: "20 Goals - Top Scorer!"
+            },
+
+
+            // --- GAME LINES & PERIODS ---
+            { 
+                name: "Detroit Red Wings", 
+                team: "DET",
+                market: "Moneyline", 
+                odds: -194, 
+                displayOdds: "-194", 
+                type: "game",
+                stats: { g: "Favor", a: "ite" },
+                note: "Home Favorite"
+            },
+            { 
+                name: "Boston Bruins", 
+                team: "BOS",
+                market: "Moneyline", 
+                odds: 160, 
+                displayOdds: "+160", 
+                type: "game",
+                stats: { g: "Under", a: "dog" },
+                note: "Road Underdog"
+            },
+            { 
+                name: "Detroit Red Wings", 
+                team: "DET",
+                market: "1st Period - 1st Shot", 
+                odds: -132, 
+                displayOdds: "-132", 
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Fast Starters?"
+            },
+            { 
+                name: "Goal in First 5 Min", 
+                team: "GAME",
+                market: "1st Period Prop", 
+                odds: 172, 
+                displayOdds: "YES +172", 
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Early Action"
+            },
+             { 
+                name: "Goal in First 10 Min", 
+                team: "GAME",
+                market: "1st Period Prop", 
+                odds: -152, 
+                displayOdds: "YES -152", 
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Likely to hit"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderTable(data) {
+            const tbody = document.getElementById('odds-body');
+            tbody.innerHTML = '';
+            
+            // Show/Hide Blockade Panel
+            const blockade = document.getElementById('blockade-panel');
+            if (currentFilter === 'defense') {
+                blockade.classList.remove('hidden');
+                tbody.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-slate-500">Scanning Defensive Grids... See panels above.</td></tr>';
+                return;
+            } else {
+                blockade.classList.add('hidden');
+            }
+
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-700/30 transition-colors animate-row';
+                row.style.animationDelay = `${index * 0.05}s`;
+                
+                // Color code odds
+                const oddsColor = item.odds < 0 ? 'text-emerald-400' : 'text-slate-200';
+                
+                // Construct Stats HTML
+                let statsHtml = '';
+                if (item.type === 'player') {
+                    statsHtml = `
+                        <div class="flex items-center space-x-2">
+                            <span class="stat-badge stat-sog" title="Shots on Goal">SOG: ${item.stats.sog}</span>
+                            <span class="stat-badge stat-blk" title="Blocked Shots">BKS: ${item.stats.blk}</span>
+                            <span class="text-xs text-slate-400 ml-2">${item.stats.g}G / ${item.stats.a}A</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 mt-1 uppercase tracking-wide">${item.note}</div>
+                    `;
+                } else if (item.type === 'game') {
+                    statsHtml = `<span class="text-xs text-slate-400">${item.note}</span>`;
+                } else {
+                     statsHtml = `<span class="text-xs text-slate-400">${item.note}</span>`;
+                }
+
+                row.innerHTML = `
+                    <td class="p-4">
+                        <div class="font-bold text-slate-200">${item.name}</div>
+                    </td>
+                    <td class="p-4 text-sm text-slate-400">${item.market}</td>
+                    <td class="p-4">${statsHtml}</td>
+                    <td class="p-4 text-right font-mono font-bold ${oddsColor}">${item.displayOdds}</td>
+                    <td class="p-4 text-center">
+                        <input type="checkbox" class="w-4 h-4 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500">
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function filterTable(type) {
+            currentFilter = type;
+            
+            // Button Styles
+            ['all', 'player', 'game', 'period', 'defense'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === type) {
+                    btn.classList.add('bg-slate-700', 'text-white');
+                    if (t === 'defense') {
+                        btn.classList.add('bg-red-900/40', 'text-red-200');
+                    }
+                } else {
+                    btn.classList.remove('bg-slate-700', 'text-white', 'bg-red-900/40', 'text-red-200');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            if (type === 'all') {
+                renderTable(combinedData);
+            } else if (type === 'defense') {
+                renderTable([]); // Clears table to show just the panel
+            } else {
+                renderTable(combinedData.filter(item => item.type === type));
+            }
+        }
+
+        // Default Sort by SOG (descending) to show shooters first, but keep Game/Period visible
+        combinedData.sort((a, b) => {
+             if (a.type !== b.type) return 0; // Keep types somewhat grouped naturally
+             return (b.stats?.sog || 0) - (a.stats?.sog || 0);
+        });
+        renderTable(combinedData);
+
+    </script>
+</body>
+</html>
