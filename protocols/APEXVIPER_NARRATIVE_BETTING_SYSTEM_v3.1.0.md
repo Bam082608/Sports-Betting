@@ -713,7 +713,7 @@ Monthly Expectation (20 betting nights):
 │                                                                 │
 │ COMPETITIVE GRIND ⚔️                                            │
 │ → Favorite -130 to -180                                         │
-│ → Total 5. 5 to 6.5                                              │
+│ → Total 5.5 to 6.5                                              │
 │ → Evenly matched                                                │
 │ → "4-2, close throughout"                                       │
 │                                                                 │
