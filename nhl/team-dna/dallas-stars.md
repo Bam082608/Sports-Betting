@@ -114,6 +114,22 @@ When Dallas plays, build:
 
 ---
 
+## 🛡️ SHOT BLOCKING INTELLIGENCE (v3.3)
+*Added Dec 3, 2025*
+
+**Tier Classification:** TIER 1 - THE RIOT SQUAD 🛑
+**Action:** DO NOT BET SOG OVERS against this team.
+
+**Key Blockers:**
+- **Esa Lindell:** 52 Blocks (EXTREME THREAT)
+- **Miro Heiskanen:** 43 Blocks (HIGH THREAT)
+
+**⚠️ CRITICAL INJURY ALERT:**
+- **Thomas Harley (43 Blocks) is OUT.**
+- **Impact:** Weakens the shot-blocking wall significantly. Top-pair blocker missing creates lanes.
+
+---
+
 ## Notes & Observations
 
 - Dallas is our highest-value team
