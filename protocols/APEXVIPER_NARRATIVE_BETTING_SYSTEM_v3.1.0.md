@@ -714,6 +714,7 @@ Monthly Expectation (20 betting nights):
 │ COMPETITIVE GRIND ⚔️                                            │
 │ → Favorite -130 to -180                                         │
 │ → Total 5.5 to 6.5                                              │
+│ → Total 5. 5 to 6.5                                              │
 │ → Evenly matched                                                │
 │ → "4-2, close throughout"                                       │
 │                                                                 │
@@ -804,13 +805,6 @@ Violations require immediate escalation to Project Lead.
 
 **Protocol Status:** ACTIVE
 **Next Review:** 2025-12-10
-
----
-
-## RELATED PROTOCOLS
-
-For execution workflow optimization and neurological best practices, see:
-- [APEXVIPER_ADHD_EXECUTION_PROTOCOL_v3.2.0.md](./APEXVIPER_ADHD_EXECUTION_PROTOCOL_v3.2.0.md)
 
 ---
 

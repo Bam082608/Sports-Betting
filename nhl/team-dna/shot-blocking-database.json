@@ -1,0 +1,98 @@
+{
+  "database_version": "3.3 (Hard Lock)",
+  "verification_source": "ApexViper Ground Truth (Yahoo) + AI Council Consensus",
+  "date": "2025-12-03",
+
+  "INTELLIGENCE_BRIEFING": {
+    "summary": "This database identifies 'Shin Pad Equity'. Teams with high block counts ruin 'Over SOG' bets. Teams with low block counts are 'Green Lights'.",
+    "critical_alert": "NJ Devils are missing their #2 Blocker (Dillon). Dallas is missing a Top Pair Blocker (Harley)."
+  },
+
+  "TIER_1_THE_RIOT_SQUAD": {
+    "description": "DO NOT BET SOG OVERS. These teams play a collapsed system.",
+    "teams": [
+      {
+        "team": "Boston Bruins",
+        "rank": 1,
+        "total_blocks": 455,
+        "key_blocker": "Andrew Peeke (61 Blocks)",
+        "status": "AI_ESTIMATE",
+        "notes": "League Leader. The ultimate prop killer."
+      },
+      {
+        "team": "New York Rangers",
+        "rank": 3,
+        "total_blocks": 420,
+        "key_blocker": "Jacob Trouba",
+        "status": "AI_ESTIMATE",
+        "notes": "Trouba anchors the system. High danger for shooters."
+      },
+      {
+        "team": "Dallas Stars",
+        "rank": 13,
+        "total_blocks": 402,
+        "key_blocker": "Esa Lindell (52 Blocks)",
+        "secondary_blocker": "Miro Heiskanen (43 Blocks)",
+        "status": "LIVE_VERIFIED (Yahoo Screenshot)",
+        "injury_note": "Thomas Harley (43 Blocks) is OUT. This weakens the wall significantly."
+      }
+    ]
+  },
+
+  "TIER_2_DESPERATION_BLOCKERS": {
+    "description": "High blocks due to High Shot Volume. CAUTIOUS GREEN LIGHT.",
+    "teams": [
+      {
+        "team": "San Jose Sharks",
+        "rank": 2,
+        "total_blocks": 436,
+        "key_blocker": "Mario Ferraro",
+        "status": "AI_ESTIMATE",
+        "notes": "They block a lot because they allow 31+ shots per game. Volume shooters can break through."
+      },
+      {
+        "team": "Calgary Flames",
+        "rank": 4,
+        "total_blocks": 420,
+        "key_blocker": "MacKenzie Weegar (56 Blocks)",
+        "status": "AI_ESTIMATE",
+        "notes": "Weegar is the linchpin. If he sits, the defense collapses."
+      }
+    ]
+  },
+
+  "TIER_3_THE_HIGHWAY": {
+    "description": "Low Blocking / Open Lanes. TARGET SOG OVERS.",
+    "teams": [
+      {
+        "team": "Carolina Hurricanes",
+        "rank": "Bottom 3",
+        "key_blocker": "None Significant",
+        "status": "AI_ESTIMATE",
+        "notes": "They defend by possessing the puck. If the opponent gets it, they usually get a clean shot."
+      },
+      {
+        "team": "New Jersey Devils",
+        "rank": 9,
+        "total_blocks": 415,
+        "key_blocker": "Jonas Siegenthaler (47 Blocks)",
+        "secondary_blocker": "Simon Nemec (41 Blocks)",
+        "status": "LIVE_VERIFIED (Yahoo Screenshot)",
+        "injury_note": "Brenden Dillon (42 Blocks) is OUT. Major loss of shot suppression. Target shooters on his side."
+      }
+    ]
+  },
+
+  "PLAYER_WATCHLIST": {
+    "description": "Individual 'Bet Killers' verified by Ground Truth.",
+    "verified_threats": [
+      { "name": "Esa Lindell", "team": "DAL", "blocks": 52, "rating": "EXTREME" },
+      { "name": "Jonas Siegenthaler", "team": "NJD", "blocks": 47, "rating": "HIGH" },
+      { "name": "Miro Heiskanen", "team": "DAL", "blocks": 43, "rating": "HIGH" }
+    ],
+    "verified_out": [
+      { "name": "Brenden Dillon", "team": "NJD", "blocks": 42, "rating": "OUT" },
+      { "name": "Thomas Harley", "team": "DAL", "blocks": 43, "rating": "OUT" }
+    ]
+  }
+}
