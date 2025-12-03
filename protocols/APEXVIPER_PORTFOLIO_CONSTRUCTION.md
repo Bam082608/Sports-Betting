@@ -1,3 +1,15 @@
+> **⚠️ DEPRECATION NOTICE**
+> This protocol (v1.0) has been superseded by:
+> - [APEXVIPER_NARRATIVE_BETTING_SYSTEM_v3.1.0.md](./APEXVIPER_NARRATIVE_BETTING_SYSTEM_v3.1.0.md)
+>
+> **Status:** DEPRECATED
+> **Effective Date:** 2025-12-03
+> **Reason:** Portfolio structure evolved to narrative-based system with Tier 1-4 framework
+>
+> This file is retained for historical reference only.
+
+---
+
 # 💰 APEXVIPER PORTFOLIO CONSTRUCTION v1.0
 **Owner:** Project Lead (Bam082608)  
 **Directive:** Build diversified betting portfolios using the Pyramid approach.
