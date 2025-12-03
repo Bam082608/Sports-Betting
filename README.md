@@ -96,6 +96,7 @@ Sports-Betting/
 |----------|-------------|
 | [Bet Log](/tracking/bet-log.md) | Record all bets for analysis |
 | [Lessons Learned](/tracking/lessons-learned.md) | Post-bet insights and patterns |
+| [Complete Lessons Learned](/tracking/COMPLETE-LESSONS-LEARNED.md) | Comprehensive institutional knowledge base |
 
 ---
 
