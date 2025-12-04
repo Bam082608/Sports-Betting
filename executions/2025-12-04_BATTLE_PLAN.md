@@ -12,6 +12,26 @@
 
 ---
 
+## 💰 ACTIVE PROMOS & BOOSTS
+
+> **See full details in:** `executions/OFFER_JOURNAL.md`
+
+### **1. NHL 25% Profit Boost (TONIGHT)**
+* **Requirement:** 3+ Leg Parlay/SGP/SGP+ with final odds +100 or longer.
+* **Context:** Swing shift (2:30p - 11:00p) means lineup must be set BEFORE 7:00 PM games start.
+* **Deadline:** Today's Games (Dec 4).
+* **Action Checklist:**
+    * [ ] Identify 3 safe legs (e.g., SOG props, Alt Totals) across tonight's slate.
+    * [ ] Verify odds are > +100.
+    * [ ] **Apply Token** in bet slip.
+
+### **2. No Sweat Bet ($50)**
+* **Requirement:** Straight cash bet (Odds -400 to +400,000).
+* **Strategy:** Save for Friday/Saturday games when schedule is calmer.
+* **Deadline:** Dec 6 (Saturday).
+
+---
+
 ## 🎯 STRATEGIC OVERVIEW
 
 ### **Mission:**
