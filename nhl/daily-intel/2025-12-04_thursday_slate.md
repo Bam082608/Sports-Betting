@@ -25,6 +25,15 @@
 - **Shield:** Hurricanes TT Over 3.5 (-122)
 - **Anchor:** [[Svechnikov-Andrei]] 3+ SOG
 
+### 🟢 PRIORITY 3: St. Louis Blues @ Boston Bruins (7:09 PM ET)
+**Status:** SURVEILLANCE COMPLETE
+**Report Link:** [[2025-12-04-STL-BOS-analysis]]
+**Narrative:** Blues favored on road vs struggling Bruins.
+**Key Targets:**
+- **Sword:** Blues -1.5 (+172)
+- **Shield:** Bruins TT Over 2.5 (-128)
+- **Anchor:** [[Kyrou-Jordan]] 2+ SOG
+
 ---
 
 ## 📝 NOTES & UPDATES
