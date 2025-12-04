@@ -118,10 +118,11 @@ Sports-Betting/
 
 ### Betting Execution
 
-**[Fat Finger Prevention](/protocols/FAT-FINGER-PREVENTION.md)** 🆕
+**[Fat Finger Prevention v2.1](/protocols/FAT-FINGER-PREVENTION.md)** 🔥 UPDATED
 - Combat-tested decimal verification protocol
 - 6-step verification sequence
 - 18/18 success rate post-incident
+- **NEW:** Rush Hour Protocol for time-constrained betting
 - Mandatory for every bet placement
 
 **[Deployment Decision Tree](/protocols/DEPLOYMENT-DECISION-TREE.md)** 🆕
@@ -130,11 +131,12 @@ Sports-Betting/
 - Clear pass/fail criteria at each phase
 - Skip games with confidence, no regrets
 
-**[Ticket Arsenal v2.0](/playbook/TICKET-ARSENAL-v2.md)** 🆕
-- 8 standardized ticket types
-- Repeatable betting structures
-- Types 1-7 production-ready
-- Type 8 experimental (5-game test phase)
+**[Ticket Arsenal v3.0](/playbook/TICKET-ARSENAL-v3.md)** 🔥 MAJOR UPDATE
+- **NEVER combine opposites** (Over + Under split across tickets)
+- 6-ticket deployment model per game ($5-6 total)
+- Split Over/Under system for multiple win paths
+- Rush Hour Protocol for time-constrained situations
+- Replaces v2.1 with revolutionary new approach
 
 ### Crisis Management
 
@@ -385,16 +387,20 @@ Historical data organized by month in `/archive/YYYY-MM/` format.
 
 ## 🎯 System Philosophy
 
-APEXVIPER Genesis operates on three core principles:
+APEXVIPER Genesis operates on four core principles:
 
 1. **Protocol-Driven Decision Making** - Every bet follows documented protocols, reducing emotional decisions
 2. **Continuous Knowledge Synthesis** - Multi-AI research feeds institutional knowledge (25,885+ words)
 3. **Edge Diversification** - 26+ specialized protocols target different market inefficiencies
+4. **Multiple Win Paths** - Arsenal v3.0: Never combine opposites, split conflicting props for multiple win scenarios
 
 **Result:** Systematic, repeatable edge-finding across NHL betting markets with comprehensive tracking and continuous improvement.
 
+**Latest Evolution (v3.0):** Split Over/Under system eliminates single points of failure, creating multiple win paths per game even when one narrative fails.
+
 ---
 
-*Last Updated: December 3, 2025*  
+*Last Updated: December 4, 2025*  
 *System Version: APEXVIPER Genesis v3.2.0*  
+*Arsenal Version: v3.0 - Split Over/Under System*  
 *Built for systematic betting intelligence and continuous improvement*
