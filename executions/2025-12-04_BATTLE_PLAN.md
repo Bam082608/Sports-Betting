@@ -302,6 +302,19 @@ INITIAL TARGETS (Pending verification):
 **Market Analysis:**
 Directive fulfilled. Analysis complete. Strategic recommendations provided.
 
+### GAME 7: RED WINGS @ BLUE JACKETS
+
+**Classification:** **TIER 2 (HIGH SCORING)**
+**Budget Allocation:** ~$30.00
+**Report:** [[2025-12-04-DET-CBJ-analysis]]
+
+**Strategy:**
+*   **Narrative:** "High-scoring affair. PP1 loaded."
+*   **Core Wagers:**
+    *   Sword: Jackets -1.5 (+194)
+    *   Shield: Merzlikins Over 25.5 Saves (-112)
+    *   Booster: Fantilli 3+ SOG (-115) / Larkin Goal (+140)
+
 ### **GAME 3: PENGUINS @ LIGHTNING (THE MAIN EVENT)**
 
 **Classification:** **TIER 1 (MAXIMUM ATTENTION)**
