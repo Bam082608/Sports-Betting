@@ -34,6 +34,15 @@
 - **Shield:** Bruins TT Over 2.5 (-128)
 - **Anchor:** [[Kyrou-Jordan]] 2+ SOG
 
+### 🟢 PRIORITY 4: Colorado Avalanche @ New York Islanders (7:10 PM ET)
+**Status:** SURVEILLANCE COMPLETE
+**Report Link:** [[2025-12-04-COL-NYI-analysis]]
+**Narrative:** Avs heavy favorites, MacKinnon expected to dominate.
+**Key Targets:**
+- **Sword:** Avalanche -1.5 (+132)
+- **Shield:** Game Under 6.5 (-138)
+- **Anchor:** [[MacKinnon-Nathan]] Goal (-110)
+
 ---
 
 ## 📝 NOTES & UPDATES
