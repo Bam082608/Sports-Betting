@@ -94,7 +94,7 @@ ENCYCLOPEDIA UPDATES
 
 | Tier | Name | Criteria | Betting Approach |
 |------|------|----------|------------------|
-| **Tier 1** | Foundation Anchors | ≥3.5 SOG/GP, >75% hit rate (2+) | Solo legs, anchor in parlays |
+| **Tier 1** | Foundation Anchors | ≥3.5 SOG/GP, >75% hit rate (2+) | Solo legs, anchor in parlays. **⚠️ CAVEAT: Vulnerable to Team Floor Events (e.g., 0-goal shutouts). Diversify across teams.** |
 | **Tier 2** | Correlation Zone | 2.5-3.5 SOG/GP, 60-75% hit rate | Pair with anchors, layer bets |
 | **Tier 3** | Value Plays | 2.0-2.5 SOG/GP, good odds | Selective targets, lottery legs |
 | **Tier 4** | Lottery Tickets | <2.0 SOG/GP, +EV odds | Small stakes, high upside only |
