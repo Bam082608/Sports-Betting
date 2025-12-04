@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WSH vs LA: Data Log</title>
+    <title>NHL Surveillance: WSH vs LA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
         body {
             font-family: 'Inter', sans-serif;
@@ -28,157 +28,564 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
+        /* Animation for rows */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-row { animation: fadeIn 0.3s ease-out forwards; }
+
         .stat-badge {
             font-size: 0.7rem;
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: bold;
-            font-family: 'JetBrains Mono', monospace;
             display: inline-block;
             margin-right: 4px;
         }
-
-        /* Stat Colors */
-        .stat-sog { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid #059669; }
-        .stat-toi { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid #2563eb; }
-        .stat-blk { background: rgba(244, 63, 94, 0.1); color: #fb7185; border: 1px solid #be123c; }
-        .stat-vol { background: rgba(168, 85, 247, 0.1); color: #e9d5ff; border: 1px solid #9333ea; } /* High Volume Purple */
-        .stat-new { background: rgba(234, 179, 8, 0.1); color: #facc15; border: 1px solid #ca8a04; }
-
-        th { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+        .stat-sog { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #059669; } /* Green for shots */
+        .stat-blk { background: rgba(244, 63, 94, 0.2); color: #fb7185; border: 1px solid #be123c; } /* Red for blocks */
+        .stat-toi { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #2563eb; } /* Blue for TOI */
     </style>
 </head>
-<body class="min-h-screen p-4 md:p-6">
+<body class="min-h-screen p-4 md:p-6 pb-20">
 
     <!-- Header -->
     <div class="max-w-7xl mx-auto mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-white uppercase tracking-wider">
-                <i class="fa-solid fa-table-list mr-2 text-slate-500"></i>Washington @ Los Angeles
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-blue-600">
+                <i class="fa-solid fa-hockey-puck mr-2"></i>Odds Surveillance
             </h1>
-            <p class="text-slate-500 text-xs font-mono mt-1">DATA LOG ONLY • 2025 ROSTERS</p>
+            <p class="text-slate-400 text-sm mt-1">Live Intel • Washington Capitals @ Los Angeles Kings</p>
         </div>
 
-        <div class="flex gap-2">
-            <button onclick="filterTable('all')" id="btn-all" class="px-4 py-2 rounded text-xs font-bold uppercase tracking-wider glass-panel hover:bg-slate-700 bg-slate-700 text-white">All Data</button>
-            <button onclick="filterTable('period')" id="btn-period" class="px-4 py-2 rounded text-xs font-bold uppercase tracking-wider glass-panel hover:bg-slate-700 text-slate-400">1st Period</button>
-            <button onclick="filterTable('shots')" id="btn-shots" class="px-4 py-2 rounded text-xs font-bold uppercase tracking-wider glass-panel hover:bg-slate-700 text-slate-400">Shot Props</button>
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2">
+            <button onclick="filterTable('all')" id="btn-all" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors bg-slate-700 text-white">All Ops</button>
+            <button onclick="filterTable('player')" id="btn-player" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors">Skaters</button>
+            <button onclick="filterTable('game')" id="btn-game" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors">Game Lines</button>
+            <button onclick="filterTable('period')" id="btn-period" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors">Periods</button>
+            <button onclick="filterTable('defense')" id="btn-defense" class="px-4 py-2 rounded-lg text-sm font-medium glass-panel hover:bg-slate-700 transition-colors text-red-300 border-red-900/30">The Blockade</button>
         </div>
     </div>
 
-    <!-- Main Table -->
-    <div class="max-w-7xl mx-auto glass-panel rounded-lg overflow-hidden">
+    <!-- The Blockade Section (Defense Intel) -->
+    <div id="blockade-panel" class="max-w-7xl mx-auto mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 hidden animate-row">
+        <!-- WSH Blockers -->
+        <div class="glass-panel p-4 rounded-xl border-l-4 border-red-600">
+            <h3 class="text-lg font-bold text-slate-200 mb-3 flex items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Washington_Capitals.svg" class="h-6 w-8 mr-2 object-contain">
+                Washington Blockers
+            </h3>
+            <p class="text-xs text-slate-400 mb-2">High defensive activity detected.</p>
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>J. Carlson (D)</span>
+                    <span class="stat-badge stat-blk">36 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>J. Chychrun (D)</span>
+                    <span class="stat-badge stat-blk">27 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>A. Protas (F)</span>
+                    <span class="stat-badge stat-blk">20 BLKS</span>
+                </div>
+                 <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>T. Wilson (F)</span>
+                    <span class="stat-badge stat-blk">16 BLKS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- LA Blockers -->
+        <div class="glass-panel p-4 rounded-xl border-l-4 border-gray-400">
+            <h3 class="text-lg font-bold text-slate-200 mb-3 flex items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c7/Los_Angeles_Kings_Logo_%282019%29.svg" class="h-6 w-6 mr-2 object-contain">
+                LA Blockers
+            </h3>
+            <p class="text-xs text-slate-400 mb-2">Available block data (Forwards/Defense):</p>
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>T. Moore (F)</span>
+                    <span class="stat-badge stat-blk">17 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>A. Kempe (F)</span>
+                    <span class="stat-badge stat-blk">16 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>A. Laferriere (F)</span>
+                    <span class="stat-badge stat-blk">14 BLKS</span>
+                </div>
+                <div class="flex justify-between items-center text-sm p-2 bg-slate-800/50 rounded">
+                    <span>K. Fiala (F)</span>
+                    <span class="stat-badge stat-blk">11 BLKS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Table Container -->
+    <div class="max-w-7xl mx-auto glass-panel rounded-xl overflow-hidden shadow-2xl">
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="bg-slate-800 text-slate-400 border-b border-slate-700">
-                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable('name')">PLAYER / TEAM <i class="fa-solid fa-sort ml-1 text-slate-600"></i></th>
-                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable('market')">MARKET <i class="fa-solid fa-sort ml-1 text-slate-600"></i></th>
-                        <th class="p-4 text-center">STATS (2025 Live)</th>
-                        <th class="p-4 text-right cursor-pointer hover:text-white" onclick="sortTable('odds')">ODDS <i class="fa-solid fa-sort ml-1 text-slate-600"></i></th>
+                    <tr class="bg-slate-800/80 text-slate-300 text-xs uppercase tracking-wider border-b border-slate-700">
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable(0)">Entity</th>
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable(1)">Bet Type</th>
+                        <th class="p-4 cursor-pointer hover:text-white" onclick="sortTable(2)">Live Stats (Season)</th>
+                        <th class="p-4 text-right cursor-pointer hover:text-white" onclick="sortTable(3)">Odds</th>
+                        <th class="p-4 text-center">Select</th>
                     </tr>
                 </thead>
-                <tbody id="data-body" class="divide-y divide-slate-700/50 text-sm">
-                    <!-- JS will populate this -->
+                <tbody id="odds-body" class="divide-y divide-slate-700/50">
+                    <!-- Data populated via JS -->
                 </tbody>
             </table>
         </div>
     </div>
 
     <script>
-        // Raw Data from Screenshots
-        const rawData = [
-            // --- 1st PERIOD PROPS ---
+        // Integrated Data: Odds + Provided Matrix
+        const combinedData = [
+            // --- LA SKATERS (2+ SHOTS) ---
             {
-                name: "Washington Capitals", team: "WSH", market: "Moneyline", odds: -145, type: "period",
-                stats: { info: "Favorite" }
+                name: "Adrian Kempe (LA)",
+                team: "LA",
+                market: "2+ Shots",
+                odds: -590,
+                displayOdds: "-590",
+                type: "player",
+                stats: { sog: 81, blk: 16, toi: "19:37" },
+                note: "ELITE VOLUME (81 SOG)"
             },
             {
-                name: "Los Angeles Kings", team: "LA", market: "Moneyline", odds: 120, type: "period",
-                stats: { info: "Home Dog" }
+                name: "Kevin Fiala (LA)",
+                team: "LA",
+                market: "2+ Shots",
+                odds: -460,
+                displayOdds: "-460",
+                type: "player",
+                stats: { sog: 74, blk: 11, toi: "19:19" },
+                note: "High Volume (74 SOG)"
+            },
+            {
+                name: "Alex Laferriere (LA)",
+                team: "LA",
+                market: "2+ Shots",
+                odds: -235,
+                displayOdds: "-235",
+                type: "player",
+                stats: { sog: 54, blk: 14, toi: "16:37" },
+                note: "Solid mid-tier volume"
+            },
+            {
+                name: "Quinton Byfield (LA)",
+                team: "LA",
+                market: "2+ Shots",
+                odds: -160,
+                displayOdds: "-160",
+                type: "player",
+                stats: { sog: 59, blk: 9, toi: "20:14" },
+                note: "Top 6 minutes"
+            },
+            {
+                name: "Trevor Moore (LA)",
+                team: "LA",
+                market: "2+ Shots",
+                odds: -128,
+                displayOdds: "-128",
+                type: "player",
+                stats: { sog: 47, blk: 17, toi: "16:08" },
+                note: "Depth volume"
             },
 
-            // --- PLAYER PROPS (Shots/Points) ---
+            // --- LA SKATERS (3+ SHOTS) ---
             {
-                name: "Alex Ovechkin", team: "WSH", market: "Anytime Goal", odds: 160, type: "shots",
-                stats: { info: "30% Shooting L11", sog: "2.5" }
+                name: "Adrian Kempe (LA)",
+                team: "LA",
+                market: "3+ Shots",
+                odds: -188,
+                displayOdds: "-188",
+                type: "player",
+                stats: { sog: 81, blk: 16, toi: "19:37" },
+                note: "Likely to hit"
             },
             {
-                name: "Alex Ovechkin", team: "WSH", market: "2+ Shots on Goal", odds: -1000, type: "shots",
-                stats: { info: "AVOID SOG" }
+                name: "Kevin Fiala (LA)",
+                team: "LA",
+                market: "3+ Shots",
+                odds: -140,
+                displayOdds: "-140",
+                type: "player",
+                stats: { sog: 74, blk: 11, toi: "19:19" },
+                note: "Good probability"
             },
+             {
+                name: "Alex Laferriere (LA)",
+                team: "LA",
+                market: "3+ Shots",
+                odds: 132,
+                displayOdds: "+132",
+                type: "player",
+                stats: { sog: 54, blk: 14, toi: "16:37" },
+                note: "Plus money"
+            },
+            {
+                name: "Quinton Byfield (LA)",
+                team: "LA",
+                market: "3+ Shots",
+                odds: 195,
+                displayOdds: "+195",
+                type: "player",
+                stats: { sog: 59, blk: 9, toi: "20:14" },
+                note: "Value play"
+            },
+             {
+                name: "Trevor Moore (LA)",
+                team: "LA",
+                market: "3+ Shots",
+                odds: 250,
+                displayOdds: "+250",
+                type: "player",
+                stats: { sog: 47, blk: 17, toi: "16:08" },
+                note: "High risk/reward"
+            },
+
+            // --- WSH SKATERS (2+ SHOTS) ---
+            {
+                name: "Alex Ovechkin (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -415,
+                displayOdds: "-415",
+                type: "player",
+                stats: { sog: 65, blk: 5, toi: "17:51" },
+                note: "The Great Eight"
+            },
+            {
+                name: "Jakob Chychrun (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -345,
+                displayOdds: "-345",
+                type: "player",
+                stats: { sog: 87, blk: 27, toi: "23:22" },
+                note: "TEAM LEADER IN SOG (87)"
+            },
+            {
+                name: "John Carlson (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -160,
+                displayOdds: "-160",
+                type: "player",
+                stats: { sog: 58, blk: 36, toi: "23:02" },
+                note: "Workhorse D-man"
+            },
+            {
+                name: "Tom Wilson (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -148,
+                displayOdds: "-148",
+                type: "player",
+                stats: { sog: 57, blk: 16, toi: "19:28" },
+                note: "Physical presence"
+            },
+            {
+                name: "Ryan Leonard (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -140,
+                displayOdds: "-140",
+                type: "player",
+                stats: { sog: 51, blk: 9, toi: "13:30" },
+                note: "High activity / low TOI"
+            },
+            {
+                name: "Connor McMichael (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -140,
+                displayOdds: "-140",
+                type: "player",
+                stats: { sog: 57, blk: 11, toi: "16:23" },
+                note: "Consistent"
+            },
+            {
+                name: "Aliaksei Protas (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -130,
+                displayOdds: "-130",
+                type: "player",
+                stats: { sog: 55, blk: 20, toi: "18:18" },
+                note: "Two-way player"
+            },
+            {
+                name: "Anthony Beauvillier (WSH)",
+                team: "WSH",
+                market: "2+ Shots",
+                odds: -118,
+                displayOdds: "-118",
+                type: "player",
+                stats: { sog: 56, blk: 10, toi: "15:09" },
+                note: "Depth option"
+            },
+
+            // --- WSH SKATERS (3+ SHOTS) ---
+            {
+                name: "Jakob Chychrun (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: -113,
+                displayOdds: "-113",
+                type: "player",
+                stats: { sog: 87, blk: 27, toi: "23:22" },
+                note: "Strong value"
+            },
+            {
+                name: "Alex Ovechkin (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: -130,
+                displayOdds: "-130",
+                type: "player",
+                stats: { sog: 65, blk: 5, toi: "17:51" },
+                note: "Always a threat"
+            },
+            {
+                name: "John Carlson (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: 198,
+                displayOdds: "+198",
+                type: "player",
+                stats: { sog: 58, blk: 36, toi: "23:02" },
+                note: "Plus money D-man"
+            },
+            {
+                name: "Tom Wilson (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: 210,
+                displayOdds: "+210",
+                type: "player",
+                stats: { sog: 57, blk: 16, toi: "19:28" },
+                note: "Value"
+            },
+            {
+                name: "Ryan Leonard (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: 225,
+                displayOdds: "+225",
+                type: "player",
+                stats: { sog: 51, blk: 9, toi: "13:30" },
+                note: "High upside"
+            },
+            {
+                name: "Connor McMichael (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: 225,
+                displayOdds: "+225",
+                type: "player",
+                stats: { sog: 57, blk: 11, toi: "16:23" },
+                note: "High upside"
+            },
+            {
+                name: "Aliaksei Protas (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: 250,
+                displayOdds: "+250",
+                type: "player",
+                stats: { sog: 55, blk: 20, toi: "18:18" },
+                note: "Longshot"
+            },
+            {
+                name: "Anthony Beauvillier (WSH)",
+                team: "WSH",
+                market: "3+ Shots",
+                odds: 255,
+                displayOdds: "+255",
+                type: "player",
+                stats: { sog: 56, blk: 10, toi: "15:09" },
+                note: "Longshot"
+            },
+
+            // --- ANY TIME GOAL & 1+ PT ---
+            { name: "Adrian Kempe (LA)", team: "LA", market: "Any Time Goal", odds: 180, displayOdds: "+180", type: "player", stats: { sog: 81, blk: 16, toi: "19:37" }, note: "Scorer" },
+            { name: "Adrian Kempe (LA)", team: "LA", market: "1+ Point", odds: -188, displayOdds: "-188", type: "player", stats: { sog: 81, blk: 16, toi: "19:37" }, note: "Playmaker" },
+
+            { name: "Kevin Fiala (LA)", team: "LA", market: "Any Time Goal", odds: 175, displayOdds: "+175", type: "player", stats: { sog: 74, blk: 11, toi: "19:19" }, note: "Scorer" },
+            { name: "Kevin Fiala (LA)", team: "LA", market: "1+ Point", odds: -158, displayOdds: "-158", type: "player", stats: { sog: 74, blk: 11, toi: "19:19" }, note: "Playmaker" },
+
+            { name: "Alex Ovechkin (WSH)", team: "WSH", market: "Any Time Goal", odds: 175, displayOdds: "+175", type: "player", stats: { sog: 65, blk: 5, toi: "17:51" }, note: "Legend" },
+            { name: "Alex Ovechkin (WSH)", team: "WSH", market: "1+ Point", odds: -160, displayOdds: "-160", type: "player", stats: { sog: 65, blk: 5, toi: "17:51" }, note: "Legend" },
+
+            { name: "Jakob Chychrun (WSH)", team: "WSH", market: "Any Time Goal", odds: 330, displayOdds: "+330", type: "player", stats: { sog: 87, blk: 27, toi: "23:22" }, note: "D-Man Goal" },
+
+            { name: "Quinton Byfield (LA)", team: "LA", market: "Any Time Goal", odds: 250, displayOdds: "+250", type: "player", stats: { sog: 59, blk: 9, toi: "20:14" }, note: "Value" },
+            { name: "Quinton Byfield (LA)", team: "LA", market: "1+ Point", odds: -142, displayOdds: "-142", type: "player", stats: { sog: 59, blk: 9, toi: "20:14" }, note: "Value" },
+
+            { name: "Tom Wilson (WSH)", team: "WSH", market: "Any Time Goal", odds: 210, displayOdds: "+210", type: "player", stats: { sog: 57, blk: 16, toi: "19:28" }, note: "Net Front" },
+            { name: "Tom Wilson (WSH)", team: "WSH", market: "1+ Point", odds: -146, displayOdds: "-146", type: "player", stats: { sog: 57, blk: 16, toi: "19:28" }, note: "Net Front" },
+
+            // --- GAME & PERIOD PROPS ---
+            {
+                name: "Los Angeles Kings",
+                team: "LA",
+                market: "First Shot",
+                odds: -122,
+                displayOdds: "-122",
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Favored to shoot first"
+            },
+            {
+                name: "Washington Capitals",
+                team: "WSH",
+                market: "First Shot",
+                odds: -108,
+                displayOdds: "-108",
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Close underdog"
+            },
+            {
+                name: "1P Goal (First 5 Min)",
+                team: "GAME",
+                market: "1st Period Prop",
+                odds: 178,
+                displayOdds: "YES +178",
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Action early?"
+            },
+            {
+                name: "1P Goal (First 5 Min)",
+                team: "GAME",
+                market: "1st Period Prop",
+                odds: -235,
+                displayOdds: "NO -235",
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Defensive start favored"
+            },
+            {
+                name: "1P Goal (First 10 Min)",
+                team: "GAME",
+                market: "1st Period Prop",
+                odds: -152,
+                displayOdds: "YES -152",
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Goal expected in 1st half of 1P"
+            },
+            {
+                name: "1P Goal (First 10 Min)",
+                team: "GAME",
+                market: "1st Period Prop",
+                odds: 120,
+                displayOdds: "NO +120",
+                type: "period",
+                stats: { g: "-", a: "-" },
+                note: "Slow start?"
+            }
         ];
 
-        function renderTable(filter) {
-            const tbody = document.getElementById('data-body');
+        let currentFilter = 'all';
+
+        function renderTable(data) {
+            const tbody = document.getElementById('odds-body');
             tbody.innerHTML = '';
 
-            // Handle Buttons
-            ['all', 'period', 'shots'].forEach(id => {
-                const btn = document.getElementById(`btn-${id}`);
-                if (id === filter) {
-                    btn.classList.remove('text-slate-400');
-                    btn.classList.add('bg-slate-700', 'text-white');
-                } else {
-                    btn.classList.add('text-slate-400');
-                    btn.classList.remove('bg-slate-700', 'text-white');
-                }
-            });
+            // Show/Hide Blockade Panel
+            const blockade = document.getElementById('blockade-panel');
+            if (currentFilter === 'defense') {
+                blockade.classList.remove('hidden');
+                tbody.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-slate-500">Scanning Defensive Grids... See panels above.</td></tr>';
+                return;
+            } else {
+                blockade.classList.add('hidden');
+            }
 
-            const data = filter === 'all' ? rawData : rawData.filter(d => d.type === filter);
-
-            data.forEach((item) => {
+            data.forEach((item, index) => {
                 const row = document.createElement('tr');
-                row.className = 'hover:bg-slate-700/30 transition-colors border-b border-slate-700/50';
+                row.className = 'hover:bg-slate-700/30 transition-colors animate-row';
+                row.style.animationDelay = `${index * 0.05}s`;
 
-                // Format Stats Block
+                // Color code odds
+                const oddsColor = item.odds < 0 ? 'text-emerald-400' : 'text-slate-200';
+
+                // Construct Stats HTML
                 let statsHtml = '';
-                if (item.stats.info) {
-                    statsHtml = `<span class="text-xs text-slate-500 font-mono uppercase">${item.stats.info}</span>`;
+                if (item.type === 'player') {
+                    statsHtml = `
+                        <div class="flex items-center space-x-2">
+                            <span class="stat-badge stat-sog" title="Shots on Goal">SOG: ${item.stats.sog}</span>
+                            <span class="stat-badge stat-blk" title="Blocked Shots">BKS: ${item.stats.blk}</span>
+                            <span class="stat-badge stat-toi" title="Time on Ice">TOI: ${item.stats.toi}</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 mt-1 uppercase tracking-wide">${item.note}</div>
+                    `;
+                } else if (item.type === 'game' || item.type === 'period') {
+                    statsHtml = `<span class="text-xs text-slate-400">${item.note}</span>`;
                 } else {
-                    // SOG Badge
-                    if (item.stats.sog >= 100) {
-                        statsHtml += `<span class="stat-badge stat-vol"><i class="fa-solid fa-fire mr-1"></i>SOG: ${item.stats.sog}</span>`;
-                    } else if (item.stats.sog >= 70) {
-                        statsHtml += `<span class="stat-badge stat-sog">SOG: ${item.stats.sog}</span>`;
-                    } else {
-                         statsHtml += `<span class="stat-badge text-slate-500 border border-slate-600">SOG: ${item.stats.sog}</span>`;
-                    }
+                     statsHtml = `<span class="text-xs text-slate-400">${item.note}</span>`;
                 }
-
-                // Odds Color
-                const oddsColor = item.odds < 0 ? 'text-emerald-400' : 'text-blue-400';
-                const displayOdds = item.odds === 0 ? "N/A" : (item.odds > 0 ? `+${item.odds}` : item.odds);
 
                 row.innerHTML = `
                     <td class="p-4">
                         <div class="font-bold text-slate-200">${item.name}</div>
-                        <div class="text-xs text-slate-500 font-mono">${item.team}</div>
                     </td>
-                    <td class="p-4 text-slate-300 font-medium">${item.market}</td>
-                    <td class="p-4 text-center">${statsHtml}</td>
-                    <td class="p-4 text-right font-mono font-bold ${oddsColor}">${displayOdds}</td>
+                    <td class="p-4 text-sm text-slate-400">${item.market}</td>
+                    <td class="p-4">${statsHtml}</td>
+                    <td class="p-4 text-right font-mono font-bold ${oddsColor}">${item.displayOdds}</td>
+                    <td class="p-4 text-center">
+                        <input type="checkbox" class="w-4 h-4 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500">
+                    </td>
                 `;
                 tbody.appendChild(row);
             });
         }
 
-        let sortDir = 1;
-        function sortTable(key) {
-            if(key === 'odds') {
-                rawData.sort((a, b) => (a.odds - b.odds) * sortDir);
-            } else if (key === 'name') {
-                rawData.sort((a, b) => a.name.localeCompare(b.name) * sortDir);
-            } else if (key === 'market')
-{
-                rawData.sort((a, b) => a.market.localeCompare(b.market) * sortDir);
+        function filterTable(type) {
+            currentFilter = type;
+
+            // Button Styles
+            ['all', 'player', 'game', 'period', 'defense'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === type) {
+                    btn.classList.add('bg-slate-700', 'text-white');
+                    if (t === 'defense') {
+                        btn.classList.add('bg-red-900/40', 'text-red-200');
+                    }
+                } else {
+                    btn.classList.remove('bg-slate-700', 'text-white', 'bg-red-900/40', 'text-red-200');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            if (type === 'all') {
+                renderTable(combinedData);
+            } else if (type === 'defense') {
+                renderTable([]); // Clears table to show just the panel
+            } else {
+                renderTable(combinedData.filter(item => item.type === type));
             }
-            sortDir *= -1;
-            renderTable('all'); // Reset to all view when sorting
         }
 
-        // Initialize
-        renderTable('all');
+        // Default Sort by SOG (descending) to show shooters first, but keep Game/Period visible
+        combinedData.sort((a, b) => {
+             if (a.type !== b.type) return 0; // Keep types somewhat grouped naturally
+             return (b.stats?.sog || 0) - (a.stats?.sog || 0);
+        });
+        renderTable(combinedData);
 
     </script>
 </body>
