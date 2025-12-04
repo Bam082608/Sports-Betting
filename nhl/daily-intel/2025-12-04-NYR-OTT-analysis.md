@@ -1,5 +1,5 @@
 # 🏒 GAME LOG: RANGERS @ SENATORS
-**Surveillance Report ID:** #20251204-1430
+**Surveillance Report ID:** #20251204-143
 **Date:** December 4, 2025
 **Time:** 7:07 PM ET
 **Budget Cap:** $30.00
@@ -19,17 +19,23 @@ The standard spread of action on the floor.
 
 ---
 
-## ⚔️ SECTION 2: SWORD & SHIELD (Risk Management)
+## ⚔️ SECTION 2: ALTERNATE PUCK LINES (Sword/Shield Construction)
 Categorizing the plays by volatility. "Swords" are your aggressive maneuvers. "Shields" are your cover.
 
 | Description | Odds | Payout ($10) | Classification | Notes |
 |---|---|---|---|---|
 | Rangers +1.5 | -225 | $4.44 | ❌ TOO EXPENSIVE | Bad value. |
 | Rangers +2.5 | -480 | $2.08 | ❌ UNBETTABLE | ROI is negligible. |
+| Rangers +3.5 | -1800 | $0.56 | ❌ WORTHLESS | Ignore. |
 | Rangers -1.5 | +270 | $37.00 | ⚔️ SWORD | Aggressive play if NYR wins big. |
+| Rangers -2.5 | +530 | $63.00 | ⚔️ AGGRESSIVE | Whale hunt territory. |
+| Rangers -3.5 | +1500 | $160.00 | 🎫 LOTTERY | Micro-betting only. |
+| Senators +1.5 | -380 | $2.63 | ❌ TOO EXPENSIVE | Ignore. |
+| Senators +2.5 | -900 | $1.11 | ❌ UNBETTABLE | ROI is negligible. |
+| Senators +3.5 | -3500 | $0.29 | ❌ WORTHLESS | Ignore. |
 | Senators -1.5 | +176 | $27.60 | ⚔️ TARGET SWORD | The primary aggressive target. |
 | Senators -2.5 | +330 | $43.00 | ⚔️ AGGRESSIVE | Whale hunt territory. |
-| Senators +1.5 | -380 | $2.63 | ❌ TOO EXPENSIVE | Ignore. |
+| Senators -3.5 | +940 | $104.00 | 🎫 LOTTERY | Micro-betting only. |
 
 ---
 
@@ -39,43 +45,81 @@ Categorizing the plays by volatility. "Swords" are your aggressive maneuvers. "S
 |---|---|---|---|---|
 | Rangers | 2.5 | -130 | +104 | Book expects 3 goals. |
 | Rangers | 3.5 | +190 | -260 | Value on Over? |
+| Rangers | 4.5 | +460 | -750 | High variance. |
 | Senators | 2.5 | -190 | +148 | Book expects 3 goals. |
 | Senators | 3.5 | +138 | -176 | 🛡️ SHIELD TARGET (Under) |
+| Senators | 4.5 | +350 | -550 | High risk. |
 
 ---
 
-## ☢️ SECTION 4: THE NUCLEAR CODES (Alt Totals)
+## ☢️ SECTION 4: ALT TOTAL GOALS (Full Game)
 High Variance / Extreme Probability Events.
 
-*   **NUCLEAR CODE:** Game Over 6.5 @ +1320 (Chaos Scenario)
-*   **ANTARCTICA:** Game Under 4.5 @ -750 (The "Ice Age" Scenario - Safe but expensive)
+| Description | Odds | Role |
+|---|---|---|
+| Game Over 6.5 | +1320 | ☢️ NUCLEAR CODE |
+| Game Over 7.5 | +500 | ☢️ NUCLEAR CODE |
+| Game Under 4.5 | -750 | 🧊 ANTARCTICA |
+| Game Under 3.5 | -260 | 🧊 ANTARCTICA |
 
 ---
 
-## 🎯 SECTION 5: PERSONS OF INTEREST (Player Props)
-
-### 🔫 Shots on Goal (2+)
+## 🎯 SECTION 5: PLAYER SHOTS ON GOAL (2+ SOG)
 *Reliable volume shooters.*
-*   [[Tkachuk-Brady]] (OTT): -800 (LOCK - Shoots everything moving)
-*   [[Panarin-Artemi]] (NYR): -415 (VERY SAFE)
-*   [[Zibanejad-Mika]] (NYR): -335 (SAFE)
-*   [[Sanderson-Jake]] (OTT): -270 (SOLID)
 
-### 🎯 Shots on Goal (3+)
-*Escalated volume.*
-*   [[Tkachuk-Brady]] (OTT): -240 (ELITE VOLUME)
-*   [[Panarin-Artemi]] (NYR): -128 (VERY SAFE)
-*   [[Zibanejad-Mika]] (NYR): -108 (SAFE)
-*   [[Batherson-Drake]] (OTT): +158 (VALUE LOOK)
-
-### 🏒 Point Production (1+ Point)
-*   [[Panarin-Artemi]] (NYR): -215 (Top Playmaker)
-*   [[Stutzle-Tim]] (OTT): -178 (Senators Engine)
-*   [[Tkachuk-Brady]] (OTT): -150 (Volume Shooter)
+| Player | Team | Odds | Intel |
+|---|---|---|---|
+| [[Tkachuk-Brady]] | OTT | -800 | LOCK (shoots everything) |
+| [[Panarin-Artemi]] | NYR | -415 | VERY SAFE |
+| [[Zibanejad-Mika]] | NYR | -335 | SAFE |
+| [[Sanderson-Jake]] | OTT | -270 | SOLID |
+| [[Pinto-Shane]] | OTT | -215 | DECENT |
+| [[Stutzle-Tim]] | OTT | -205 | DECENT |
+| [[Batherson-Drake]] | OTT | -205 | DECENT |
+| [[Trocheck-Vincent]] | NYR | -192 | DECENT |
+| [[Cozens-Dylan]] | OTT | -178 | RISKY |
+| [[Cuylle-Will]] | NYR | -168 | RISKY |
+| [[Miller-J.T.]] | NYR | -165 | RISKY |
+| [[Giroux-Claude]] | OTT | -128 | BORDERLINE |
+| [[Lafreniere-Alexis]] | NYR | -108 | BORDERLINE |
 
 ---
 
-## 🚨 SECTION 6: ANYTIME GOAL SCORER
+## 🎯 SECTION 6: PLAYER SHOTS ON GOAL (3+ SOG)
+*Escalated volume.*
+
+| Player | Team | Odds | Intel |
+|---|---|---|---|
+| [[Tkachuk-Brady]] | OTT | -240 | ELITE VOLUME |
+| [[Panarin-Artemi]] | NYR | -128 | VERY SAFE |
+| [[Zibanejad-Mika]] | NYR | -108 | SAFE |
+| [[Sanderson-Jake]] | OTT | +114 | BORDERLINE |
+| [[Pinto-Shane]] | OTT | +146 | VALUE? |
+| [[Batherson-Drake]] | OTT | +158 | VALUE? |
+| [[Stutzle-Tim]] | OTT | +154 | VALUE? |
+| [[Trocheck-Vincent]] | NYR | +162 | VALUE? |
+| [[Cozens-Dylan]] | OTT | +172 | RISKY |
+| [[Miller-J.T.]] | NYR | +188 | RISKY |
+| [[Cuylle-Will]] | NYR | +185 | RISKY |
+| [[Giroux-Claude]] | OTT | +250 | LOTTERY |
+| [[Lafreniere-Alexis]] | NYR | +305 | LOTTERY |
+
+---
+
+## 🏒 SECTION 7: PLAYER POINTS (1+ Point)
+
+| Player | Team | Odds | Notes |
+|---|---|---|---|
+| [[Panarin-Artemi]] | NYR | -215 | TOP PLAYMAKER |
+| [[Stutzle-Tim]] | OTT | -178 | SENATORS ENGINE |
+| [[Tkachuk-Brady]] | OTT | -150 | VOLUME SHOOTER |
+| [[Zibanejad-Mika]] | NYR | -148 | ELITE CENTER |
+| [[Batherson-Drake]] | OTT | -136 | DECENT |
+| [[Trocheck-Vincent]] | NYR | -132 | DECENT |
+
+---
+
+## 🚨 SECTION 8: ANYTIME GOAL SCORER
 *High risk, high reward. The "Whale" bets.*
 
 | Player | Team | Odds |
@@ -84,22 +128,36 @@ High Variance / Extreme Probability Events.
 | [[Stutzle-Tim]] | OTT | +200 |
 | [[Panarin-Artemi]] | NYR | +210 |
 | [[Zibanejad-Mika]] | NYR | +230 |
+| [[Pinto-Shane]] | OTT | +250 |
+| [[Trocheck-Vincent]] | NYR | +250 |
 
 ---
 
-## 🛡️ SECTION 7: GAME SPECIALS (Hedges)
-*   **Both Teams Score (YES):** -1400 (LOCK - Basically free money but expensive buy-in)
-*   **1P Goal First 10 Min (YES):** -154 (LIKELY)
-*   **Both Teams 3+ Goals:** +235 (SHOOTOUT SIGNAL - Only if the game goes wild)
+## 🛡️ SECTION 9: GAME SPECIALS (Hedges)
+
+| Market | Option | Odds | Role |
+|---|---|---|---|
+| Both Teams Score | YES | -1400 | LOCK |
+| Both Teams 2+ Goals | YES | -186 | LIKELY |
+| Both Teams 3+ Goals | YES | +235 | SHOOTOUT SIGNAL |
+| 1P Goal First 5 Min | YES | +174 | FAST START |
+| 1P Goal First 10 Min | YES | -154 | LIKELY |
 
 ---
 
-## 🎫 SECTION 8: LOTTERY TICKETS (Correct Score)
+## 🎫 SECTION 10: CORRECT SCORE (Lottery Tickets)
 *Micro-betting for high variance.*
-*   Rangers 1-0: +7500
-*   Rangers 2-1: +1900
-*   Rangers 3-1: +2500
-*   Rangers 4-2: +2000
+
+| Score | Odds | Probability |
+|---|---|---|
+| Rangers 1-0 | +7500 | 0.67% |
+| Rangers 2-0 | +8000 | 0.63% |
+| Rangers 2-1 | +1900 | 2.63% |
+| Rangers 3-0 | +5000 | 1.00% |
+| Rangers 3-1 | +2500 | 2.00% |
+| Rangers 3-2 | +1200 | 4.17% |
+| Rangers 4-0 | +8000 | 0.63% |
+| Rangers 5-0 | +20000 | 0.25% |
 
 ---
 
@@ -110,8 +168,9 @@ High Variance / Extreme Probability Events.
 
 **The Tactical Plan:**
 *   **SWORD TARGET:** Senators -1.5 @ +176 (Ottawa wins by 2+).
-*   **SHIELD TARGET:** Rangers Team Total Under 2.5 @ +104 (Alternative to expensive spreads).
-*   **BOOSTER:** [[Panarin-Artemi]] 2+ SOG (-415).
+*   **SHIELD TARGET:** Rangers +2.5 @ -480 (TOO EXPENSIVE) - Need alternative.
+*   **ALTERNATIVE SHIELD:** Rangers Team Total Under 2.5 @ +104 (value?).
+*   **BOOSTER PROPS:** [[Tkachuk-Brady]] 3+ SOG (-240), [[Panarin-Artemi]] 2+ SOG (-415).
 *   **NUCLEAR CODE:** Game Over 6.5 @ +1320.
 *   **ANTARCTICA:** Game Under 4.5 @ -750.
 
