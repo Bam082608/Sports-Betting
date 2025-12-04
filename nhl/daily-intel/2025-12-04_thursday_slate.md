@@ -43,6 +43,15 @@
 - **Shield:** Game Under 6.5 (-138)
 - **Anchor:** [[MacKinnon-Nathan]] Goal (-110)
 
+### 🟢 PRIORITY 5: Pittsburgh Penguins @ Tampa Bay Lightning (7:11 PM ET)
+**Status:** SURVEILLANCE COMPLETE
+**Report Link:** [[2025-12-04-PIT-TB-analysis]]
+**Narrative:** "Guentzel Revenge Game" - High scoring expected.
+**Key Targets:**
+- **Sword:** Lightning -1.5 (+146)
+- **Shield:** Lightning TT Over 3.5 (+105)
+- **Anchor:** [[Kucherov-Nikita]] 3+ SOG
+
 ---
 
 ## 📝 NOTES & UPDATES
