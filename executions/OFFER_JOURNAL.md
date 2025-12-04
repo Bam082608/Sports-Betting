@@ -6,8 +6,8 @@
 
 | Offer Name | Sport/Category | Expiration | Priority | Status |
 |---|---|---|---|---|
-| 25% Profit Boost | NHL (Parlays) | TONIGHT (Dec 4, 2025) | 🔴 High | Claimed |
-| $50 No Sweat Bet | General Sports | Dec 6, 2025 @ 11:59 PM ET | 🟡 Medium | Unlocked |
+| 25% Profit Boost | NHL (Parlays) | TONIGHT (Dec 4, 2025) | 🔴 High | **ALLOCATED (PIT @ TB)** |
+| $50 No Sweat Bet | General Sports | Dec 6, 2025 @ 11:59 PM ET | 🟡 Medium | **ALLOCATED (PIT @ TB)** |
 
 ## 📝 Detailed Breakdown
 
@@ -22,6 +22,7 @@
     * Final Odds: Must be +100 or longer (e.g., +150 is okay, -200 is not)
 * **💰 The Reward:** 25% boost on winnings
 * **✅ Action Items:**
+    * [x] **ALLOCATED:** PIT @ TB "Safe Sword" (Kucherov 3+ / Crosby 2+ / Over 5.5)
     * [ ] Build a 3-leg NHL parlay for tonight's slate
     * [ ] Apply the token in the bet slip before placing
 
@@ -37,6 +38,7 @@
         * *Examples:* -200 (Valid), +150 (Valid), -500 (Invalid/Too safe)
 * **🚫 Exclusions:** No cashed-out wagers, no bets made with bonus funds, no profit boosts applied to this specific bet
 * **✅ Action Items:**
+    * [x] **ALLOCATED:** PIT @ TB "Moonshot" (Guentzel Goal + Lightning Win + Over 6.5)
     * [ ] Opt-in (if not already done)
     * [ ] Place a straight cash bet (up to $50)
     * [ ] Ensure "No Sweat Token" is toggled ON in the bet slip
