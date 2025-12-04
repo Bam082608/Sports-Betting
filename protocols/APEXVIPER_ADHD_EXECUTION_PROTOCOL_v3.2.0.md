@@ -524,6 +524,8 @@ DONE. DO NOT REOPEN.
 
 ## 8. APPENDIX: QUICK REFERENCE CARDS
 
+**See Also:** [FAT-FINGER-PREVENTION.md](./FAT-FINGER-PREVENTION.md) for comprehensive decimal verification protocol
+
 ### 8.1 Pre-Execution Checklist
 
 ```
