@@ -20,20 +20,20 @@
 * **Requirement:** 3+ Leg Parlay/SGP/SGP+ with final odds +100 or longer.
 * **Context:** Swing shift (2:30p - 11:00p) means lineup must be set BEFORE 7:00 PM games start.
 * **Deadline:** Today's Games (Dec 4).
-* **Allocation:** **PIT @ TB "Safe Sword"**
-    * Leg 1: Kucherov 3+ SOG
-    * Leg 2: Crosby 2+ SOG
-    * Leg 3: Game Over 5.5
+* **Allocation:** **NSH @ FLA "Safe Sword"**
+    * Leg 1: Panthers Moneyline (-188)
+    * Leg 2: Reinhart 2+ SOG (-360)
+    * Leg 3: Marchand 2+ SOG (-320)
 * **Action Checklist:**
-    * [ ] Build this specific ticket.
+    * [ ] Build this specific ticket (Odds ~+137).
     * [ ] Verify odds are > +100.
     * [ ] **Apply Token** in bet slip.
 
 ### **2. No Sweat Bet ($50)**
 * **Requirement:** Straight cash bet (Odds -400 to +400,000).
-* **Strategy:** **DEPLOYED: PIT @ TB "Moonshot"**
-    * **Wager:** Guentzel Goal + Lightning Win + Over 6.5
-    * **Logic:** High volatility game; if Guentzel "ghosts", money back.
+* **Strategy:** **DEPLOYED: NSH @ FLA "Moonshot"**
+    * **Wager:** Panthers -1.5 (+128) + Marchand Goal (+140) + Verhaeghe Goal (+210)
+    * **Logic:** Massive upside; if Marchand/Verhaeghe go off, you win big. If not, token returned.
 * **Deadline:** Dec 6 (Saturday).
 
 ---
@@ -305,13 +305,11 @@ Directive fulfilled. Analysis complete. Strategic recommendations provided.
 ### **GAME 3: PENGUINS @ LIGHTNING (THE MAIN EVENT)**
 
 **Classification:** **TIER 1 (MAXIMUM ATTENTION)**
-**Budget Allocation:** ~$30.00 (Standard) + $50 (No Sweat)
+**Budget Allocation:** ~$30.00 (Standard)
 **Report:** [[2025-12-04-PIT-TB-analysis]]
 
 **Strategy:**
 *   **Narrative:** "Guentzel Revenge Game"
-*   **Promo 1 (No Sweat):** Moonshot Parlay (Guentzel Goal / TB ML / Over 6.5).
-*   **Promo 2 (25% Boost):** Safe Builder (Kucherov 3+ / Crosby 2+ / Over 5.5).
 *   **Core Wagers:**
     *   Sword: Lightning -1.5 (+146)
     *   Shield: Lightning TT Over 3.5 (+105)

@@ -42,3 +42,8 @@
     * [ ] Opt-in (if not already done)
     * [ ] Place a straight cash bet (up to $50)
     * [ ] Ensure "No Sweat Token" is toggled ON in the bet slip
+
+## 🔑 Legend Key (Player Props)
+* **[P1]** = 1st Power Play Unit (Top scoring opportunity)
+* **[P2]** = 2nd Power Play Unit (Secondary scoring)
+* **[P1/P2]** = Double Shifter (Plays on both units - Elite Usage)
