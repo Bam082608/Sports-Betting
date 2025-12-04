@@ -1,7 +1,8 @@
-# 🛡️ FAT FINGER PREVENTION PROTOCOL
+# 🛡️ FAT FINGER PREVENTION PROTOCOL v2.1
 
 **Status:** ✅ COMBAT-TESTED (18 successful executions post-incident)  
-**Last Validated:** December 3, 2025  
+**Last Updated:** December 4, 2025  
+**Version:** 2.1 - Added Rush Hour Protocol  
 **Next Review:** After 100 bets placed
 
 ---
@@ -80,6 +81,132 @@
 
 ---
 
+## 🚗 RUSH HOUR PROTOCOL (NEW v2.1)
+
+### Time-Constrained Betting Situations
+
+**Rush Hour = High-Risk Betting Environment**
+
+Time-constrained situations that increase fat finger risk:
+- 🚗 Driving (pulled over, at traffic light)
+- 🏃 Between meetings (<10 minutes available)
+- 📱 Mobile-only (no desktop access)
+- 👥 Public places (distraction)
+- 😴 Fatigue (late night, early morning)
+
+### Rush Hour Rules
+
+**WHEN TIME-CONSTRAINED OR DISTRACTED:**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ RUSH HOUR MANDATORY RESTRICTIONS                                │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│ MAX 2-3 TICKETS ONLY:                                           │
+│ ├─ Ticket 1: Single best prop ($2.00 max)                      │
+│ ├─ Ticket 2: 2-leg volume ($1.50 max)                          │
+│ └─ Optional: One simple narrative ($1.00 max)                  │
+│                                                                 │
+│ TOTAL ALLOCATION: $3.50-4.50 (reduced from $6.00)              │
+│                                                                 │
+│ SKIP COMPLETELY:                                                │
+│ ❌ God Mode tickets (too complex)                               │
+│ ❌ 3+ leg combinations (too much to verify)                     │
+│ ❌ Spread safety nets (requires more analysis)                  │
+│ ❌ Both Over AND Under tickets (pick one max)                   │
+│ ❌ Experimental ticket types                                    │
+│                                                                 │
+│ VERIFICATION ENHANCEMENTS:                                      │
+│ ✓ Use ENHANCED protocol (Steps 1-9)                            │
+│ ✓ Double the pause time (4 seconds, not 2)                     │
+│ ✓ Screenshot EVERY bet (no exceptions)                         │
+│ ✓ Set phone timer for 15 seconds per bet                       │
+│                                                                 │
+│ IF YOU DON'T HAVE TIME FOR ENHANCED PROTOCOL:                  │
+│ → DON'T BET. PERIOD.                                            │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Rush Hour Decision Tree
+
+**Before Starting Any Rush Hour Bet:**
+
+```
+Q1: Do I have at least 5 minutes of uninterrupted time?
+├─ NO → Don't bet. Wait until you have proper time.
+└─ YES → Proceed to Q2
+
+Q2: Am I on mobile or desktop?
+├─ MOBILE → Use Enhanced Protocol (Steps 1-9), max 2 tickets
+└─ DESKTOP → Use Standard Protocol (Steps 1-6), max 3 tickets
+
+Q3: What's my current mental state?
+├─ STRESSED/RUSHED → Reduce to 1 ticket only
+├─ FATIGUED → Don't bet at all
+└─ CALM/FOCUSED → Proceed with restrictions
+
+Q4: Is this worth the risk?
+├─ "I MUST bet now" → RED FLAG - probably shouldn't
+└─ "I can do this safely" → Proceed with max caution
+```
+
+### Rush Hour Best Practices
+
+**DO:**
+- ✅ Set phone timer for 15 seconds per ticket (forces you to slow down)
+- ✅ Use voice-to-text to verify amounts (say "$1.50" out loud, phone types it)
+- ✅ Take screenshot before AND after submission
+- ✅ Only bet highest conviction plays (8-10/10)
+- ✅ Use round numbers ($1.00, $2.00) to avoid decimal errors
+
+**DON'T:**
+- ❌ Bet while actually driving (even if pulled over - wait until parked)
+- ❌ Bet during phone calls or conversations
+- ❌ Bet if you're emotionally compromised (angry, excited, anxious)
+- ❌ Try to place multiple bets in under 2 minutes
+- ❌ Use bet slip auto-fill or "bet again" features
+
+### Rush Hour Examples
+
+**❌ BAD - Don't Do This:**
+```
+Situation: 5 minutes before meeting starts
+Action: Try to place 6 tickets totaling $6.00
+Risk: High - rushed, complex, multiple decimals
+Result: STOP - This is how fat fingers happen
+```
+
+**✅ GOOD - Do This:**
+```
+Situation: 5 minutes before meeting starts
+Action: Place 1 ticket: Single best prop for $2.00
+Verification: Enhanced protocol, 15-second timer
+Result: Safe execution, manageable risk
+```
+
+**✅ BETTER - Do This:**
+```
+Situation: 5 minutes before meeting starts
+Action: Save analysis, place bets after meeting
+Risk: Zero - no time pressure
+Result: Optimal safety and execution quality
+```
+
+### Rush Hour Success Metrics
+
+**Track Rush Hour Performance:**
+- Time-constrained bets placed: X
+- Fat finger errors in rush hour: X
+- Average time per rush hour bet: X seconds
+- Rush hour win rate vs. normal: X%
+
+**Goal:** Zero fat finger errors in rush hour situations
+**If errors occur:** Ban rush hour betting for 30 days
+
+---
+
 ## 🎯 HIGH-RISK SITUATIONS
 
 ### When to Use ENHANCED PROTOCOL (Triple-Check)
@@ -97,12 +224,18 @@
    - Fatigue increases error rate
    - Double the pause time to 4 seconds
 
-4. **Emotional states**
+4. **Rush Hour situations (NEW v2.1)**
+   - Time-constrained (<10 minutes available)
+   - Mobile-only betting
+   - Public/distracted environments
+   - See Rush Hour Protocol above
+
+5. **Emotional states**
    - After a big win (overconfidence)
    - After a loss (tilt, rushing)
    - During game action (distraction)
 
-5. **Decimal-heavy amounts**
+6. **Decimal-heavy amounts**
    - $0.95, $1.25, $2.50 etc.
    - Easy to miss decimal or add extra zero
 
@@ -232,6 +365,18 @@ Could you explain this bet amount to someone else without embarrassment?
 
 ## 🔄 ITERATION HISTORY
 
+### v2.1 (December 4, 2025)
+- **Added:** Rush Hour Protocol for time-constrained betting
+- **Enhancement:** Rush Hour decision tree and restrictions
+- **New Rules:** Max 2-3 tickets in rush hour situations
+- **Safety:** Enhanced protocol required for all rush hour bets
+- **Status:** Production-ready
+
+### v2.0 (December 3, 2025) - Arsenal v3.0 Integration
+- **Integration:** Updated for Arsenal v3.0 split Over/Under system
+- **Context:** Works with new 4-6 ticket deployment model
+- **Status:** Production-ready
+
 ### v1.0 (December 3, 2025)
 - **Trigger:** $95 incident
 - **Features:** 6-step verification protocol
@@ -283,12 +428,15 @@ Could you explain this bet amount to someone else without embarrassment?
 
 ---
 
-**Last Updated:** December 3, 2025  
+**Last Updated:** December 4, 2025  
 **Owner:** Billy (ApexViper)  
+**Version:** 2.1 - Rush Hour Protocol Added  
 **Status:** Combat-tested and production-ready  
 **Next Review:** After 100 total bets OR next incident (whichever comes first)
 
 **Remember:** This protocol exists because the mistake already happened.  
 **Don't let it happen again.**
+
+**New in v2.1:** If you don't have time to do it right, you don't have time to do it at all.
 
 🐍⚡
