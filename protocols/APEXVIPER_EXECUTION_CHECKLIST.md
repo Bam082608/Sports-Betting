@@ -157,6 +157,13 @@ For each key game, verify structure allows:
 **Time Window:** 6:00-6:45 PM ET (Window 1) / 9:30-10:00 PM ET (Window 2)  
 **Agent:** LEDGER-KNIGHT
 
+### Pre-Bet Verification
+
+- [ ] Follow 6-step Fat Finger Protocol (See [FAT-FINGER-PREVENTION.md](./FAT-FINGER-PREVENTION.md))
+  - [ ] Verbal verification
+  - [ ] 2-second pause
+  - [ ] Screenshot before submit
+
 ### Execution Protocol
 
 - [ ] Only after Steps 1-5 are complete:

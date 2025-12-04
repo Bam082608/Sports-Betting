@@ -524,6 +524,8 @@ DONE. DO NOT REOPEN.
 
 ## 8. APPENDIX: QUICK REFERENCE CARDS
 
+**See Also:** [FAT-FINGER-PREVENTION.md](./FAT-FINGER-PREVENTION.md) for comprehensive decimal verification protocol
+
 ### 8.1 Pre-Execution Checklist
 
 ```
@@ -623,8 +625,6 @@ DONE. DO NOT REOPEN.
 
 This protocol requires:
 - [APEXVIPER_NARRATIVE_BETTING_SYSTEM_v3.1.0.md](./APEXVIPER_NARRATIVE_BETTING_SYSTEM_v3.1.0.md)
-- [APEXVIPER_FAT_FINGER_PROTOCOL_v2.0.md](./APEXVIPER_FAT_FINGER_PROTOCOL_v2.0.md)
-- [APEXVIPER_RUSH_HOUR_PROTOCOL.md](./APEXVIPER_RUSH_HOUR_PROTOCOL.md)
 - Active sportsbook account (FanDuel/DraftKings)
 
 ---

@@ -8,10 +8,24 @@
 
 | Metric | Value |
 |--------|-------|
-| **Current Bankroll** | $609.55 |
+| **Current Bankroll** | $609.55 (main) + $15.00 (session) = $624.55 total |
+| **Active Exposure** | $7.54 (DAL @ NJD session) |
 | **Level** | 1 |
 | **Initial Investment** | $40.00 |
-| **Net Profit** | $569.55 |
+| **Net Profit** | $584.55 |
+
+---
+
+## Session Allocation (Dec 3, 2025)
+
+| Category | Amount | Purpose |
+|----------|--------|---------|
+| **Session Bankroll** | $15.00 | DAL @ NJD dedicated funds |
+| **Active Bets** | $7.54 | 10 wagers locked |
+| **Reserves** | $7.46 | Held back for discipline |
+| **Main Bankroll** | $609.55 | Untouched, separate |
+
+**Total Assets:** $624.55
 
 ---
 
