@@ -64,6 +64,17 @@ TOTAL EXPOSURE: $23 across MULTIPLE games
 
 ## 3. THE PYRAMID LOGIC
 
+**Standard Ticket Types:**  
+See [TICKET-ARSENAL-v2.md](/playbook/TICKET-ARSENAL-v2.md) for complete library of tested betting structures including:
+- The Anchor (foundation)
+- Volume Stack (offensive exploitation)
+- Mirror (hedge strategy)
+- Black Swan (insurance)
+- God Mode (lottery)
+- Superstar Ladder (elite targeting)
+- Specialist (depth scoring)
+- Time-Hedged Anchor (experimental)
+
 ### Foundation (60-70% of exposure)
 **Purpose:** Stable, high-probability bets.
 - Single-game props on verified stars

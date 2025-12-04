@@ -55,6 +55,9 @@ Sports-Betting/
 │   ├── team-dna/                       # 34 team profiles + JSON database
 │   ├── tier1-stars.md                  # Elite player tracking
 │   └── tier2-players.md                # High-volume player tracking
+├── playbook/                           # 🆕 Standardized betting structures
+│   ├── README.md                       # Playbook overview
+│   └── TICKET-ARSENAL-v2.md            # 8 ticket types with deployment models
 ├── protocols/                          # 🎯 26+ APEXVIPER protocol files
 │   ├── APEXVIPER_*.md                  # Core protocol suite (see full index below)
 │   ├── viper-genesis/                  # System architecture
@@ -64,6 +67,9 @@ Sports-Betting/
 ├── research/                           # 🔬 Multi-AI research contributions
 │   ├── README.md                       # AI workflow documentation
 │   └── [YYYY-MM-DD]-[AI]-[TOPIC].md    # Dated research files
+├── templates/                          # 🆕 Documentation templates
+│   ├── README.md                       # Template usage guide
+│   └── POST-GAME-ANALYSIS-TEMPLATE.md  # Systematic performance review
 ├── tracking/                           # 📊 Performance tracking & lessons learned
 │   ├── COMPLETE-LESSONS-LEARNED.md     # 25,885 bytes institutional knowledge
 │   ├── bankroll.md                     # Bankroll management
@@ -105,6 +111,46 @@ Sports-Betting/
 1. Update [tracking/pattern-log.md](/tracking/pattern-log.md)
 2. Add insights to [tracking/lessons-learned.md](/tracking/lessons-learned.md)
 3. Complete [weekly-roundup-template.md](/tracking/weekly-roundup-template.md) on Sundays
+
+---
+
+## 🎯 Core Operational Protocols
+
+### Betting Execution
+
+**[Fat Finger Prevention](/protocols/FAT-FINGER-PREVENTION.md)** 🆕
+- Combat-tested decimal verification protocol
+- 6-step verification sequence
+- 18/18 success rate post-incident
+- Mandatory for every bet placement
+
+**[Deployment Decision Tree](/protocols/DEPLOYMENT-DECISION-TREE.md)** 🆕
+- 7-phase pre-game systematic workflow
+- Eliminates analysis paralysis
+- Clear pass/fail criteria at each phase
+- Skip games with confidence, no regrets
+
+**[Ticket Arsenal v2.0](/playbook/TICKET-ARSENAL-v2.md)** 🆕
+- 8 standardized ticket types
+- Repeatable betting structures
+- Types 1-7 production-ready
+- Type 8 experimental (5-game test phase)
+
+### Crisis Management
+
+**[Emergency Protocols](/protocols/EMERGENCY-PROTOCOLS.md)** 🆕
+- 3-level emergency response system
+- Yellow Alert: Single incident management
+- Orange Alert: Circuit breaker activation
+- Red Alert: Full shutdown and recovery
+
+### Analysis & Tracking
+
+**[Post-Game Analysis Template](/templates/POST-GAME-ANALYSIS-TEMPLATE.md)** 🆕
+- Systematic performance review framework
+- Complete data capture after every slate
+- Lessons learned extraction
+- Protocol adherence tracking
 
 ---
 

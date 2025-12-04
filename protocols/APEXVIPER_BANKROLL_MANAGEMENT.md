@@ -111,6 +111,14 @@ Weekly ROI: ______%
 
 ## 5. DRAWDOWN PROTECTION RULES
 
+**Emergency Protocols:**  
+See [EMERGENCY-PROTOCOLS.md](./EMERGENCY-PROTOCOLS.md) for crisis response procedures including:
+- Fat finger recovery (>5% exposure)
+- Tilt detection and circuit breakers
+- Drawdown protocols (>10% loss)
+- Confabulation detection
+- Exposure limit violations
+
 ### Daily Stop-Loss Limits
 
 | Bankroll Level | Max Daily Loss | Action When Hit |
