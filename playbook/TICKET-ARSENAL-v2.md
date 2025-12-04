@@ -1,9 +1,42 @@
-# 🎰 TICKET ARSENAL v2.0
+# 🎰 TICKET ARSENAL v2.1 (Playbook Update)
 
+**Version:** v2.1  
+**Date:** 2025-12-04  
 **Status:** 🧪 ACTIVE TESTING (First deployment: 12/3/25 - 19 tickets)  
 **Test Phase:** Types 1-7 production, Type 8 experimental  
 **Next Review:** After 10 games OR December 13, 2025  
 **Validation Required:** Type-by-type win rate data
+
+---
+
+## 📋 ANCHOR VARIANT RULES
+
+This update formalizes the Anchor Variant rules and the updated decision tree for totals. Integrate these rules into ticket generation and late-window decision logic.
+
+### Anchor Variant Rules
+- **Defensive Anchor** → Under ONLY (no splits)
+- **Offensive Anchor** → Over ONLY (no splits)
+- **Middle Anchor** → Split Over/Under (very rare; only for true 50/50 games)
+
+### Totals Decision Tree & Stake Sizing
+- **Defensive** → Under only | Stake: $1.50
+- **Offensive** → Over only | Stake: $1.50
+- **Balanced** → Split | Stake: $1.25 each side
+- **Unsure** → Skip totals; redirect allocation to player props (SOG, PIM, 1+ points, etc.)
+
+### Late Window Protocol (10:00 PM ET onward)
+- Verify goalie matchup and rest/back-to-back status (must annotate match metadata).
+- Cross-check team-dna Anchor tag and live SOG/shot quality feeds.
+- For Tier A players (e.g., Gauthier — TIER 1 STAR): consider plus-up allocation per Tier rules (Tier A default bet $2.50 unless constrained).
+- Mandatory: For any manual corrective re-bet, follow the two-step confirmation protocol.
+
+### Risk Controls
+- Max exposure per game: configurable, default $10
+- Fat-finger safeguard: confirmation for stakes > $5 or manual corrective re-bets
+- Reconciliation: pending tickets must remain flagged until settled by exchange
+
+### Protocol Compliance Notes
+- Ensure Protocol Addendum 2.7.1 compliance: latency and memory targets (<50ms execution, <20MB RAM usage) for any automated decision path.
 
 ---
 
@@ -644,9 +677,9 @@ Update the status table after every 5 games to track trends.
 
 ---
 
-**Last Updated:** December 3, 2025  
+**Last Updated:** December 4, 2025  
 **Owner:** Billy (ApexViper)  
-**Version:** 2.0  
+**Version:** 2.1  
 **Status:** Active testing phase  
 **Next Review:** After 10 games
 

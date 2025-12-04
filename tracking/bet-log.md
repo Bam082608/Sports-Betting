@@ -19,6 +19,38 @@ Record every bet with the following information:
 
 ---
 
+## 2025-12-04 — Running log (partial)
+- Ticket: Dallas
+  - Result: WIN
+  - P/L: +$1.81
+  - Notes: settlement confirmed.
+
+- Ticket: Montreal Re-bet
+  - Result: WIN
+  - P/L: +$1.32
+  - Notes: replacement win after fat-finger correction (see incidents).
+
+- Ticket: Buffalo / Zegras multi
+  - Stake: $0.75
+  - Potential Payout: +$1.00
+  - Status: PENDING (2/3 legs confirmed, 1 leg pending settlement)
+  - Projected outcome: +$1.00 or -$0.75
+
+- Incident: Fat Finger Loss (manual error)
+  - Loss: -$17.00
+  - Replacement Win: +$1.32
+  - NET COST: -$15.68
+  - Action: logged for review, recommended two-step confirmation implemented (see lessons-learned).
+
+## P/L Snapshot (post-intel, pending settlement)
+- Realized P/L: +$3.13 (Dallas + Montreal)
+- Realized Losses: -$17.00 (fat-finger)
+- Net Realized: -$13.87
+- Pending: Buffalo/Zegras (+$1.00 or -$0.75)
+- Projected Range: +$1 to +$8 (conditional on pending settlements)
+
+---
+
 ## Active Bets
 
 ### December 3, 2025 - DAL @ NJD
