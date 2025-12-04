@@ -1,8 +1,8 @@
 ## CONNOR BEDARD (CHI)
 **Position:** C
-**Status:** VERIFIED ✅
-**Last Updated:** December 2, 2025
-**Data Source:** ESPN, Hockey Reference, Multiple Beat Writers
+**Status:** ⭐ **TIER 1 CANDIDATE - SPOTLIGHT TEST (DEC 4)**
+**Last Updated:** December 4, 2025
+**Data Source:** ApexViper Battle Plan + Historical Data
 
 ### Current Season Stats (2025-26)
 - **Games Played:** 25
@@ -16,21 +16,20 @@
 - **Recent Form (November):** 10 goals, 13 assists in 14 games (7 multi-point games)
 
 ### Tier Classification
-**Tier Status:** Tier 1 ✅
-**Reasoning:** Averages 3.71 SOG/game over last 17, concentration at 28%, shoots regardless of game script (proven in low-shot games)
+**Tier Status:** **TIER 1 CANDIDATE (PROBATIONARY)** ⚠️
+**Reasoning:** Averages 3.71 SOG/game over last 17, concentration at 28%. Shoots regardless of game script.
+**Spotlight Test:** Tonight (Dec 4) vs LA Kings. Need to verify performance against elite defensive structure.
 
 ### Betting Intelligence
 **Prop Type:** SOG Props (PRIMARY)
 **Optimal Bet Structure:** 2P+3P period splits ($2 per ticket)
 **Expected Hit Rate:** 80-85%
-**Stake Recommendation:** Tier A: $2.50 per ticket, build 3-4 tickets per game
+**Stake Recommendation:** Tier A: $2.50 per ticket (Test Phase)
 
 ### Key Notes
-- Last game: 2G, 2A vs ANA (4-point night)
-- Playing tonight vs VGK (10:10 PM ET)
-- On absolute tear: 37 points in 25 games
-- Team can have terrible shot night (18 total) and he STILL gets his 5 shots
-- This is the PROOF of star concentration theory
-- Vegas defensive but Bedard transcends opponent quality
+- **Dec 4 Test:** Playing LA Kings (10:00 PM ET). Kings are structured defensively.
+- **Hypothesis:** If Bedard hits 3+ SOG against LA, he is confirmed Full Tier 1.
+- **Concentration:** Proven capacity to get 5+ SOG even when team gets <20.
+- **Action:** Deploy $2-3 on Bedard props tonight for data collection.
 
 ---
