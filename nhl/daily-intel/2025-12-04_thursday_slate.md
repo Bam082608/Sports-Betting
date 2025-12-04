@@ -16,6 +16,15 @@
 - **Shield:** NYR TT Under 2.5 (+104)
 - **Anchor:** [[Panarin-Artemi]] 2+ SOG
 
+### 🟢 PRIORITY 2: Toronto Maple Leafs @ Carolina Hurricanes (7:08 PM ET)
+**Status:** SURVEILLANCE COMPLETE
+**Report Link:** [[2025-12-04-TOR-CAR-analysis]]
+**Narrative:** Hurricanes heavy home favorites. High scoring expected.
+**Key Targets:**
+- **Sword:** Hurricanes -1.5 (+114)
+- **Shield:** Hurricanes TT Over 3.5 (-122)
+- **Anchor:** [[Svechnikov-Andrei]] 3+ SOG
+
 ---
 
 ## 📝 NOTES & UPDATES
