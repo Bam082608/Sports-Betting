@@ -52,6 +52,15 @@
 - **Shield:** Lightning TT Over 3.5 (+105)
 - **Anchor:** [[Kucherov-Nikita]] 3+ SOG
 
+### 🟢 PRIORITY 6: Nashville Predators @ Florida Panthers (7:12 PM ET)
+**Status:** SURVEILLANCE COMPLETE
+**Report Link:** [[2025-12-04-NSH-FLA-analysis]]
+**Narrative:** Panthers Super-Team vs Rebuilt Preds.
+**Key Targets:**
+- **Sword:** Panthers -1.5 (+128)
+- **Shield:** [[Bobrovsky-Sergei]] Over 22.5 Saves (-106)
+- **Anchor:** [[Marchand-Brad]] 2+ SOG
+
 ---
 
 ## 📝 NOTES & UPDATES
