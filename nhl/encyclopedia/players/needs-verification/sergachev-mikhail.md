@@ -1,0 +1,1 @@
+# mikhail sergachev\n\n**Team:** UTA\n**Position:** D\n**Status:** Needs Verification\n\n## 📊 Key Stats\n- **SOG Avg:** TBD\n- **Hit Rate:** TBD\n\n## 📝 Notes\n- Entry created via Dec 5 Baseline Log.\n

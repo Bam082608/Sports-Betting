@@ -1,0 +1,1 @@
+# jack eichel\n\n**Team:** VGK\n**Position:** C\n**Status:** Needs Verification\n\n## 📊 Key Stats\n- **SOG Avg:** TBD\n- **Hit Rate:** TBD\n\n## 📝 Notes\n- Entry created via Dec 5 Baseline Log.\n
