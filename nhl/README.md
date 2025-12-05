@@ -18,6 +18,7 @@ The NHL subsystem is the flagship betting intelligence platform of APEXVIPER Gen
 - [Team DNA System](#team-dna-system)
 - [Player Tier System](#player-tier-system)
 - [Daily Intelligence](#daily-intelligence)
+- [Visual Tools](#visual-tools)
 - [Data Infrastructure](#data-infrastructure)
 - [Quick Start Guide](#quick-start-guide)
 
@@ -316,6 +317,20 @@ Examples:
 | 2025-12-01_WPG_at_BUF.md | Dec 1 | Winnipeg @ Buffalo |
 
 **See:** [daily-intel/README.md](/nhl/daily-intel/README.md) for intel workflow and templates
+
+---
+
+## 🛠️ Visual Tools
+
+### Reliability Matrix (v9.0)
+
+**Location:** `/nhl/tools/reliability_matrix/`
+
+A React-based visualization component for assessing player prop quality. It uses "Script Grade" logic to sort players by deployment quality and game narrative.
+
+*   **[Component Source Code](/nhl/tools/reliability_matrix/ReliabilityMatrix.jsx)** - The raw React component.
+*   **[Documentation & Setup](/nhl/tools/reliability_matrix/README.md)** - How to run and use the matrix.
+*   **[Daily AI Prompt](/nhl/tools/reliability_matrix/DAILY_PROMPT_TEMPLATE.md)** - The "Universal Prompt" to generate daily data.
 
 ---
 
