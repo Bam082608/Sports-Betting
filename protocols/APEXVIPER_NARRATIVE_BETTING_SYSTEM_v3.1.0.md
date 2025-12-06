@@ -333,6 +333,16 @@ tier_3_god:
   example_win: $11.50
 ```
 
+#### TIER 3b: INFORMATION-JUSTIFIED MICRO-LAYER (OPTIONAL)
+**Purpose:** Capture "Black Swan" upside on identified high-event games.
+**Condition:** ONLY deploy when pre-game analysis confirms "High-Event Inevitable" status.
+**Risk Allocation:** $0.20 - $0.30 (Micro-wagers)
+**Target Odds:** +300 to +800 (Outliers)
+
+**Decision Rule:**
+> If game script says "high-event inevitable" AND both teams have elite offense AND porous defense → **LAYER 9.5 and 10.5**.
+> If neutral/defensive → **SKIP**.
+
 #### TIER 4: HEDGES
 **Purpose:** Floor protection and variance reduction
 **Structure:** 1-2 standalone bets from core
@@ -400,6 +410,17 @@ portfolio:
         odds: +120
     parlay_odds: "+2200"
     potential_win: 11. 50
+
+  tier_3b_micro_layer:
+    risk: 0.20
+    description: "OPTIONAL: Only on high-event identified games"
+    bets:
+      - bet: "Game Total Over 9.5"
+        risk: 0.10
+        odds: +300 to +400
+      - bet: "Game Total Over 10.5"
+        risk: 0.10
+        odds: +600 to +800
 
   tier_4_hedges:
     risk: 1.00
