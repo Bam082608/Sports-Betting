@@ -15,12 +15,12 @@ Usage:
 """
 
 import logging
-from pathlib import Path
-from typing import List, Tuple, Optional, Dict, Any
 from enum import Enum
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
-from pydantic import BaseModel, Field, validator, ValidationError
+from pydantic import BaseModel, Field, ValidationError, validator
 
 # Setup logging
 logger = logging.getLogger(__name__)
@@ -28,8 +28,10 @@ logger = logging.getLogger(__name__)
 
 # --- ENUMERATIONS ---
 
+
 class ResistanceGrade(str, Enum):
     """Valid resistance grade values"""
+
     LOW = "LOW"
     MODERATE = "MODERATE"
     HIGH = "HIGH"
@@ -37,6 +39,7 @@ class ResistanceGrade(str, Enum):
 
 class ScriptTag(str, Enum):
     """Valid script tag values"""
+
     CHASE_MODE = "CHASE_MODE"
     HISTORY_CHASE = "HISTORY_CHASE"
     BLOWOUT_RISK = "BLOWOUT_RISK"
@@ -46,6 +49,7 @@ class ScriptTag(str, Enum):
 
 
 # --- PYDANTIC MODELS ---
+
 
 class PlayerDataRow(BaseModel):
     """
@@ -66,16 +70,16 @@ class PlayerDataRow(BaseModel):
     team: str = Field(..., min_length=2, max_length=3)
     opponent: str = Field(..., min_length=2, max_length=3)
     odds_930am: float = Field(..., description="Betting odds at 9:30 AM")
-    last_5_shots: str = Field(..., pattern=r'^\d+\|\d+\|\d+\|\d+\|\d+$')
+    last_5_shots: str = Field(..., pattern=r"^\d+\|\d+\|\d+\|\d+\|\d+$")
     avg_toi: float = Field(..., ge=0, le=60, description="Average time on ice (0-60 minutes)")
     resistance_grade: ResistanceGrade
     script_tag: ScriptTag
 
-    @validator('last_5_shots')
+    @validator("last_5_shots")
     def validate_shot_counts(cls, v):
         """Validate that shot counts are reasonable (0-15 per game)"""
         try:
-            shots = [int(x) for x in v.split('|')]
+            shots = [int(x) for x in v.split("|")]
             if any(s < 0 or s > 15 for s in shots):
                 raise ValueError("Shot counts must be between 0 and 15")
             if len(shots) != 5:
@@ -84,7 +88,7 @@ class PlayerDataRow(BaseModel):
             raise ValueError(f"Invalid shot string format: {e}")
         return v
 
-    @validator('team', 'opponent')
+    @validator("team", "opponent")
     def validate_team_code(cls, v):
         """Ensure team codes are uppercase"""
         return v.upper()
@@ -108,14 +112,14 @@ class TeamPowerPlayRow(BaseModel):
     pp_attempts: int = Field(..., ge=0, description="Must be non-negative")
     pp_goals: int = Field(..., ge=0, description="Must be non-negative")
 
-    @validator('pp_goals')
+    @validator("pp_goals")
     def goals_not_exceed_attempts(cls, v, values):
         """Validate that goals don't exceed attempts"""
-        if 'pp_attempts' in values and v > values['pp_attempts']:
+        if "pp_attempts" in values and v > values["pp_attempts"]:
             raise ValueError("PP goals cannot exceed PP attempts")
         return v
 
-    @validator('team')
+    @validator("team")
     def validate_team_code(cls, v):
         """Ensure team code is uppercase"""
         return v.upper()
@@ -137,7 +141,7 @@ class PlayerPPSSRow(BaseModel):
     pp_shots: float = Field(..., ge=0, description="Must be non-negative")
     pp_expected: float = Field(..., ge=0, description="Must be non-negative")
 
-    @validator('team')
+    @validator("team")
     def validate_team_code(cls, v):
         """Ensure team code is uppercase"""
         return v.upper()
@@ -145,11 +149,8 @@ class PlayerPPSSRow(BaseModel):
 
 # --- VALIDATION FUNCTIONS ---
 
-def validate_dataframe(
-    df: pd.DataFrame,
-    model: type[BaseModel],
-    filename: str = "data"
-) -> Tuple[bool, List[Dict[str, Any]]]:
+
+def validate_dataframe(df: pd.DataFrame, model: type[BaseModel], filename: str = "data") -> Tuple[bool, List[Dict[str, Any]]]:
     """
     Validate a DataFrame against a Pydantic model.
 
@@ -176,24 +177,19 @@ def validate_dataframe(
         except ValidationError as e:
             is_valid = False
             for error in e.errors():
-                errors.append({
-                    'row': idx + 2,  # +2 because 0-indexed and header row
-                    'field': '.'.join(str(x) for x in error['loc']),
-                    'error': error['msg'],
-                    'value': error.get('input', 'N/A')
-                })
-                logger.error(
-                    f"{filename} row {idx + 2}: {error['loc']} - {error['msg']}"
+                errors.append(
+                    {
+                        "row": idx + 2,  # +2 because 0-indexed and header row
+                        "field": ".".join(str(x) for x in error["loc"]),
+                        "error": error["msg"],
+                        "value": error.get("input", "N/A"),
+                    }
                 )
+                logger.error(f"{filename} row {idx + 2}: {error['loc']} - {error['msg']}")
 
         except Exception as e:
             is_valid = False
-            errors.append({
-                'row': idx + 2,
-                'field': 'unknown',
-                'error': str(e),
-                'value': 'N/A'
-            })
+            errors.append({"row": idx + 2, "field": "unknown", "error": str(e), "value": "N/A"})
             logger.error(f"{filename} row {idx + 2}: Unexpected error - {e}")
 
     if is_valid:
@@ -220,11 +216,11 @@ def validate_player_data(file_path: str) -> Tuple[bool, List[Dict[str, Any]]]:
 
     except FileNotFoundError:
         logger.error(f"File not found: {file_path}")
-        return False, [{'error': f'File not found: {file_path}'}]
+        return False, [{"error": f"File not found: {file_path}"}]
 
     except Exception as e:
         logger.error(f"Failed to load {file_path}: {e}")
-        return False, [{'error': f'Failed to load file: {e}'}]
+        return False, [{"error": f"Failed to load file: {e}"}]
 
 
 def validate_team_pp_data(file_path: str) -> Tuple[bool, List[Dict[str, Any]]]:
@@ -243,11 +239,11 @@ def validate_team_pp_data(file_path: str) -> Tuple[bool, List[Dict[str, Any]]]:
 
     except FileNotFoundError:
         logger.error(f"File not found: {file_path}")
-        return False, [{'error': f'File not found: {file_path}'}]
+        return False, [{"error": f"File not found: {file_path}"}]
 
     except Exception as e:
         logger.error(f"Failed to load {file_path}: {e}")
-        return False, [{'error': f'Failed to load file: {e}'}]
+        return False, [{"error": f"Failed to load file: {e}"}]
 
 
 def validate_player_ppss_data(file_path: str) -> Tuple[bool, List[Dict[str, Any]]]:
@@ -266,11 +262,11 @@ def validate_player_ppss_data(file_path: str) -> Tuple[bool, List[Dict[str, Any]
 
     except FileNotFoundError:
         logger.error(f"File not found: {file_path}")
-        return False, [{'error': f'File not found: {file_path}'}]
+        return False, [{"error": f"File not found: {file_path}"}]
 
     except Exception as e:
         logger.error(f"Failed to load {file_path}: {e}")
-        return False, [{'error': f'Failed to load file: {e}'}]
+        return False, [{"error": f"Failed to load file: {e}"}]
 
 
 def print_validation_report(errors: List[Dict[str, Any]], filename: str = "data"):
@@ -290,10 +286,10 @@ def print_validation_report(errors: List[Dict[str, Any]], filename: str = "data"
     print(f"{'='*80}\n")
 
     for error in errors:
-        if 'row' in error:
+        if "row" in error:
             print(f"Row {error['row']}: {error.get('field', 'unknown')}")
             print(f"  Error: {error['error']}")
-            if error.get('value') != 'N/A':
+            if error.get("value") != "N/A":
                 print(f"  Value: {error['value']}")
             print()
         else:
@@ -306,22 +302,15 @@ def print_validation_report(errors: List[Dict[str, Any]], filename: str = "data"
 
 # --- CLI INTERFACE ---
 
+
 def main():
     """CLI interface for data validation"""
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="APEXVIPER Data Validator - Validate CSV data files"
-    )
+    parser = argparse.ArgumentParser(description="APEXVIPER Data Validator - Validate CSV data files")
+    parser.add_argument("file", help="CSV file to validate")
     parser.add_argument(
-        "file",
-        help="CSV file to validate"
-    )
-    parser.add_argument(
-        "--type",
-        choices=["player", "team_pp", "player_ppss"],
-        default="player",
-        help="Type of data file (default: player)"
+        "--type", choices=["player", "team_pp", "player_ppss"], default="player", help="Type of data file (default: player)"
     )
 
     args = parser.parse_args()
