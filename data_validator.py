@@ -16,8 +16,7 @@ Usage:
 
 import logging
 from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 import pandas as pd
 from pydantic import BaseModel, Field, ValidationError, validator

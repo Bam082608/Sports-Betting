@@ -19,7 +19,6 @@ Run:
 """
 
 import argparse
-import json
 import logging
 import sys
 from datetime import datetime
@@ -350,13 +349,13 @@ Examples:
         print("No GREEN signal teams found.")
 
     print("\n" + "=" * 80)
-    print(f"✅ Output saved:")
+    print("✅ Output saved:")
     print(f"   📄 CSV:  {output_csv}")
     print(f"   📄 JSON: {output_json}")
     print("=" * 80)
 
     # Summary statistics
-    print(f"\n📊 SIGNAL DISTRIBUTION:")
+    print("\n📊 SIGNAL DISTRIBUTION:")
     print(f"   🟢 GREEN:  {len(enriched[enriched['API_signal'] == 'GREEN'])}")
     print(f"   🟡 YELLOW: {len(enriched[enriched['API_signal'] == 'YELLOW'])}")
     print(f"   🔴 RED:    {len(enriched[enriched['API_signal'] == 'RED'])}")

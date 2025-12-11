@@ -5,7 +5,6 @@ Test suite for apexviper_engine.py
 import sys
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import pytest
 
@@ -193,7 +192,7 @@ class TestValidateDataframe:
                 "resistance_grade": ["MODERATE", "LOW"],
             }
         )
-        assert validate_dataframe(df) == True
+        assert validate_dataframe(df) is True
 
     def test_missing_columns(self):
         """Test missing required columns raises error"""
@@ -225,7 +224,7 @@ class TestValidateDataframe:
             }
         )
         # Should not raise error, but should log warning
-        assert validate_dataframe(df) == True
+        assert validate_dataframe(df) is True
 
 
 class TestIntegration:
