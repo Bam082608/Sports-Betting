@@ -35,20 +35,18 @@ LOG_DIR.mkdir(exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / f'power_index_{datetime.now().strftime("%Y%m%d")}.log'),
-        logging.StreamHandler()
-    ]
+        logging.FileHandler(
+            LOG_DIR / f'power_index_{datetime.now().strftime("%Y%m%d")}.log'
+        ),
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger(__name__)
 
 # --- CONFIGURATION ---
-SIGNAL_THRESHOLDS = {
-    'low': 0.15,
-    'mid': 0.25,
-    'high': 0.40
-}
+SIGNAL_THRESHOLDS = {"low": 0.15, "mid": 0.25, "high": 0.40}
 
 
 def safe_div(a: float, b: float) -> float:
@@ -74,7 +72,9 @@ def safe_div(a: float, b: float) -> float:
     return float(a / b)
 
 
-def grade_signal(value: float, low: float = 0.15, mid: float = 0.25, high: float = 0.40) -> str:
+def grade_signal(
+    value: float, low: float = 0.15, mid: float = 0.25, high: float = 0.40
+) -> str:
     """
     Convert numeric value to traffic light signal.
 
@@ -121,10 +121,10 @@ def validate_input_file(file_path: Path, file_type: str) -> pd.DataFrame:
         raise FileNotFoundError(f"{file_type} file not found: {file_path}")
 
     try:
-        if file_path.suffix == '.csv':
+        if file_path.suffix == ".csv":
             df = pd.read_csv(file_path)
             logger.info(f"Loaded {len(df)} rows from {file_type} CSV: {file_path}")
-        elif file_path.suffix == '.json':
+        elif file_path.suffix == ".json":
             df = pd.read_json(file_path)
             logger.info(f"Loaded {len(df)} rows from {file_type} JSON: {file_path}")
         else:
@@ -143,7 +143,7 @@ def validate_input_file(file_path: Path, file_type: str) -> pd.DataFrame:
 def compute_power_index(
     df_matrix: pd.DataFrame,
     df_pp_team: Optional[pd.DataFrame] = None,
-    df_pp_player: Optional[pd.DataFrame] = None
+    df_pp_player: Optional[pd.DataFrame] = None,
 ) -> pd.DataFrame:
     """
     Compute ApexViper Power Index scores for teams.
@@ -165,7 +165,7 @@ def compute_power_index(
     logger.info("Computing Power Index scores...")
 
     # Validate main matrix has 'team' column
-    if 'team' not in df_matrix.columns:
+    if "team" not in df_matrix.columns:
         raise KeyError("Main matrix must contain 'team' column")
 
     # Initialize empty DataFrames if not provided
@@ -175,7 +175,9 @@ def compute_power_index(
 
     if df_pp_player is None:
         logger.info("No player PPSS data provided, using empty DataFrame")
-        df_pp_player = pd.DataFrame(columns=["player", "team", "pp_shots", "pp_expected"])
+        df_pp_player = pd.DataFrame(
+            columns=["player", "team", "pp_shots", "pp_expected"]
+        )
 
     # Merge team PP metrics if available
     if "team" in df_pp_team.columns and not df_pp_team.empty:
@@ -198,10 +200,14 @@ def compute_power_index(
     # Merge player PPSS if available (sum by team)
     if "team" in df_pp_player.columns and not df_pp_player.empty:
         logger.info(f"Aggregating {len(df_pp_player)} player PPSS records")
-        grouped = df_pp_player.groupby("team").agg(
-            team_pp_shots=("pp_shots", "sum"),
-            team_pp_expected=("pp_expected", "sum"),
-        ).reset_index()
+        grouped = (
+            df_pp_player.groupby("team")
+            .agg(
+                team_pp_shots=("pp_shots", "sum"),
+                team_pp_expected=("pp_expected", "sum"),
+            )
+            .reset_index()
+        )
         df_matrix = df_matrix.merge(grouped, on="team", how="left")
     else:
         df_matrix["team_pp_shots"] = 0
@@ -229,7 +235,9 @@ def compute_power_index(
     yellow_count = len(df_matrix[df_matrix["API_signal"] == "YELLOW"])
     red_count = len(df_matrix[df_matrix["API_signal"] == "RED"])
 
-    logger.info(f"API Score distribution: GREEN={green_count}, YELLOW={yellow_count}, RED={red_count}")
+    logger.info(
+        f"API Score distribution: GREEN={green_count}, YELLOW={yellow_count}, RED={red_count}"
+    )
 
     return df_matrix
 
@@ -241,7 +249,9 @@ def main() -> int:
     Returns:
         Exit code (0 for success, 1 for error)
     """
-    logger.info(f"🐍 ApexViper Power Index Engine starting... {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    logger.info(
+        f"🐍 ApexViper Power Index Engine starting... {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    )
 
     parser = argparse.ArgumentParser(
         description="ApexViper Power Index Engine - Team Advantage Calculator",
@@ -252,35 +262,25 @@ Examples:
   %(prog)s --input master_matrix.json --pp_team team_pp.csv
   %(prog)s --input master_matrix.csv --pp_team team_pp.csv --pp_player player_pp.csv
   %(prog)s --input data.csv --output-csv results.csv --output-json results.json
-        """
+        """,
     )
     parser.add_argument(
-        "--input",
-        required=True,
-        help="Master matrix CSV or JSON file (required)"
+        "--input", required=True, help="Master matrix CSV or JSON file (required)"
     )
-    parser.add_argument(
-        "--pp_team",
-        help="Optional team power play CSV file"
-    )
-    parser.add_argument(
-        "--pp_player",
-        help="Optional player PPSS CSV file"
-    )
+    parser.add_argument("--pp_team", help="Optional team power play CSV file")
+    parser.add_argument("--pp_player", help="Optional player PPSS CSV file")
     parser.add_argument(
         "--output-csv",
         default="enriched_matrix.csv",
-        help="Output CSV filename (default: enriched_matrix.csv)"
+        help="Output CSV filename (default: enriched_matrix.csv)",
     )
     parser.add_argument(
         "--output-json",
         default="enriched_matrix.json",
-        help="Output JSON filename (default: enriched_matrix.json)"
+        help="Output JSON filename (default: enriched_matrix.json)",
     )
     parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Enable verbose debug logging"
+        "--verbose", action="store_true", help="Enable verbose debug logging"
     )
 
     args = parser.parse_args()
@@ -307,7 +307,7 @@ Examples:
             df_pp_team = validate_input_file(pp_team_path, "Team PP")
 
             # Validate required columns
-            required_cols = ['team', 'pp_attempts', 'pp_goals']
+            required_cols = ["team", "pp_attempts", "pp_goals"]
             missing = [col for col in required_cols if col not in df_pp_team.columns]
             if missing:
                 raise ValueError(f"Team PP file missing required columns: {missing}")
@@ -325,10 +325,12 @@ Examples:
             df_pp_player = validate_input_file(pp_player_path, "Player PPSS")
 
             # Validate required columns
-            required_cols = ['team', 'pp_shots', 'pp_expected']
+            required_cols = ["team", "pp_shots", "pp_expected"]
             missing = [col for col in required_cols if col not in df_pp_player.columns]
             if missing:
-                raise ValueError(f"Player PPSS file missing required columns: {missing}")
+                raise ValueError(
+                    f"Player PPSS file missing required columns: {missing}"
+                )
 
         except (FileNotFoundError, ValueError) as e:
             logger.error(f"Player PPSS file error: {e}")
@@ -361,10 +363,12 @@ Examples:
         return 1
 
     # Print summary to console
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("🟢 TOP GREEN SIGNAL TEAMS (ELITE POWER INDEX)")
-    print("="*80)
-    greens = enriched[enriched["API_signal"] == "GREEN"].sort_values("API_score", ascending=False)
+    print("=" * 80)
+    greens = enriched[enriched["API_signal"] == "GREEN"].sort_values(
+        "API_score", ascending=False
+    )
 
     if not greens.empty:
         display_cols = ["team", "API_score"]
@@ -378,11 +382,11 @@ Examples:
     else:
         print("No GREEN signal teams found.")
 
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print(f"✅ Output saved:")
     print(f"   📄 CSV:  {output_csv}")
     print(f"   📄 JSON: {output_json}")
-    print("="*80)
+    print("=" * 80)
 
     # Summary statistics
     print(f"\n📊 SIGNAL DISTRIBUTION:")
