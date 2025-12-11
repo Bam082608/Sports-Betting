@@ -12,12 +12,7 @@ import pytest
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "apexviper-power-index"))
 
-from apexviper_power_index import (
-    SIGNAL_THRESHOLDS,
-    compute_power_index,
-    grade_signal,
-    safe_div,
-)
+from apexviper_power_index import SIGNAL_THRESHOLDS, compute_power_index, grade_signal, safe_div
 
 
 class TestSafeDiv:
@@ -100,19 +95,13 @@ class TestComputePowerIndex:
     def test_with_team_pp_data(self):
         """Test computation with team PP data"""
         df_matrix = pd.DataFrame({"team": ["TOR", "MTL"]})
-        df_pp_team = pd.DataFrame(
-            {"team": ["TOR", "MTL"], "pp_attempts": [100, 80], "pp_goals": [25, 20]}
-        )
+        df_pp_team = pd.DataFrame({"team": ["TOR", "MTL"], "pp_attempts": [100, 80], "pp_goals": [25, 20]})
 
         result = compute_power_index(df_matrix, df_pp_team)
 
         # Check PP conversion was calculated
-        assert result.loc[result["team"] == "TOR", "pp_conversion"].values[
-            0
-        ] == pytest.approx(0.25)
-        assert result.loc[result["team"] == "MTL", "pp_conversion"].values[
-            0
-        ] == pytest.approx(0.25)
+        assert result.loc[result["team"] == "TOR", "pp_conversion"].values[0] == pytest.approx(0.25)
+        assert result.loc[result["team"] == "MTL", "pp_conversion"].values[0] == pytest.approx(0.25)
 
     def test_with_player_pp_data(self):
         """Test computation with player PPSS data"""
@@ -129,21 +118,15 @@ class TestComputePowerIndex:
         result = compute_power_index(df_matrix, df_pp_player=df_pp_player)
 
         # Check aggregation worked
-        assert (
-            result.loc[result["team"] == "TOR", "team_pp_shots"].values[0] == 25
-        )  # 10 + 15
-        assert (
-            result.loc[result["team"] == "TOR", "team_pp_expected"].values[0] == 12
-        )  # 5 + 7
+        assert result.loc[result["team"] == "TOR", "team_pp_shots"].values[0] == 25  # 10 + 15
+        assert result.loc[result["team"] == "TOR", "team_pp_expected"].values[0] == 12  # 5 + 7
         assert result.loc[result["team"] == "MTL", "team_pp_shots"].values[0] == 12
         assert result.loc[result["team"] == "MTL", "team_pp_expected"].values[0] == 6
 
     def test_complete_calculation(self):
         """Test complete API score calculation with all data"""
         df_matrix = pd.DataFrame({"team": ["TOR"]})
-        df_pp_team = pd.DataFrame(
-            {"team": ["TOR"], "pp_attempts": [100], "pp_goals": [20]}
-        )
+        df_pp_team = pd.DataFrame({"team": ["TOR"], "pp_attempts": [100], "pp_goals": [20]})
         df_pp_player = pd.DataFrame(
             {
                 "team": ["TOR", "TOR"],

@@ -28,9 +28,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler(
-            LOG_DIR / f'apexviper_{datetime.now().strftime("%Y%m%d")}.log'
-        ),
+        logging.FileHandler(LOG_DIR / f'apexviper_{datetime.now().strftime("%Y%m%d")}.log'),
         logging.StreamHandler(),
     ],
 )
@@ -135,9 +133,7 @@ def calculate_apex_score(row: pd.Series) -> float:
 
         # Validate script tag
         if script_tag not in VALID_SCRIPT_TAGS:
-            logger.warning(
-                f"Invalid script_tag '{script_tag}' for {row.get('player', 'Unknown')}. Using NEUTRAL."
-            )
+            logger.warning(f"Invalid script_tag '{script_tag}' for {row.get('player', 'Unknown')}. Using NEUTRAL.")
             script_tag = "NEUTRAL"
 
         if script_tag == "CHASE_MODE":
@@ -238,13 +234,9 @@ def validate_dataframe(df: pd.DataFrame) -> bool:
     # Check for null values in critical columns
     null_counts = df[required_columns].isnull().sum()
     if null_counts.any():
-        logger.warning(
-            f"Null values found in columns: {null_counts[null_counts > 0].to_dict()}"
-        )
+        logger.warning(f"Null values found in columns: {null_counts[null_counts > 0].to_dict()}")
 
-    logger.info(
-        f"DataFrame validation passed: {len(df)} rows, {len(df.columns)} columns"
-    )
+    logger.info(f"DataFrame validation passed: {len(df)} rows, {len(df.columns)} columns")
     return True
 
 
@@ -255,9 +247,7 @@ def main() -> int:
     Returns:
         Exit code (0 for success, 1 for error)
     """
-    logger.info(
-        f"🐍 APEXVIPER INITIALIZING... {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-    )
+    logger.info(f"🐍 APEXVIPER INITIALIZING... {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
     parser = argparse.ArgumentParser(
         description="APEXVIPER Logic Engine - Player Prop Analysis",
@@ -279,9 +269,7 @@ Examples:
         default="apexviper_results.csv",
         help="Output CSV file for results (default: apexviper_results.csv)",
     )
-    parser.add_argument(
-        "--verbose", action="store_true", help="Enable verbose debug logging"
-    )
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose debug logging")
 
     args = parser.parse_args()
 
@@ -333,11 +321,7 @@ Examples:
     print("\n" + "=" * 80)
     print("🎯 TARGET PRIORITY LIST")
     print("=" * 80)
-    print(
-        df[["player", "team", "script_tag", "APEX_SCORE", "SIGNAL"]].to_string(
-            index=False
-        )
-    )
+    print(df[["player", "team", "script_tag", "APEX_SCORE", "SIGNAL"]].to_string(index=False))
     print("=" * 80)
 
     # Save Enriched Data

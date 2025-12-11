@@ -37,9 +37,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler(
-            LOG_DIR / f'power_index_{datetime.now().strftime("%Y%m%d")}.log'
-        ),
+        logging.FileHandler(LOG_DIR / f'power_index_{datetime.now().strftime("%Y%m%d")}.log'),
         logging.StreamHandler(),
     ],
 )
@@ -72,9 +70,7 @@ def safe_div(a: float, b: float) -> float:
     return float(a / b)
 
 
-def grade_signal(
-    value: float, low: float = 0.15, mid: float = 0.25, high: float = 0.40
-) -> str:
+def grade_signal(value: float, low: float = 0.15, mid: float = 0.25, high: float = 0.40) -> str:
     """
     Convert numeric value to traffic light signal.
 
@@ -175,9 +171,7 @@ def compute_power_index(
 
     if df_pp_player is None:
         logger.info("No player PPSS data provided, using empty DataFrame")
-        df_pp_player = pd.DataFrame(
-            columns=["player", "team", "pp_shots", "pp_expected"]
-        )
+        df_pp_player = pd.DataFrame(columns=["player", "team", "pp_shots", "pp_expected"])
 
     # Merge team PP metrics if available
     if "team" in df_pp_team.columns and not df_pp_team.empty:
@@ -193,9 +187,7 @@ def compute_power_index(
 
     # Derived team-level PP stats
     logger.info("Calculating PP conversion rates...")
-    df_matrix["pp_conversion"] = df_matrix.apply(
-        lambda r: safe_div(r["pp_goals"], r["pp_attempts"]), axis=1
-    )
+    df_matrix["pp_conversion"] = df_matrix.apply(lambda r: safe_div(r["pp_goals"], r["pp_attempts"]), axis=1)
 
     # Merge player PPSS if available (sum by team)
     if "team" in df_pp_player.columns and not df_pp_player.empty:
@@ -220,24 +212,18 @@ def compute_power_index(
     # APEXVIPER POWER INDEX score calculation
     logger.info("Calculating API scores...")
     df_matrix["API_score"] = (
-        (df_matrix["team_pp_expected"] * 0.5)
-        + (df_matrix["team_pp_shots"] * 0.3)
-        + (df_matrix["pp_conversion"] * 0.2)
+        (df_matrix["team_pp_expected"] * 0.5) + (df_matrix["team_pp_shots"] * 0.3) + (df_matrix["pp_conversion"] * 0.2)
     )
 
     # Grade signal
-    df_matrix["API_signal"] = df_matrix["API_score"].apply(
-        lambda x: grade_signal(x, **SIGNAL_THRESHOLDS)
-    )
+    df_matrix["API_signal"] = df_matrix["API_score"].apply(lambda x: grade_signal(x, **SIGNAL_THRESHOLDS))
 
     # Log statistics
     green_count = len(df_matrix[df_matrix["API_signal"] == "GREEN"])
     yellow_count = len(df_matrix[df_matrix["API_signal"] == "YELLOW"])
     red_count = len(df_matrix[df_matrix["API_signal"] == "RED"])
 
-    logger.info(
-        f"API Score distribution: GREEN={green_count}, YELLOW={yellow_count}, RED={red_count}"
-    )
+    logger.info(f"API Score distribution: GREEN={green_count}, YELLOW={yellow_count}, RED={red_count}")
 
     return df_matrix
 
@@ -249,9 +235,7 @@ def main() -> int:
     Returns:
         Exit code (0 for success, 1 for error)
     """
-    logger.info(
-        f"🐍 ApexViper Power Index Engine starting... {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-    )
+    logger.info(f"🐍 ApexViper Power Index Engine starting... {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
     parser = argparse.ArgumentParser(
         description="ApexViper Power Index Engine - Team Advantage Calculator",
@@ -264,9 +248,7 @@ Examples:
   %(prog)s --input data.csv --output-csv results.csv --output-json results.json
         """,
     )
-    parser.add_argument(
-        "--input", required=True, help="Master matrix CSV or JSON file (required)"
-    )
+    parser.add_argument("--input", required=True, help="Master matrix CSV or JSON file (required)")
     parser.add_argument("--pp_team", help="Optional team power play CSV file")
     parser.add_argument("--pp_player", help="Optional player PPSS CSV file")
     parser.add_argument(
@@ -279,9 +261,7 @@ Examples:
         default="enriched_matrix.json",
         help="Output JSON filename (default: enriched_matrix.json)",
     )
-    parser.add_argument(
-        "--verbose", action="store_true", help="Enable verbose debug logging"
-    )
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose debug logging")
 
     args = parser.parse_args()
 
@@ -328,9 +308,7 @@ Examples:
             required_cols = ["team", "pp_shots", "pp_expected"]
             missing = [col for col in required_cols if col not in df_pp_player.columns]
             if missing:
-                raise ValueError(
-                    f"Player PPSS file missing required columns: {missing}"
-                )
+                raise ValueError(f"Player PPSS file missing required columns: {missing}")
 
         except (FileNotFoundError, ValueError) as e:
             logger.error(f"Player PPSS file error: {e}")
@@ -366,9 +344,7 @@ Examples:
     print("\n" + "=" * 80)
     print("🟢 TOP GREEN SIGNAL TEAMS (ELITE POWER INDEX)")
     print("=" * 80)
-    greens = enriched[enriched["API_signal"] == "GREEN"].sort_values(
-        "API_score", ascending=False
-    )
+    greens = enriched[enriched["API_signal"] == "GREEN"].sort_values("API_score", ascending=False)
 
     if not greens.empty:
         display_cols = ["team", "API_score"]

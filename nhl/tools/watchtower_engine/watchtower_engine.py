@@ -52,11 +52,7 @@ def run_watchtower_protocol(game):
         print("   3. Point Shots (Defensemen 2+)")
 
     # LOGIC BRANCH 3: THE ONE-MAN ARMY (LADDER)
-    elif (
-        game.star_status == "Active"
-        and game.defense_rating == "Leak"
-        and game.total >= 6.5
-    ):
+    elif game.star_status == "Active" and game.defense_rating == "Leak" and game.total >= 6.5:
         # Check if it's One Man Army or Distributed
         if game.star in ["MacKinnon", "Kaprizov", "Pastrnak", "Kucherov"]:
             game_type = "ONE-MAN ARMY (Type 3)"
@@ -72,9 +68,7 @@ def run_watchtower_protocol(game):
             game_type = "THE SHOOTOUT (Type 2)"
 
     # LOGIC BRANCH 4: THE SHOOTOUT (DISTRIBUTED)
-    if game_type == "THE SHOOTOUT (Type 2)" or (
-        game.total >= 6.5 and game_type == "UNKNOWN"
-    ):
+    if game_type == "THE SHOOTOUT (Type 2)" or (game.total >= 6.5 and game_type == "UNKNOWN"):
         print(f"🔫 CLASSIFICATION: THE SHOOTOUT (Type 2)")
         print(">> Signal: High Volume, but Star is a Passer or Out.")
         print(f">> PROTOCOL: DEPLOY 'STAR & FLOOR'")

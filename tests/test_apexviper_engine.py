@@ -140,9 +140,7 @@ class TestCalculateApexScore:
         score_blowout = calculate_apex_score(row_blowout)
 
         # Blowout risk should have lower score
-        assert score_blowout == pytest.approx(
-            score_neutral + BLOWOUT_PENALTY, abs=0.001
-        )
+        assert score_blowout == pytest.approx(score_neutral + BLOWOUT_PENALTY, abs=0.001)
 
     def test_resistance_penalty(self):
         """Test that HIGH resistance applies penalty"""
@@ -167,9 +165,7 @@ class TestCalculateApexScore:
         score_high = calculate_apex_score(row_high)
 
         # High resistance should have lower score
-        assert score_high == pytest.approx(
-            score_moderate + RESISTANCE_PENALTY, abs=0.001
-        )
+        assert score_high == pytest.approx(score_moderate + RESISTANCE_PENALTY, abs=0.001)
 
     def test_low_resistance_bonus(self):
         """Test that LOW resistance applies bonus"""

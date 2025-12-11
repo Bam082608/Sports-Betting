@@ -71,9 +71,7 @@ class PlayerDataRow(BaseModel):
     opponent: str = Field(..., min_length=2, max_length=3)
     odds_930am: float = Field(..., description="Betting odds at 9:30 AM")
     last_5_shots: str = Field(..., pattern=r"^\d+\|\d+\|\d+\|\d+\|\d+$")
-    avg_toi: float = Field(
-        ..., ge=0, le=60, description="Average time on ice (0-60 minutes)"
-    )
+    avg_toi: float = Field(..., ge=0, le=60, description="Average time on ice (0-60 minutes)")
     resistance_grade: ResistanceGrade
     script_tag: ScriptTag
 
@@ -152,9 +150,7 @@ class PlayerPPSSRow(BaseModel):
 # --- VALIDATION FUNCTIONS ---
 
 
-def validate_dataframe(
-    df: pd.DataFrame, model: type[BaseModel], filename: str = "data"
-) -> Tuple[bool, List[Dict[str, Any]]]:
+def validate_dataframe(df: pd.DataFrame, model: type[BaseModel], filename: str = "data") -> Tuple[bool, List[Dict[str, Any]]]:
     """
     Validate a DataFrame against a Pydantic model.
 
@@ -189,15 +185,11 @@ def validate_dataframe(
                         "value": error.get("input", "N/A"),
                     }
                 )
-                logger.error(
-                    f"{filename} row {idx + 2}: {error['loc']} - {error['msg']}"
-                )
+                logger.error(f"{filename} row {idx + 2}: {error['loc']} - {error['msg']}")
 
         except Exception as e:
             is_valid = False
-            errors.append(
-                {"row": idx + 2, "field": "unknown", "error": str(e), "value": "N/A"}
-            )
+            errors.append({"row": idx + 2, "field": "unknown", "error": str(e), "value": "N/A"})
             logger.error(f"{filename} row {idx + 2}: Unexpected error - {e}")
 
     if is_valid:
@@ -315,9 +307,7 @@ def main():
     """CLI interface for data validation"""
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="APEXVIPER Data Validator - Validate CSV data files"
-    )
+    parser = argparse.ArgumentParser(description="APEXVIPER Data Validator - Validate CSV data files")
     parser.add_argument("file", help="CSV file to validate")
     parser.add_argument(
         "--type",
