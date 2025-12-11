@@ -12,9 +12,15 @@ import pytest
 # Add parent directory to path to import module
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from apexviper_engine import (BLOWOUT_PENALTY, CHASE_BONUS, RESISTANCE_PENALTY,
-                              calculate_apex_score, get_signal,
-                              parse_last_five, validate_dataframe)
+from apexviper_engine import (
+    BLOWOUT_PENALTY,
+    CHASE_BONUS,
+    RESISTANCE_PENALTY,
+    calculate_apex_score,
+    get_signal,
+    parse_last_five,
+    validate_dataframe,
+)
 
 
 class TestParseLastFive:

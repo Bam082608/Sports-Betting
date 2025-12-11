@@ -12,8 +12,12 @@ import pytest
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "apexviper-power-index"))
 
-from apexviper_power_index import (SIGNAL_THRESHOLDS, compute_power_index,
-                                   grade_signal, safe_div)
+from apexviper_power_index import (
+    SIGNAL_THRESHOLDS,
+    compute_power_index,
+    grade_signal,
+    safe_div,
+)
 
 
 class TestSafeDiv:
