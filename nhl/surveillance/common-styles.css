@@ -1,0 +1,256 @@
+/**
+ * APEXVIPER Common Surveillance Dashboard Styles
+ * Shared CSS for all NHL surveillance tools
+ */
+
+/* Base Layout */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Typography */
+h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #4756665;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Priority Levels */
+.priority-high {
+    background: #ff4444;
+    color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.priority-med,
+.priority-medium {
+    background: #ffaa44;
+    color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.priority-low {
+    background: #cccccc;
+    color: #333;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Status Indicators */
+.status {
+    background: #44ff44;
+    color: #333;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border-left: 5px solid #27ae60;
+    font-weight: bold;
+}
+
+.status-warning {
+    background: #fff3cd;
+    color: #856404;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border-left: 5px solid #ffc107;
+}
+
+.status-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border-left: 5px solid #dc3545;
+}
+
+/* Signal Colors */
+.signal-green {
+    background: #28a745;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.signal-yellow {
+    background: #ffc107;
+    color: #333;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.signal-red {
+    background: #dc3545;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+thead {
+    background: #2c3e50;
+    color: white;
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #f8f9fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Links */
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Lists */
+ul {
+    line-height: 1.8;
+}
+
+li {
+    margin: 5px 0;
+}
+
+/* Cards/Boxes */
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 5px;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.small-text {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.timestamp {
+    font-style: italic;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+
+    .priority-high,
+    .priority-med,
+    .priority-low {
+        padding: 10px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .card,
+    .priority-high,
+    .priority-med,
+    .priority-low {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

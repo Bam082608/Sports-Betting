@@ -1,0 +1,21 @@
+# APEXVIPER Python Dependencies
+# Core data analysis
+pandas>=2.1.0,<3.0.0
+numpy>=1.24.0,<2.0.0
+
+# Web automation for surveillance tools
+playwright>=1.40.0,<2.0.0
+
+# Development dependencies
+pytest>=7.4.0,<8.0.0
+pytest-cov>=4.1.0,<5.0.0
+black>=23.0.0,<24.0.0
+flake8>=6.1.0,<7.0.0
+mypy>=1.7.0,<2.0.0
+isort>=5.12.0,<6.0.0
+
+# Logging and configuration
+pyyaml>=6.0.1,<7.0.0
+
+# Data validation
+pydantic>=2.5.0,<3.0.0
