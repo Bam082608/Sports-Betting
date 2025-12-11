@@ -1,0 +1,107 @@
+# APEXVIPER Configuration File
+# This file contains configurable parameters for the betting intelligence system
+
+# ApexViper Engine Scoring Parameters
+engine:
+  # Target shot threshold for player props
+  target_shots: 2.5
+
+  # Bonus/penalty modifiers
+  modifiers:
+    chase_bonus: 0.15        # Bonus for players in "chase mode"
+    history_chase_bonus: 0.15  # Bonus for historical chase scenarios
+    blowout_penalty: -0.20    # Penalty for blowout risk games
+    suppressed_penalty: -0.15  # Penalty for suppressed players
+    resistance_penalty: -0.10  # Penalty for high-resistance opponents
+    low_resistance_bonus: 0.05  # Bonus for low-resistance opponents
+
+  # Signal thresholds
+  signals:
+    green_threshold: 0.75    # Minimum score for GREEN (ELITE) signal
+    yellow_threshold: 0.60   # Minimum score for YELLOW (PLAYABLE) signal
+    # Below yellow_threshold = RED (AVOID)
+
+  # Scoring weights
+  weights:
+    volume_weight: 1.0        # Base volume score weight
+    consistency_weight: 0.2   # Consistency bonus multiplier
+
+# Power Index Configuration
+power_index:
+  # Signal thresholds
+  signals:
+    low: 0.15
+    mid: 0.25
+    high: 0.40
+
+  # Scoring weights
+  weights:
+    pp_expected: 0.5   # Weight for power play expected goals
+    pp_shots: 0.3      # Weight for power play shots
+    pp_conversion: 0.2 # Weight for power play conversion rate
+
+# Valid enumeration values
+enums:
+  resistance_grades:
+    - LOW
+    - MODERATE
+    - HIGH
+
+  script_tags:
+    - CHASE_MODE
+    - HISTORY_CHASE
+    - BLOWOUT_RISK
+    - SUPPRESSED
+    - NEUTRAL
+    - LOW_PACE
+
+# File paths
+paths:
+  # Input files
+  master_data: "apexviper_master_data.csv"
+
+  # Output files
+  results: "apexviper_results.csv"
+  enriched_csv: "enriched_matrix.csv"
+  enriched_json: "enriched_matrix.json"
+
+  # Logging
+  log_dir: "logs"
+
+# Logging configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+  # Log retention
+  max_log_files: 30  # Keep logs for 30 days
+
+# Data validation
+validation:
+  # Require all columns to be present
+  strict_mode: true
+
+  # Warn on null values but don't fail
+  allow_nulls: true
+
+  # Maximum acceptable null percentage per column
+  max_null_percentage: 0.10  # 10%
+
+# Performance settings
+performance:
+  # Pandas display settings
+  max_display_rows: 100
+
+  # Precision for floating point display
+  float_precision: 3
+
+# Feature flags
+features:
+  # Enable verbose output in CLI
+  verbose_by_default: false
+
+  # Enable data validation warnings
+  show_validation_warnings: true
+
+  # Save intermediate results
+  save_intermediate_files: false
