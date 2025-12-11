@@ -29,7 +29,7 @@ class TestParseLastFive:
         """Test parsing valid shot string"""
         avg, hits = parse_last_five("3|4|4|5|4")
         assert avg == 4.0
-        assert hits == 4  # 4 games with >= 2.5 shots
+        assert hits == 5  # 5 games with >= 2.5 shots (all values: 3, 4, 4, 5, 4)
 
     def test_all_high_shots(self):
         """Test string with all shots above target"""
@@ -47,7 +47,7 @@ class TestParseLastFive:
         """Test mixed high and low shots"""
         avg, hits = parse_last_five("2|2|7|3|5")
         assert avg == 3.8
-        assert hits == 2  # Only 7 and 5 are >= 2.5
+        assert hits == 3  # 7, 3, and 5 are >= 2.5
 
     def test_empty_string(self):
         """Test empty string returns zeros"""
@@ -71,7 +71,7 @@ class TestParseLastFive:
         """Test string with spaces gets stripped"""
         avg, hits = parse_last_five(" 3 | 4 | 4 | 5 | 4 ")
         assert avg == 4.0
-        assert hits == 4
+        assert hits == 5
 
 
 class TestCalculateApexScore:
