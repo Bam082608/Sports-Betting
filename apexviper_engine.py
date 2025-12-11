@@ -206,15 +206,15 @@ def validate_dataframe(df: pd.DataFrame) -> bool:
     Raises:
         ValueError: If validation fails
     """
+    # Check for empty DataFrame first
+    if df.empty:
+        raise ValueError("Input DataFrame is empty")
+
     required_columns = ['player', 'team', 'last_5_shots', 'script_tag', 'resistance_grade']
     missing_columns = [col for col in required_columns if col not in df.columns]
 
     if missing_columns:
         raise ValueError(f"Missing required columns: {missing_columns}")
-
-    # Check for empty DataFrame
-    if df.empty:
-        raise ValueError("Input DataFrame is empty")
 
     # Check for null values in critical columns
     null_counts = df[required_columns].isnull().sum()
