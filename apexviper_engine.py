@@ -15,7 +15,7 @@ import logging
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Tuple, Optional
+from typing import Tuple
 
 import numpy as np
 import pandas as pd
@@ -26,11 +26,11 @@ LOG_DIR.mkdir(exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
         logging.FileHandler(LOG_DIR / f'apexviper_{datetime.now().strftime("%Y%m%d")}.log'),
-        logging.StreamHandler()
-    ]
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger(__name__)
 
@@ -41,8 +41,15 @@ BLOWOUT_PENALTY = -0.20  # Penalty for "Blowout Risk"
 RESISTANCE_PENALTY = -0.10  # Penalty for High Block Teams (SJS)
 
 # Valid values for validation
-VALID_RESISTANCE_GRADES = {'LOW', 'MODERATE', 'HIGH'}
-VALID_SCRIPT_TAGS = {'CHASE_MODE', 'HISTORY_CHASE', 'BLOWOUT_RISK', 'SUPPRESSED', 'NEUTRAL', 'LOW_PACE'}
+VALID_RESISTANCE_GRADES = {"LOW", "MODERATE", "HIGH"}
+VALID_SCRIPT_TAGS = {
+    "CHASE_MODE",
+    "HISTORY_CHASE",
+    "BLOWOUT_RISK",
+    "SUPPRESSED",
+    "NEUTRAL",
+    "LOW_PACE",
+}
 
 
 def parse_last_five(shot_string: str) -> Tuple[float, int]:
@@ -69,7 +76,7 @@ def parse_last_five(shot_string: str) -> Tuple[float, int]:
         return 0.0, 0
 
     try:
-        shots = [int(x.strip()) for x in shot_string.split('|')]
+        shots = [int(x.strip()) for x in shot_string.split("|")]
 
         if len(shots) != 5:
             logger.warning(f"Expected 5 shots, got {len(shots)} in: {shot_string}")
@@ -114,49 +121,51 @@ def calculate_apex_score(row: pd.Series) -> float:
     """
     try:
         # 1. Base Volume Score (0.0 to 1.0)
-        avg_shots, hit_count = parse_last_five(row['last_5_shots'])
-        volume_score = (avg_shots / 5.0)  # Normalize to 5 shots
+        avg_shots, hit_count = parse_last_five(row["last_5_shots"])
+        volume_score = avg_shots / 5.0  # Normalize to 5 shots
 
         # 2. Consistency Bonus
         consistency_score = (hit_count / 5.0) * 0.2
 
         # 3. Script Adjustments (The Intelligent Layer)
         script_mod = 0.0
-        script_tag = row.get('script_tag', 'NEUTRAL').upper()
+        script_tag = row.get("script_tag", "NEUTRAL").upper()
 
         # Validate script tag
         if script_tag not in VALID_SCRIPT_TAGS:
             logger.warning(f"Invalid script_tag '{script_tag}' for {row.get('player', 'Unknown')}. Using NEUTRAL.")
-            script_tag = 'NEUTRAL'
+            script_tag = "NEUTRAL"
 
-        if script_tag == 'CHASE_MODE':
+        if script_tag == "CHASE_MODE":
             script_mod += CHASE_BONUS
             logger.debug(f"Applied CHASE_MODE bonus: +{CHASE_BONUS}")
-        elif script_tag == 'HISTORY_CHASE':
+        elif script_tag == "HISTORY_CHASE":
             script_mod += CHASE_BONUS
             logger.debug(f"Applied HISTORY_CHASE bonus: +{CHASE_BONUS}")
-        elif script_tag == 'BLOWOUT_RISK':
+        elif script_tag == "BLOWOUT_RISK":
             script_mod += BLOWOUT_PENALTY
             logger.debug(f"Applied BLOWOUT_RISK penalty: {BLOWOUT_PENALTY}")
-        elif script_tag == 'SUPPRESSED':
+        elif script_tag == "SUPPRESSED":
             script_mod += -0.15
-            logger.debug(f"Applied SUPPRESSED penalty: -0.15")
+            logger.debug("Applied SUPPRESSED penalty: -0.15")
 
         # 4. Resistance Adjustment (The "Wall" Check)
         resistance_mod = 0.0
-        resistance_grade = row.get('resistance_grade', 'MODERATE').upper()
+        resistance_grade = row.get("resistance_grade", "MODERATE").upper()
 
         # Validate resistance grade
         if resistance_grade not in VALID_RESISTANCE_GRADES:
-            logger.warning(f"Invalid resistance_grade '{resistance_grade}' for {row.get('player', 'Unknown')}. Using MODERATE.")
-            resistance_grade = 'MODERATE'
+            logger.warning(
+                f"Invalid resistance_grade '{resistance_grade}' for {row.get('player', 'Unknown')}. Using MODERATE."
+            )
+            resistance_grade = "MODERATE"
 
-        if resistance_grade == 'HIGH':  # e.g. San Jose blocking shots
+        if resistance_grade == "HIGH":  # e.g. San Jose blocking shots
             resistance_mod += RESISTANCE_PENALTY
             logger.debug(f"Applied HIGH resistance penalty: {RESISTANCE_PENALTY}")
-        elif resistance_grade == 'LOW':  # e.g. Anaheim bleeding shots
+        elif resistance_grade == "LOW":  # e.g. Anaheim bleeding shots
             resistance_mod += 0.05  # Bonus for soft defense
-            logger.debug(f"Applied LOW resistance bonus: +0.05")
+            logger.debug("Applied LOW resistance bonus: +0.05")
 
         final_score = volume_score + consistency_score + script_mod + resistance_mod
 
@@ -210,7 +219,13 @@ def validate_dataframe(df: pd.DataFrame) -> bool:
     if df.empty:
         raise ValueError("Input DataFrame is empty")
 
-    required_columns = ['player', 'team', 'last_5_shots', 'script_tag', 'resistance_grade']
+    required_columns = [
+        "player",
+        "team",
+        "last_5_shots",
+        "script_tag",
+        "resistance_grade",
+    ]
     missing_columns = [col for col in required_columns if col not in df.columns]
 
     if missing_columns:
@@ -242,23 +257,19 @@ Examples:
   %(prog)s                          # Use default apexviper_master_data.csv
   %(prog)s --input custom_data.csv  # Use custom input file
   %(prog)s --output results.csv     # Specify output file
-        """
+        """,
     )
     parser.add_argument(
-        '--input',
-        default='apexviper_master_data.csv',
-        help='Input CSV file with player data (default: apexviper_master_data.csv)'
+        "--input",
+        default="apexviper_master_data.csv",
+        help="Input CSV file with player data (default: apexviper_master_data.csv)",
     )
     parser.add_argument(
-        '--output',
-        default='apexviper_results.csv',
-        help='Output CSV file for results (default: apexviper_results.csv)'
+        "--output",
+        default="apexviper_results.csv",
+        help="Output CSV file for results (default: apexviper_results.csv)",
     )
-    parser.add_argument(
-        '--verbose',
-        action='store_true',
-        help='Enable verbose debug logging'
-    )
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose debug logging")
 
     args = parser.parse_args()
 
@@ -294,8 +305,8 @@ Examples:
     # Apply Logic
     try:
         logger.info("Calculating APEX scores...")
-        df['APEX_SCORE'] = df.apply(calculate_apex_score, axis=1)
-        df['SIGNAL'] = df['APEX_SCORE'].apply(get_signal)
+        df["APEX_SCORE"] = df.apply(calculate_apex_score, axis=1)
+        df["SIGNAL"] = df["APEX_SCORE"].apply(get_signal)
         logger.info("APEX score calculation complete")
 
     except Exception as e:
@@ -304,14 +315,14 @@ Examples:
         return 1
 
     # Sort by Score (Best to Worst)
-    df = df.sort_values(by='APEX_SCORE', ascending=False)
+    df = df.sort_values(by="APEX_SCORE", ascending=False)
 
     # OUTPUT
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("🎯 TARGET PRIORITY LIST")
-    print("="*80)
-    print(df[['player', 'team', 'script_tag', 'APEX_SCORE', 'SIGNAL']].to_string(index=False))
-    print("="*80)
+    print("=" * 80)
+    print(df[["player", "team", "script_tag", "APEX_SCORE", "SIGNAL"]].to_string(index=False))
+    print("=" * 80)
 
     # Save Enriched Data
     try:
@@ -321,11 +332,11 @@ Examples:
         print(f"\n✅ ANALYSIS COMPLETE. Results saved to '{output_path}'")
 
         # Summary statistics
-        green_count = len(df[df['SIGNAL'].str.contains('GREEN')])
-        yellow_count = len(df[df['SIGNAL'].str.contains('YELLOW')])
-        red_count = len(df[df['SIGNAL'].str.contains('RED')])
+        green_count = len(df[df["SIGNAL"].str.contains("GREEN")])
+        yellow_count = len(df[df["SIGNAL"].str.contains("YELLOW")])
+        red_count = len(df[df["SIGNAL"].str.contains("RED")])
 
-        print(f"\n📊 SUMMARY:")
+        print("\n📊 SUMMARY:")
         print(f"   🟢 GREEN (ELITE):    {green_count}")
         print(f"   🟡 YELLOW (PLAYABLE): {yellow_count}")
         print(f"   🔴 RED (AVOID):      {red_count}")
