@@ -5,14 +5,7 @@
 
 class GameIntel:
     def __init__(
-        self,
-        home_team,
-        away_team,
-        vegas_total,
-        star_player,
-        star_status,
-        opponent_defense_rating,
-        goalie_status="Starter",
+        self, home_team, away_team, vegas_total, star_player, star_status, opponent_defense_rating, goalie_status="Starter"
     ):
         self.matchup = f"{away_team} @ {home_team}"
         self.total = vegas_total
@@ -35,7 +28,7 @@ def run_watchtower_protocol(game):
         game_type = "THE GRIND (Type 1)"
         print(f"⚠️ CLASSIFICATION: {game_type}")
         print(">> Signal: Low Total + Elite Defense.")
-        print(f">> PROTOCOL: DEPLOY 'THE SHIELD'")
+        print(">> PROTOCOL: DEPLOY 'THE SHIELD'")
         print("   1. Under 1.5 Goals (1st Period)")
         print("   2. No Goal First 10 Mins")
         print("   3. Under 6.5 Total Goals")
@@ -46,7 +39,7 @@ def run_watchtower_protocol(game):
         game_type = "THE SIEGE / CHAOS (Type 4)"
         print(f"🚨 CLASSIFICATION: {game_type}")
         print(">> Signal: High Total + Backup Goalie.")
-        print(f">> PROTOCOL: DEPLOY 'THE SIEGE'")
+        print(">> PROTOCOL: DEPLOY 'THE SIEGE'")
         print("   1. Team Total OVER (Pivot from shots if blow-out risk)")
         print("   2. Rebound Hunter Props (e.g., Hyman 3+)")
         print("   3. Point Shots (Defensemen 2+)")
@@ -58,7 +51,7 @@ def run_watchtower_protocol(game):
             game_type = "ONE-MAN ARMY (Type 3)"
             print(f"🪜 CLASSIFICATION: {game_type}")
             print(">> Signal: Elite Star vs. Bad Defense.")
-            print(f">> PROTOCOL: DEPLOY 'THE LADDER'")
+            print(">> PROTOCOL: DEPLOY 'THE LADDER'")
             print(f"   1. {game.star} 3+ Shots (Unit: 1.0)")
             print(f"   2. {game.star} 4+ Shots (Unit: 0.5)")
             print(f"   3. {game.star} 5+ Shots (Unit: 0.25)")
@@ -69,9 +62,9 @@ def run_watchtower_protocol(game):
 
     # LOGIC BRANCH 4: THE SHOOTOUT (DISTRIBUTED)
     if game_type == "THE SHOOTOUT (Type 2)" or (game.total >= 6.5 and game_type == "UNKNOWN"):
-        print(f"🔫 CLASSIFICATION: THE SHOOTOUT (Type 2)")
+        print("🔫 CLASSIFICATION: THE SHOOTOUT (Type 2)")
         print(">> Signal: High Volume, but Star is a Passer or Out.")
-        print(f">> PROTOCOL: DEPLOY 'STAR & FLOOR'")
+        print(">> PROTOCOL: DEPLOY 'STAR & FLOOR'")
         print(f"   1. ANCHOR: {game.star} 4+ Shots (The King)")
         print("   2. PAWN A: Top-6 Winger 1+ Shot")
         print("   3. PAWN B: Top-4 Defenseman 1+ Shot")

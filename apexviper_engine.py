@@ -15,7 +15,7 @@ import logging
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Tuple
 
 import numpy as np
 import pandas as pd
@@ -27,10 +27,7 @@ LOG_DIR.mkdir(exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(LOG_DIR / f'apexviper_{datetime.now().strftime("%Y%m%d")}.log'),
-        logging.StreamHandler(),
-    ],
+    handlers=[logging.FileHandler(LOG_DIR / f'apexviper_{datetime.now().strftime("%Y%m%d")}.log'), logging.StreamHandler()],
 )
 logger = logging.getLogger(__name__)
 
@@ -42,14 +39,7 @@ RESISTANCE_PENALTY = -0.10  # Penalty for High Block Teams (SJS)
 
 # Valid values for validation
 VALID_RESISTANCE_GRADES = {"LOW", "MODERATE", "HIGH"}
-VALID_SCRIPT_TAGS = {
-    "CHASE_MODE",
-    "HISTORY_CHASE",
-    "BLOWOUT_RISK",
-    "SUPPRESSED",
-    "NEUTRAL",
-    "LOW_PACE",
-}
+VALID_SCRIPT_TAGS = {"CHASE_MODE", "HISTORY_CHASE", "BLOWOUT_RISK", "SUPPRESSED", "NEUTRAL", "LOW_PACE"}
 
 
 def parse_last_five(shot_string: str) -> Tuple[float, int]:
@@ -147,7 +137,7 @@ def calculate_apex_score(row: pd.Series) -> float:
             logger.debug(f"Applied BLOWOUT_RISK penalty: {BLOWOUT_PENALTY}")
         elif script_tag == "SUPPRESSED":
             script_mod += -0.15
-            logger.debug(f"Applied SUPPRESSED penalty: -0.15")
+            logger.debug("Applied SUPPRESSED penalty: -0.15")
 
         # 4. Resistance Adjustment (The "Wall" Check)
         resistance_mod = 0.0
@@ -165,7 +155,7 @@ def calculate_apex_score(row: pd.Series) -> float:
             logger.debug(f"Applied HIGH resistance penalty: {RESISTANCE_PENALTY}")
         elif resistance_grade == "LOW":  # e.g. Anaheim bleeding shots
             resistance_mod += 0.05  # Bonus for soft defense
-            logger.debug(f"Applied LOW resistance bonus: +0.05")
+            logger.debug("Applied LOW resistance bonus: +0.05")
 
         final_score = volume_score + consistency_score + script_mod + resistance_mod
 
@@ -219,13 +209,7 @@ def validate_dataframe(df: pd.DataFrame) -> bool:
     if df.empty:
         raise ValueError("Input DataFrame is empty")
 
-    required_columns = [
-        "player",
-        "team",
-        "last_5_shots",
-        "script_tag",
-        "resistance_grade",
-    ]
+    required_columns = ["player", "team", "last_5_shots", "script_tag", "resistance_grade"]
     missing_columns = [col for col in required_columns if col not in df.columns]
 
     if missing_columns:
@@ -265,9 +249,7 @@ Examples:
         help="Input CSV file with player data (default: apexviper_master_data.csv)",
     )
     parser.add_argument(
-        "--output",
-        default="apexviper_results.csv",
-        help="Output CSV file for results (default: apexviper_results.csv)",
+        "--output", default="apexviper_results.csv", help="Output CSV file for results (default: apexviper_results.csv)"
     )
     parser.add_argument("--verbose", action="store_true", help="Enable verbose debug logging")
 
@@ -336,7 +318,7 @@ Examples:
         yellow_count = len(df[df["SIGNAL"].str.contains("YELLOW")])
         red_count = len(df[df["SIGNAL"].str.contains("RED")])
 
-        print(f"\n📊 SUMMARY:")
+        print("\n📊 SUMMARY:")
         print(f"   🟢 GREEN (ELITE):    {green_count}")
         print(f"   🟡 YELLOW (PLAYABLE): {yellow_count}")
         print(f"   🔴 RED (AVOID):      {red_count}")

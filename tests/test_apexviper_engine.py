@@ -5,7 +5,6 @@ Test suite for apexviper_engine.py
 import sys
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import pytest
 
@@ -81,12 +80,7 @@ class TestCalculateApexScore:
     def test_basic_score_calculation(self):
         """Test basic APEX score calculation"""
         row = pd.Series(
-            {
-                "player": "Test Player",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "NEUTRAL",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Test Player", "last_5_shots": "3|4|4|5|4", "script_tag": "NEUTRAL", "resistance_grade": "MODERATE"}
         )
         score = calculate_apex_score(row)
         assert isinstance(score, float)
@@ -95,20 +89,10 @@ class TestCalculateApexScore:
     def test_chase_mode_bonus(self):
         """Test that CHASE_MODE applies bonus"""
         row_neutral = pd.Series(
-            {
-                "player": "Player A",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "NEUTRAL",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Player A", "last_5_shots": "3|4|4|5|4", "script_tag": "NEUTRAL", "resistance_grade": "MODERATE"}
         )
         row_chase = pd.Series(
-            {
-                "player": "Player B",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "CHASE_MODE",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Player B", "last_5_shots": "3|4|4|5|4", "script_tag": "CHASE_MODE", "resistance_grade": "MODERATE"}
         )
 
         score_neutral = calculate_apex_score(row_neutral)
@@ -120,20 +104,10 @@ class TestCalculateApexScore:
     def test_blowout_penalty(self):
         """Test that BLOWOUT_RISK applies penalty"""
         row_neutral = pd.Series(
-            {
-                "player": "Player A",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "NEUTRAL",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Player A", "last_5_shots": "3|4|4|5|4", "script_tag": "NEUTRAL", "resistance_grade": "MODERATE"}
         )
         row_blowout = pd.Series(
-            {
-                "player": "Player B",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "BLOWOUT_RISK",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Player B", "last_5_shots": "3|4|4|5|4", "script_tag": "BLOWOUT_RISK", "resistance_grade": "MODERATE"}
         )
 
         score_neutral = calculate_apex_score(row_neutral)
@@ -145,20 +119,10 @@ class TestCalculateApexScore:
     def test_resistance_penalty(self):
         """Test that HIGH resistance applies penalty"""
         row_moderate = pd.Series(
-            {
-                "player": "Player A",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "NEUTRAL",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Player A", "last_5_shots": "3|4|4|5|4", "script_tag": "NEUTRAL", "resistance_grade": "MODERATE"}
         )
         row_high = pd.Series(
-            {
-                "player": "Player B",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "NEUTRAL",
-                "resistance_grade": "HIGH",
-            }
+            {"player": "Player B", "last_5_shots": "3|4|4|5|4", "script_tag": "NEUTRAL", "resistance_grade": "HIGH"}
         )
 
         score_moderate = calculate_apex_score(row_moderate)
@@ -170,20 +134,10 @@ class TestCalculateApexScore:
     def test_low_resistance_bonus(self):
         """Test that LOW resistance applies bonus"""
         row_moderate = pd.Series(
-            {
-                "player": "Player A",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "NEUTRAL",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Player A", "last_5_shots": "3|4|4|5|4", "script_tag": "NEUTRAL", "resistance_grade": "MODERATE"}
         )
         row_low = pd.Series(
-            {
-                "player": "Player B",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "NEUTRAL",
-                "resistance_grade": "LOW",
-            }
+            {"player": "Player B", "last_5_shots": "3|4|4|5|4", "script_tag": "NEUTRAL", "resistance_grade": "LOW"}
         )
 
         score_moderate = calculate_apex_score(row_moderate)
@@ -195,12 +149,7 @@ class TestCalculateApexScore:
     def test_invalid_script_tag(self):
         """Test that invalid script tag defaults to NEUTRAL"""
         row = pd.Series(
-            {
-                "player": "Test Player",
-                "last_5_shots": "3|4|4|5|4",
-                "script_tag": "INVALID_TAG",
-                "resistance_grade": "MODERATE",
-            }
+            {"player": "Test Player", "last_5_shots": "3|4|4|5|4", "script_tag": "INVALID_TAG", "resistance_grade": "MODERATE"}
         )
         # Should not raise error, should log warning and use NEUTRAL
         score = calculate_apex_score(row)
@@ -243,14 +192,14 @@ class TestValidateDataframe:
                 "resistance_grade": ["MODERATE", "LOW"],
             }
         )
-        assert validate_dataframe(df) == True
+        assert validate_dataframe(df) is True
 
     def test_missing_columns(self):
         """Test missing required columns raises error"""
         df = pd.DataFrame(
             {
                 "player": ["Player A"],
-                "team": ["TOR"]
+                "team": ["TOR"],
                 # Missing last_5_shots, script_tag, resistance_grade
             }
         )
@@ -275,7 +224,7 @@ class TestValidateDataframe:
             }
         )
         # Should not raise error, but should log warning
-        assert validate_dataframe(df) == True
+        assert validate_dataframe(df) is True
 
 
 class TestIntegration:

@@ -19,7 +19,6 @@ Run:
 """
 
 import argparse
-import json
 import logging
 import sys
 from datetime import datetime
@@ -36,10 +35,7 @@ LOG_DIR.mkdir(exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(LOG_DIR / f'power_index_{datetime.now().strftime("%Y%m%d")}.log'),
-        logging.StreamHandler(),
-    ],
+    handlers=[logging.FileHandler(LOG_DIR / f'power_index_{datetime.now().strftime("%Y%m%d")}.log'), logging.StreamHandler()],
 )
 logger = logging.getLogger(__name__)
 
@@ -137,9 +133,7 @@ def validate_input_file(file_path: Path, file_type: str) -> pd.DataFrame:
 
 
 def compute_power_index(
-    df_matrix: pd.DataFrame,
-    df_pp_team: Optional[pd.DataFrame] = None,
-    df_pp_player: Optional[pd.DataFrame] = None,
+    df_matrix: pd.DataFrame, df_pp_team: Optional[pd.DataFrame] = None, df_pp_player: Optional[pd.DataFrame] = None
 ) -> pd.DataFrame:
     """
     Compute ApexViper Power Index scores for teams.
@@ -252,14 +246,10 @@ Examples:
     parser.add_argument("--pp_team", help="Optional team power play CSV file")
     parser.add_argument("--pp_player", help="Optional player PPSS CSV file")
     parser.add_argument(
-        "--output-csv",
-        default="enriched_matrix.csv",
-        help="Output CSV filename (default: enriched_matrix.csv)",
+        "--output-csv", default="enriched_matrix.csv", help="Output CSV filename (default: enriched_matrix.csv)"
     )
     parser.add_argument(
-        "--output-json",
-        default="enriched_matrix.json",
-        help="Output JSON filename (default: enriched_matrix.json)",
+        "--output-json", default="enriched_matrix.json", help="Output JSON filename (default: enriched_matrix.json)"
     )
     parser.add_argument("--verbose", action="store_true", help="Enable verbose debug logging")
 
@@ -359,13 +349,13 @@ Examples:
         print("No GREEN signal teams found.")
 
     print("\n" + "=" * 80)
-    print(f"✅ Output saved:")
+    print("✅ Output saved:")
     print(f"   📄 CSV:  {output_csv}")
     print(f"   📄 JSON: {output_json}")
     print("=" * 80)
 
     # Summary statistics
-    print(f"\n📊 SIGNAL DISTRIBUTION:")
+    print("\n📊 SIGNAL DISTRIBUTION:")
     print(f"   🟢 GREEN:  {len(enriched[enriched['API_signal'] == 'GREEN'])}")
     print(f"   🟡 YELLOW: {len(enriched[enriched['API_signal'] == 'YELLOW'])}")
     print(f"   🔴 RED:    {len(enriched[enriched['API_signal'] == 'RED'])}")

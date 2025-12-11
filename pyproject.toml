@@ -1,7 +1,7 @@
 [tool.black]
 line-length = 127
-target-version = ['py310', 'py311', 'py312']
-exclude = '''
+target-version = ['py310']
+extend-exclude = '''
 /(
     \.git
   | \.venv
@@ -9,25 +9,27 @@ exclude = '''
   | env
   | __pycache__
   | \.pytest_cache
+  | build
+  | dist
 )/
 '''
 
 [tool.isort]
 profile = "black"
 line_length = 127
-skip = [".git", ".venv", "venv", "env", "__pycache__", ".pytest_cache"]
-known_first_party = ["apexviper_engine", "apexviper_power_index", "data_validator"]
+skip_glob = ["venv/*", "env/*", ".venv/*", "__pycache__/*", ".pytest_cache/*"]
+known_first_party = ["apexviper", "nhl"]
 
 [tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --cov=. --cov-report=term-missing"
 testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-addopts = "-v --cov=. --cov-report=term-missing"
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
 
 [tool.mypy]
 python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
-ignore_missing_imports = true
-no_strict_optional = true
+disallow_untyped_defs = false

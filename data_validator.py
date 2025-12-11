@@ -16,8 +16,7 @@ Usage:
 
 import logging
 from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 import pandas as pd
 from pydantic import BaseModel, Field, ValidationError, validator
@@ -310,10 +309,7 @@ def main():
     parser = argparse.ArgumentParser(description="APEXVIPER Data Validator - Validate CSV data files")
     parser.add_argument("file", help="CSV file to validate")
     parser.add_argument(
-        "--type",
-        choices=["player", "team_pp", "player_ppss"],
-        default="player",
-        help="Type of data file (default: player)",
+        "--type", choices=["player", "team_pp", "player_ppss"], default="player", help="Type of data file (default: player)"
     )
 
     args = parser.parse_args()

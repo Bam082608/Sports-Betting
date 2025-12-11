@@ -12,7 +12,7 @@ import pytest
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "apexviper-power-index"))
 
-from apexviper_power_index import SIGNAL_THRESHOLDS, compute_power_index, grade_signal, safe_div
+from apexviper_power_index import compute_power_index, grade_signal, safe_div
 
 
 class TestSafeDiv:
@@ -128,12 +128,7 @@ class TestComputePowerIndex:
         df_matrix = pd.DataFrame({"team": ["TOR"]})
         df_pp_team = pd.DataFrame({"team": ["TOR"], "pp_attempts": [100], "pp_goals": [20]})
         df_pp_player = pd.DataFrame(
-            {
-                "team": ["TOR", "TOR"],
-                "player": ["Player A", "Player B"],
-                "pp_shots": [10, 10],
-                "pp_expected": [5, 5],
-            }
+            {"team": ["TOR", "TOR"], "player": ["Player A", "Player B"], "pp_shots": [10, 10], "pp_expected": [5, 5]}
         )
 
         result = compute_power_index(df_matrix, df_pp_team, df_pp_player)
@@ -181,13 +176,7 @@ class TestComputePowerIndex:
     def test_partial_team_coverage(self):
         """Test handling when PP data doesn't cover all teams"""
         df_matrix = pd.DataFrame({"team": ["TOR", "MTL", "VAN"]})
-        df_pp_team = pd.DataFrame(
-            {
-                "team": ["TOR"],  # Only TOR has data
-                "pp_attempts": [100],
-                "pp_goals": [20],
-            }
-        )
+        df_pp_team = pd.DataFrame({"team": ["TOR"], "pp_attempts": [100], "pp_goals": [20]})  # Only TOR has data
 
         result = compute_power_index(df_matrix, df_pp_team)
 
@@ -209,13 +198,7 @@ class TestIntegration:
         df_matrix = pd.DataFrame({"team": teams})
 
         # Setup team PP data
-        df_pp_team = pd.DataFrame(
-            {
-                "team": teams,
-                "pp_attempts": [100, 90, 110, 95, 105],
-                "pp_goals": [25, 18, 27, 19, 28],
-            }
-        )
+        df_pp_team = pd.DataFrame({"team": teams, "pp_attempts": [100, 90, 110, 95, 105], "pp_goals": [25, 18, 27, 19, 28]})
 
         # Setup player PP data
         df_pp_player = pd.DataFrame(
