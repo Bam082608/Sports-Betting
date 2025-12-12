@@ -196,6 +196,7 @@ See [EMERGENCY-PROTOCOLS.md](./EMERGENCY-PROTOCOLS.md) for crisis response proce
 
 | Tier | Confidence | Stake | Example ($650 bankroll) |
 |------|------------|-------|-------------------------|
+| **PROMOTION/BOOST** | Any | **FIXED $5.00 MAX** | $5.00 |
 | **A (Core)** | High (80%+) | 1.0 unit | $10.00 |
 | **B (Standard)** | Medium (60-80%) | 0.5 unit | $5.00 |
 | **C (Value)** | Lower (40-60%) | 0.25 unit | $2.50 |
@@ -232,6 +233,7 @@ See [EMERGENCY-PROTOCOLS.md](./EMERGENCY-PROTOCOLS.md) for crisis response proce
 ### Current Status ($650 Bankroll)
 ```
 ┌─────────────────────────────────────┐
+│ MAX BOOST STAKE:     $5.00 (HARD)  │
 │ UNIT SIZE:           $10.00        │
 │ HALF UNIT:           $5.00         │
 │ MAX DAILY RISK:      $19.50 (3%)   │
