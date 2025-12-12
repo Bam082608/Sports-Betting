@@ -1,264 +1,384 @@
-# 💰 APEXVIPER BANKROLL MANAGEMENT SYSTEM v1.0
-**Owner:** Project Lead (Bam082608)  
-**Directive:** Systematic bankroll tracking, unit sizing, and drawdown protection.
+# 💰 BANKROLL MANAGEMENT
+## Capital Preservation & Risk Control
+
+**Status:** ACTIVE
+**Last Updated:** December 12, 2025
+**Current Bankroll:** ~$538
+**Journey:** $40 → $650+ (peak) → $538 (post-variance)
 
 ---
 
-## 1. CURRENT BANKROLL SNAPSHOT
+## 🎯 CORE PRINCIPLES
 
-**Last Updated:** ____________
+### 1. We're Playing with House Money
 
-| Metric | Value |
-|--------|-------|
-| **Starting Bankroll** | $650.00 |
-| **Current Bankroll** | $_______ |
-| **Unit Size (1.5%)** | $10.00 |
-| **Daily Max Risk (3%)** | $19.50 |
-| **Weekly Max Risk (10%)** | $65.00 |
+**Context:**
+- Started: $40 (rock bottom, December 2024)
+- Peak: ~$650 (November/December 2025)
+- Current: ~$538 (December 12, 2025)
+- Net Profit: **+$498 (1,245% ROI)**
 
-### Daily Snapshot Template
-```
-Date: ____________
-Opening Bankroll: $_______
-Bets Placed Today: $_______
-Results: W/L/Push
-Closing Bankroll: $_______
-Daily P/L: $_______
-```
+**Mentality:**
+- Everything above $40 is profit
+- One bad night doesn't erase journey
+- Process > Results
+- Long-term edge > Short-term variance
 
 ---
 
-## 2. UNIT SIZE CALCULATION
+### 2. Unit Sizing System
 
-**Standard Unit = 1.5% of Bankroll**
+**Current Unit Definition:**
+- 1 unit = $2.50
+- Typical bet: 1 unit ($2.50)
+- Standard range: 0.8 - 2.0 units ($2-5)
 
-| Bankroll | Unit Size (1.5%) | Half Unit | Double Unit |
-|----------|------------------|-----------|-------------|
-| $500 | $7.50 | $3.75 | $15.00 |
-| $600 | $9.00 | $4.50 | $18.00 |
-| **$650** | **$10.00** | **$5.00** | **$20.00** |
-| $700 | $10.50 | $5.25 | $21.00 |
-| $800 | $12.00 | $6.00 | $24.00 |
-| $1,000 | $15.00 | $7.50 | $30.00 |
-| $1,500 | $22.50 | $11.25 | $45.00 |
-| $2,000 | $30.00 | $15.00 | $60.00 |
+**Unit Allocation by Confidence:**
 
-### Quick Unit Lookup
 ```
-Unit Size = Bankroll × 0.015
-Half Unit = Bankroll × 0.0075
-Double Unit = Bankroll × 0.03
-```
+Tier 1 (Foundation): 1.0 units ($2.50)
+- High probability shots
+- Star player props (2.5+ SOG)
+- Defensive anchors
+- Team DNA perfect match
 
----
+Tier 2 (Standard): 1.2 units ($3.00)
+- Strong reads
+- Correlated SGPs
+- Mixed confidence
+- Arsenal Type 2-5
 
-## 3. UNIT SIZING ADJUSTMENT RULES
+Tier 3 (Lottery): 1.6 units ($4.00)
+- Long-shot parlays
+- Role player combinations
+- God Tickets
+- Arsenal Type 6-8
 
-### When to INCREASE Unit Size
-
-| Condition | Action | New Unit Calculation |
-|-----------|--------|---------------------|
-| Bankroll grows 15%+ | Recalculate units | New bankroll × 1.5% |
-| Hit 3 consecutive winning days | Lock in gains, recalculate | New bankroll × 1.5% |
-| Reach milestone ($700, $1000, etc.) | Milestone adjustment | Use new tier |
-
-**INCREASE TRIGGERS:**
-- [ ] Bankroll reaches $750 → Recalculate to $11.25 unit
-- [ ] Bankroll reaches $1,000 → Recalculate to $15.00 unit
-- [ ] Bankroll reaches $1,500 → Recalculate to $22.50 unit
-
-### When to DECREASE Unit Size
-
-| Condition | Action | New Unit Calculation |
-|-----------|--------|---------------------|
-| Bankroll drops 10% | Immediate recalculation | New bankroll × 1.5% |
-| 3 consecutive losing days | Reduce by 25% | Current unit × 0.75 |
-| Hit stop-loss trigger | Emergency reduction | See Section 5 |
-
-**DECREASE TRIGGERS:**
-- [ ] Bankroll drops to $585 (10% loss) → Recalculate to $8.75 unit
-- [ ] Bankroll drops to $520 (20% loss) → Recalculate to $7.80 unit
-- [ ] Emergency stop-loss hit → See Section 5
-
----
-
-## 4. WEEKLY P&L TRACKING TABLE
-
-### Week of: ____________
-
-| Day | Opening | Bets Placed | Total Wagered | Won | Lost | Closing | Daily P/L |
-|-----|---------|-------------|---------------|-----|------|---------|-----------|
-| Mon | $______ | ______ | $______ | $______ | $______ | $______ | $______ |
-| Tue | $______ | ______ | $______ | $______ | $______ | $______ | $______ |
-| Wed | $______ | ______ | $______ | $______ | $______ | $______ | $______ |
-| Thu | $______ | ______ | $______ | $______ | $______ | $______ | $______ |
-| Fri | $______ | ______ | $______ | $______ | $______ | $______ | $______ |
-| Sat | $______ | ______ | $______ | $______ | $______ | $______ | $______ |
-| Sun | $______ | ______ | $______ | $______ | $______ | $______ | $______ |
-| **TOTALS** | | | | | | | **$______** |
-
-### Weekly Summary
-```
-Week Starting Bankroll: $_______
-Week Ending Bankroll: $_______
-Total Bets: _______
-Win Rate: ______%
-Weekly P/L: $_______
-Weekly ROI: ______%
+MAXIMUM SINGLE BET: 2.0 units ($5.00)
 ```
 
----
-
-## 5. DRAWDOWN PROTECTION RULES
-
-**Emergency Protocols:**  
-See [EMERGENCY-PROTOCOLS.md](./EMERGENCY-PROTOCOLS.md) for crisis response procedures including:
-- Fat finger recovery (>5% exposure)
-- Tilt detection and circuit breakers
-- Drawdown protocols (>10% loss)
-- Confabulation detection
-- Exposure limit violations
-
-### Daily Stop-Loss Limits
-
-| Bankroll Level | Max Daily Loss | Action When Hit |
-|----------------|----------------|-----------------|
-| $650+ | $20 (3% of bankroll) | Stop betting for day |
-| $500-$649 | $15 (3% of bankroll) | Stop betting for day |
-| $400-$499 | $12 (3% of bankroll) | Stop betting for day |
-| Below $400 | $10 flat | Stop betting, reassess system |
-
-### Weekly Stop-Loss Limits
-
-| Bankroll Level | Max Weekly Loss | Action When Hit |
-|----------------|-----------------|-----------------|
-| $650+ | $65 (10% of bankroll) | Forced cooldown (2 days) |
-| $500-$649 | $50 (10% of bankroll) | Forced cooldown (2 days) |
-| Below $500 | $40 flat | Forced cooldown (3 days) |
-
-### Emergency Stop-Loss (CIRCUIT BREAKER)
-
-**TRIGGER:** Bankroll drops 25% from peak in any 7-day period
-
-**ACTIONS:**
-1. 🛑 STOP all betting immediately
-2. 📝 Document what went wrong
-3. ⏳ Mandatory 5-day cooldown period
-4. 🔍 Full system review before resuming
-5. 📉 Reduce unit size by 50% when resuming
+**Profit Boost Exception (NEW):**
+- Maximum boost stake: **$5** (regardless of boost value)
+- Never overbet to "maximize boost"
+- See: PROMOTION_PSYCHOLOGY.md
 
 ---
 
-## 6. FORCED COOLDOWN PERIODS
+### 3. Spider Web Diversification
 
-### Automatic Cooldown Triggers
+**Philosophy:**
+Multiple small tickets > Few large tickets
 
-| Trigger | Cooldown Duration | Resume Conditions |
-|---------|-------------------|-------------------|
-| Daily stop-loss hit | Rest of day | Next day, fresh slate |
-| Weekly stop-loss hit | 2 full days | 3rd day, reduced units |
-| 3 consecutive losing days | 1 full day | After review, reduced units |
-| Circuit breaker (25% drop) | 5 full days | Full system review required |
-| Emotional tilt detected | Rest of day | Must document trigger |
-
-### Cooldown Protocol
-- [ ] Document why cooldown was triggered
-- [ ] No bets placed during cooldown (no exceptions)
-- [ ] Review recent bets for pattern issues
-- [ ] Adjust unit size if necessary before resuming
-- [ ] Return with clear head and fresh perspective
-
----
-
-## 7. MONTHLY BANKROLL REVIEW
-
-### Month: ____________
-
-| Week | Starting | Ending | P/L | Win Rate | Notes |
-|------|----------|--------|-----|----------|-------|
-| Week 1 | $______ | $______ | $______ | ______% | |
-| Week 2 | $______ | $______ | $______ | ______% | |
-| Week 3 | $______ | $______ | $______ | ______% | |
-| Week 4 | $______ | $______ | $______ | ______% | |
-| **MONTH** | **$______** | **$______** | **$______** | **______%** | |
-
-### Monthly Assessment Questions
-1. Did I hit any stop-loss triggers? ______
-2. Largest single-day loss: $_______
-3. Largest single-day win: $_______
-4. Average daily P/L: $_______
-5. Most profitable day of week: _______
-6. Least profitable day of week: _______
-
----
-
-## 8. STAKE SIZING BY CONFIDENCE TIER
-
-| Tier | Confidence | Stake | Example ($650 bankroll) |
-|------|------------|-------|-------------------------|
-| **PROMOTION/BOOST** | Any | **FIXED $5.00 MAX** | $5.00 |
-| **A (Core)** | High (80%+) | 1.0 unit | $10.00 |
-| **B (Standard)** | Medium (60-80%) | 0.5 unit | $5.00 |
-| **C (Value)** | Lower (40-60%) | 0.25 unit | $2.50 |
-| **D (Lottery)** | Longshot (<40%) | 0.1 unit | $1.00 |
-
-### Max Daily Allocation by Tier
-
-| Tier | Max # of Bets | Max Total Stake |
-|------|---------------|-----------------|
-| A (Core) | 2 per day | $20.00 |
-| B (Standard) | 3 per day | $15.00 |
-| C (Value) | 4 per day | $10.00 |
-| D (Lottery) | 2 per day | $2.00 |
-| **TOTAL** | **11 max** | **$47.00 max** |
-
----
-
-## 9. WITHDRAWAL MILESTONES
-
-| Milestone | Bankroll | Action | Withdrawal Amount |
-|-----------|----------|--------|-------------------|
-| **Level 1** | $1,000 | First withdrawal | $200 (profit lock) |
-| **Level 2** | $1,500 | Second withdrawal | $300 (profit lock) |
-| **Level 3** | $2,500 | Third withdrawal | $500 (profit lock) |
-| **Level 4** | $5,000 | Major withdrawal | $1,500 (30% of bankroll) |
-| **Level 5** | $10,000+ | Regular withdrawals | 20% monthly |
-
-**Rule:** Never withdraw below your operating minimum ($500).
-
----
-
-## 10. QUICK REFERENCE CARD
-
-### Current Status ($650 Bankroll)
+**Structure:**
 ```
-┌─────────────────────────────────────┐
-│ MAX BOOST STAKE:     $5.00 (HARD)  │
-│ UNIT SIZE:           $10.00        │
-│ HALF UNIT:           $5.00         │
-│ MAX DAILY RISK:      $19.50 (3%)   │
-│ DAILY STOP-LOSS:     $20.00        │
-│ WEEKLY STOP-LOSS:    $65.00        │
-│ CIRCUIT BREAKER:     $162.50 (25%) │
-└─────────────────────────────────────┘
+Instead of: 1 ticket @ $20
+Do this: 8 tickets @ $2.50
+
+Benefit:
+- If 2 tickets hit @ +400: Net positive
+- If all miss: Loss contained to bankroll %
+- Variance smoothed over volume
+- Learning opportunities maximized
 ```
 
-### Emergency Numbers
-- **Daily Stop-Loss:** If down $20, STOP
-- **Weekly Stop-Loss:** If down $65, COOLDOWN 2 days
-- **Circuit Breaker:** If bankroll hits $487.50, STOP 5 days
+**Floor Security Protocol:**
+- Build portfolio so anchor bets cover lottery losses
+- If anchor hits: Pays for all lottery tickets
+- If lottery hits: Massive ROI
+- Asymmetric risk/reward
 
 ---
 
-## 🎯 CROSS-REFERENCE
+## 📊 EXPOSURE LIMITS
 
-This protocol integrates with:
-- `tracking/bankroll.md` - Daily bankroll updates
-- `tracking/bet-log.md` - Individual bet tracking
-- `protocols/APEXVIPER_PORTFOLIO_CONSTRUCTION.md` - Stake sizing
+### Daily Limits
+
+**Maximum Daily Risk:**
+- Standard Day: 10 units ($25)
+- High-Volume Day: 15 units ($37.50)
+- Light Day: 5 units ($12.50)
+
+**Current Average:**
+- ~30-40 bets per weekend
+- Total risk: $75-100
+- Average stake: $2.50
+- Win rate needed: 30% (profitable via parlays)
 
 ---
 
-**Version:** 1.0  
-**Owner:** Project Lead (Bam082608)  
-**Purpose:** Protect bankroll through systematic risk management and drawdown controls.
+### Per-Slate Limits (NEW - 12/12/25)
+
+**NHL Slate Structure:**
+```
+Small Slate (3-5 games):
+- Max risk: 8 units ($20)
+- Focus on quality
+- 3-6 tickets maximum
+
+Medium Slate (6-8 games):
+- Max risk: 12 units ($30)
+- Balanced approach
+- 8-15 tickets
+
+Large Slate (9+ games):
+- Max risk: 15 units ($37.50)
+- Spider Web full activation
+- 15-25 tickets
+```
+
+---
+
+### Stop-Loss System
+
+**Daily Stop-Loss:**
+- Trigger: -3 units ($7.50) OR -5% bankroll
+- Action: Stop betting immediately
+- No "one more bet"
+- Review and come back tomorrow
+
+**Weekly Stop-Loss:**
+- Trigger: -10 units ($25) OR -15% bankroll
+- Action: 48-hour betting freeze
+- Full system audit
+- Identify protocol violations
+
+**"Four Horsemen" Variance Event:**
+- Trigger: 4+ losses by 0.5 units in single night
+- Action: Recognize as statistical anomaly
+- Mental game check (tilt level?)
+- Continue IF tilt = 0, stop IF tilt >0
+- See: ONE_AWAY_VARIANCE.md
+
+---
+
+## 🎰 EXPERIMENTAL BETTING
+
+### NBA/NFL Learning Allocation (NEW)
+
+**Purpose:**
+- Build secondary systems
+- Expand expertise beyond NHL
+- Grind back promotional losses
+
+**Allocation:**
+- NBA: $15-20 maximum
+- NFL: $10-15 maximum
+- UFC: $5-10 maximum
+
+**Structure:**
+- Spider Web approach ($1-3 bets)
+- Focus: Player props, spreads
+- AVOID: Chalk parlays, boosted bets
+- Timeline: 2-3 weeks per sport
+
+**Rule:**
+- Experimental losses DO NOT trigger stop-loss
+- Counted separately from main bankroll
+- View as tuition for system building
+
+---
+
+## 💸 WITHDRAWAL STRATEGY
+
+### When to Cash Out
+
+**Trigger Points:**
+```
+$1,000: Withdraw $200 (keep $800 active)
+$1,500: Withdraw $500 (keep $1,000 active)
+$2,000: Withdraw $1,000 (keep $1,000 active)
+```
+
+**Philosophy:**
+- Lock in profits periodically
+- Maintain psychological comfort
+- Protect against catastrophic loss
+- Bankroll should feel like "house money"
+
+**Emergency Withdrawal:**
+- If bankroll drops to $300: Re-evaluate system
+- If drops to $200: Take 1-week break
+- If drops to $100: Full system audit
+- If drops to $40: We've been here before, climb again
+
+---
+
+## 🎁 PROMOTION MANAGEMENT (NEW - 12/12/25)
+
+### Profit Boost Protocol
+
+**MANDATORY RULES:**
+
+1. **$5 Maximum Stake**
+   - Applies to ALL boosts (25%, 50%, 100%)
+   - No "maximize value" multipliers
+   - No exceptions
+
+2. **System Fit Required**
+   - Must be NHL (primary system)
+   - OR NBA/NFL within $3 limit (if building)
+   - Bet must pass all normal protocols
+
+3. **Expiration is Acceptable**
+   - Unused boost = $0 lost = SUCCESS
+   - Unforced error protection
+   - Discipline demonstration
+
+**Rationale:**
+- December 11th loss: $50 via oversized boost stakes
+- Normal stake: $2.50
+- With boost: $25 (10X multiplier)
+- **Never again**
+
+---
+
+### Free Bet Management
+
+**Optimal Usage:**
+```
+Small Free Bets ($5-10):
+- Use on standard system bets
+- Same protocols as cash bets
+- No special treatment
+
+Large Free Bets ($25+):
+- Break into smaller bets if possible
+- Or use on long-shot parlay (+400 to +800)
+- View as lottery ticket (free roll)
+```
+
+**Never:**
+- Bet outside system expertise
+- Overbet to "maximize free bet value"
+- Make bet you wouldn't make with cash
+
+---
+
+## 📈 BANKROLL GROWTH TRACKING
+
+### Monthly Goals
+
+**Conservative Target:**
+- 10-15% monthly growth
+- Current: $538 → Target: $590-620 by end of December
+
+**Aggressive Target:**
+- 20-30% monthly growth
+- Only when hitting stride (high volume, high win rate)
+
+**Acceptable Range:**
+- Breakeven to +10%: Building, learning
+- +10% to +20%: System working
+- +20%+: Hot streak (don't overextend)
+
+---
+
+### Key Metrics
+
+**Track Weekly:**
+- Starting bankroll
+- Ending bankroll
+- Total risk (units wagered)
+- Total return (units won)
+- Win rate (%)
+- ROI (%)
+
+**Example Week:**
+```
+Starting: $538
+Risk: 40 units ($100)
+Return: 55 units ($137.50)
+Win Rate: 32% (13/40 bets)
+ROI: +37.5% on risk
+Ending: $575.50
+```
+
+---
+
+## 🎓 LESSONS LEARNED
+
+**From $40 → $650 → $538 Journey:**
+
+1. **Small Stakes Work**
+   - $2.50 bets built $600+ bankroll
+   - No need to overbet
+   - Volume > size
+
+2. **House Money Mentality**
+   - Everything above $40 is profit
+   - One bad night doesn't erase journey
+   - Process over results
+
+3. **Variance Happens**
+   - December 11th: -$62.50 (Four Horsemen)
+   - Still up $498 overall
+   - Mental game > analytical edge
+
+4. **Boost Trap is Real**
+   - $50 lost via oversized boost stakes
+   - $5 maximum now enforced
+   - Letting boosts expire = discipline
+
+5. **Spider Web Wins**
+   - 30-40 small bets > 5-10 large bets
+   - Variance smooths over volume
+   - Learning maximized
+
+---
+
+## 📝 STAKE SIZE DECISION TREE
+
+**Before Placing Bet:**
+
+```
+1. Check confidence level
+   ├─ Foundation (Team DNA perfect): 1.0 unit
+   ├─ Standard (Strong read): 1.2 units
+   └─ Lottery (Speculative): 1.6 units
+
+2. Check boost status
+   ├─ No boost: Use confidence level
+   ├─ Boost available: MAX $5 regardless
+   └─ Boost doesn't fit system: Let expire
+
+3. Check daily exposure
+   ├─ Under daily limit: Proceed
+   ├─ Near daily limit: Reduce stake or pass
+   └─ Over daily limit: DO NOT BET
+
+4. Check mental state
+   ├─ Calm, rational: Proceed
+   ├─ Frustrated, tilting: STOP
+   └─ Emotional: Take 30-min break
+
+5. Place bet at determined size
+   └─ No last-minute increases
+```
+
+---
+
+## 🔒 ENFORCEMENT
+
+**Bankroll Management is Non-Negotiable**
+
+**If Tempted to Overbet:**
+1. Check current exposure (units risked today)
+2. Check mental state (tilt level)
+3. Review bankroll journey ($40 → $538)
+4. Ask: "Would I bet this much WITHOUT boost/promotion?"
+5. If answer is no: Don't bet
+
+**Remember:**
+- $40 → $538 was built with $2.50 bets
+- One $50 loss = 20 normal bets
+- Discipline > Aggression
+- Long-term edge > Short-term gain
+
+---
+
+**Current Bankroll:** ~$538
+**Journey:** $40 → $650 → $538 (+$498 net)
+**Unit Size:** $2.50
+**Max Boost:** $5
+**Daily Limit:** 10-15 units ($25-37.50)
+**Mental State:** Elite 🐍
