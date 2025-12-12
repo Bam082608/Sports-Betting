@@ -9,15 +9,17 @@ A comprehensive multi-AI sports betting intelligence platform built on 26+ speci
 ## 🎯 Executive Summary
 
 APEXVIPER Genesis is a professional-grade betting intelligence system that combines:
+- **Dual-Node Architecture (V2.0)** - Encyclopedia (NotebookLM) + Claude (Lead Strategist)
 - **26+ Specialized Protocols** for analysis, execution, and portfolio management
 - **Multi-AI Collaboration** (Claude, Gemini, Grok) with defined roles
 - **Live Data Surveillance** via custom HTML dashboards
 - **Comprehensive Tracking** with 25,000+ words of institutional knowledge
 - **NHL-First Architecture** with NFL/UFC expansion frameworks
 
-**Primary Focus:** NHL player props and totals with edge-finding protocols  
-**Technology Stack:** Markdown documentation, HTML/JavaScript surveillance tools, JSON databases  
-**Last Updated:** December 3, 2025
+**System Version:** V2.0 (Dual-Node Architecture - Launched 12/12/25)
+**Primary Focus:** NHL player props and totals with edge-finding protocols
+**Technology Stack:** Markdown documentation, HTML/JavaScript surveillance tools, JSON databases
+**Last Updated:** December 12, 2025
 
 ---
 
@@ -60,7 +62,9 @@ Sports-Betting/
 │   └── TICKET-ARSENAL-v2.md            # 8 ticket types with deployment models
 ├── protocols/                          # 🎯 26+ APEXVIPER protocol files
 │   ├── APEXVIPER_*.md                  # Core protocol suite (see full index below)
-│   ├── viper-genesis/                  # System architecture
+│   ├── viper-genesis/                  # System architecture (V1.0 & V2.0)
+│   │   ├── APEXVIPER_SYSTEM_ARCHITECTURE_v2.0.md  # Current: Dual-node system
+│   │   └── APEXVIPER_SYSTEM_ARCHITECTURE_v1.0.md  # Legacy: Single-node system
 │   ├── daily-workflow.md               # Daily operations
 │   ├── emergency-playbook.md           # Emergency procedures
 │   └── viper-protocols.md              # Betting rules

@@ -4,8 +4,9 @@
 
 This directory contains the complete APEXVIPER protocol suite - a comprehensive framework of specialized betting intelligence systems, execution workflows, and decision-making frameworks.
 
-**Last Updated:** December 3, 2025  
+**Last Updated:** December 12, 2025
 **Total Protocols:** 26 core files + 3 support files
+**System Version:** APEX V2.0 (Dual-Node Architecture)
 
 ---
 
@@ -48,12 +49,20 @@ This directory contains the complete APEXVIPER protocol suite - a comprehensive 
 
 Foundation protocols that define APEXVIPER architecture and operations.
 
+### APEXVIPER_SYSTEM_ARCHITECTURE_v2.0.md
+- **Location:** `viper-genesis/APEXVIPER_SYSTEM_ARCHITECTURE_v2.0.md`
+- **Purpose:** Dual-node architecture documentation (Encyclopedia + Claude)
+- **Version:** 2.0 (Current Production - Launched 12/12/25)
+- **Key Content:** Dual-node system, NHL Mandate, Spider Web Strategy, Rat Poison Protocol, operational workflows
+- **Use When:** Understanding V2.0 system design, protocol enforcement, or operational procedures
+- **Replaces:** v1.0 (archived for historical reference)
+
 ### APEXVIPER_SYSTEM_ARCHITECTURE_v1.0.md
 - **Location:** `viper-genesis/APEXVIPER_SYSTEM_ARCHITECTURE_v1.0.md`
-- **Purpose:** Complete system design and architecture documentation
-- **Version:** 1.0
-- **Key Content:** System philosophy, component overview, integration patterns
-- **Use When:** Understanding overall system design or onboarding new AI agents
+- **Purpose:** Legacy single-node architecture documentation
+- **Version:** 1.0 (Legacy - Replaced by v2.0)
+- **Status:** Archived for historical reference
+- **Use When:** Understanding system evolution or historical context
 
 ### APEXVIPER_AGENT_ROLES.md
 - **Purpose:** AI agent role definitions and responsibilities
@@ -448,7 +457,7 @@ Protocols for system integration and expansion.
 ## 🔄 Protocol Interdependencies
 
 ### Foundation Layer (Use First)
-- `APEXVIPER_SYSTEM_ARCHITECTURE_v1.0.md`
+- `APEXVIPER_SYSTEM_ARCHITECTURE_v2.0.md` (Current Production)
 - `APEXVIPER_AGENT_ROLES.md`
 - `APEXVIPER_DATABASE_STRUCTURE.md`
 

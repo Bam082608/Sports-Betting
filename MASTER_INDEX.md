@@ -12,6 +12,26 @@
 
 ## 🚨 CRITICAL UPDATES (December 12, 2025)
 
+### SYSTEM ARCHITECTURE V2.0 LAUNCHED 🐍 NEW
+**Date:** December 12, 2025, 9:32 AM EST
+**File:** `protocols/viper-genesis/APEXVIPER_SYSTEM_ARCHITECTURE_v2.0.md`
+
+**Dual-Node Architecture:**
+- **The Encyclopedia** (Google NotebookLM): Research engine & historical database
+- **Claude (VIPER-ZERO)**: Lead strategist & executive decision maker
+- **Workflow:** Billy → Encyclopedia (analysis) → Claude (synthesis) → Official Betting Card
+
+**Key Features:**
+- Separation of data extraction from strategic decision-making
+- Reduced hallucination risk via dedicated research layer
+- Enforced protocol compliance (NHL Mandate, Spider Web, Rat Poison)
+- Historical continuity & institutional memory
+- Dual verification system before execution
+
+**Replaces:** Single-node V1.0 architecture (Claude-only operations)
+
+---
+
 ### NEW MANDATORY PROTOCOLS
 
 **1. Team Totals Mandate** ⚠️ CRITICAL
