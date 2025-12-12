@@ -94,7 +94,7 @@ A night where:
 **Characteristic Legs:**
 | Leg Type | Example | Typical Odds |
 |----------|---------|--------------|
-| Game Total | Under 5.5 | -110 to -130 |
+| Team Totals | Under 2.5/3.5 (See Team Totals Mandate) | -120 to -150 |
 | Period Prop | Under 1.5 goals 1st period | -120 |
 | Timing Prop | No goal first 10 minutes | +100 to +130 |
 | Star UNDER | Star player Under 3.5 SOG | -150 |
@@ -127,7 +127,7 @@ MIN @ ARI
 **Characteristic Legs:**
 | Leg Type | Example | Typical Odds |
 |----------|---------|--------------|
-| Game Total | Over 6.5 | -110 to -130 |
+| Team Totals | Over 2.5/3.5 (See Team Totals Mandate) | -120 to -150 |
 | Star OVER (Team A) | Star 3+ SOG | -130 to +110 |
 | Star OVER (Team B) | Star 3+ SOG | -130 to +110 |
 | Star Points | Star 1+ Point | -180 to -220 |
@@ -230,16 +230,18 @@ The Competitive Grind narrative utilizes a mathematically optimized 4-leg struct
 │        → No team wins by 3+ goals                               │
 │        → Typical odds: -300 to -350 combined                    │
 ├─────────────────────────────────────────────────────────────────┤
-│ LEG 3: Over 3.5 goals                                           │
-│        → At least 4 total goals scored                          │
-│        → Eliminates 1-0, 2-0, 2-1, 3-0 snoozers                 │
+│ LEG 3: Team Total Over 1.5/2.5 (Favorite)                       │
+│        → Favorite contributes to scoring                        │
+│        → Replaces risky Game Total Over                         │
 │        → Typical odds: -140 to -180                             │
 ├─────────────────────────────────────────────────────────────────┤
-│ LEG 4: Under 8.5 goals (Under 7.5 if juice < -400)              │
-│        → No garbage-time track meets                            │
-│        → Eliminates 6-2, 7-3, 8-4 blowouts                      │
-│        → Typical odds: -450 to -600                             │
+│ LEG 4: Team Total Under 3.5/4.5 (Underdog)                      │
+│        → Caps the underdog's output                             │
+│        → Replaces risky Game Total Under                        │
+│        → Typical odds: -150 to -250                             │
 └─────────────────────────────────────────────────────────────────┘
+
+**NOTE:** Full Game Totals are deprecated as of Dec 12, 2025. See [TEAM TOTALS MANDATE](./APEXVIPER_TEAM_TOTALS_MANDATE.md).
 
 COMBINED PARLAY ODDS: +340 to +410
 ```
@@ -706,6 +708,10 @@ Monthly Expectation (20 betting nights):
 ---
 
 ## 9. APPENDIX: QUICK REFERENCE CARDS
+
+### 9. 0 RELATED PROTOCOLS
+- [TEAM TOTALS MANDATE](./APEXVIPER_TEAM_TOTALS_MANDATE.md)
+- [RED FLAGS](./APEXVIPER_RED_FLAGS.md)
 
 ### 9. 1 Narrative Identification Quick Reference
 
